@@ -1,0 +1,5 @@
+# node_modules files will be automatically ignored
+
+# Ignore dist files except dist/index.html
+dist/*
+!dist/index.html
