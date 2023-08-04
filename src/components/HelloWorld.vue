@@ -15,6 +15,10 @@ defineProps<{
     </el-button>
     <Search style="width: 1em; height: 1em; margin-right: 8px" />
 
+    <!-- 自定义 Icon 图标 -->
+    <SvgIcon name="delete" color="#fff" size="50px"></SvgIcon>
+    <SvgIcon name="save" color="blue" size="50px"></SvgIcon>
+
     <h1 class="green">{{ msg }}</h1>
     <h3>
       You’ve successfully created a project with

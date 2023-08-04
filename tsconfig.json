@@ -9,7 +9,6 @@
     }
   ],
   "compilerOptions": {
-    // 添加类型提示
-    "types": ["element-plus/global"]
+    "types": ["element-plus/global", "vite-plugin-svg-icons/client"]
   }
 }
