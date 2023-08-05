@@ -16,19 +16,19 @@ defineProps<{
     <Search style="width: 1em; height: 1em; margin-right: 8px" />
 
     <!-- 自定义 Icon 图标 -->
-    <SvgIcon name="delete" color="#fff" size="50px"></SvgIcon>
+    <SvgIcon name="delete" color="red" size="50px"></SvgIcon>
     <SvgIcon name="save" color="blue" size="50px"></SvgIcon>
 
     <h1 class="green">{{ msg }}</h1>
     <h3>
       You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
+      <a href="https://vitejs.dev/" target="_blank" rel="noopener" class="scssTest">Vite</a> +
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>. What's next?
     </h3>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 h1 {
   font-weight: 500;
   font-size: 2.6rem;
@@ -50,5 +50,8 @@ h3 {
   .greetings h3 {
     text-align: left;
   }
+}
+.scssTest {
+  color: $s-red;
 }
 </style>

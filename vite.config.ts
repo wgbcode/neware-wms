@@ -15,7 +15,7 @@ export default defineConfig({
       iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
       // 指定symbolId格式
       symbolId: 'icon-[dir]-[name]',
-      // svgo额外配置
+      // svgo额外配置，删除svg部分属性
       svgoOptions: {
         plugins: [
           {
@@ -34,6 +34,13 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "@/assets/styles/mixin.scss";'
+      }
     }
   }
 })
