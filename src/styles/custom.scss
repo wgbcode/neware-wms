@@ -1,5 +1,3 @@
-@use 'sass:map';
-
 // c_w0-c_w500 | c_h0-c_h500 | c_w0p-c_w100p  | c_h0p-c_h100p
 @mixin generate-classes-wh($start, $end) {
   @for $i from $start through $end {
@@ -21,13 +19,79 @@
     $class-name-height: 'c_h#{$i}p';
 
     .#{$class-name-width} {
-      width: #{'#{$i}%'};
+      width: #{$i} + '%';
     }
     .#{$class-name-height} {
-      height: #{'#{$i}%'};
+      height: #{$i} + '%';
     }
   }
 }
 
 @include generate-classes-wh(0, 500);
 @include generate-classes-whp(0, 100);
+
+// 0-100：c_pt | c_pb | c_pl | c_pr | c_mt | c_mb | c_ml | c_mr
+@mixin generate-classes-pm($start, $end) {
+  @for $i from $start through $end {
+    $class-name-pt: 'c_pt#{$i}';
+    $class-name-pb: 'c_pb#{$i}';
+    $class-name-pl: 'c_pl#{$i}';
+    $class-name-pr: 'c_pr#{$i}';
+    $class-name-mt: 'c_mt#{$i}';
+    $class-name-mb: 'c_mb#{$i}';
+    $class-name-ml: 'c_ml#{$i}';
+    $class-name-mr: 'c_mr#{$i}';
+
+    .#{$class-name-pt} {
+      padding-top: #{$i}px;
+    }
+    .#{$class-name-pb} {
+      padding-bottom: #{$i}px;
+    }
+    .#{$class-name-pl} {
+      padding-left: #{$i}px;
+    }
+    .#{$class-name-pr} {
+      padding-right: #{$i}px;
+    }
+    .#{$class-name-mt} {
+      margin-top: #{$i}px;
+    }
+    .#{$class-name-mb} {
+      margin-bottom: #{$i}px;
+    }
+    .#{$class-name-ml} {
+      margin-left: #{$i}px;
+    }
+    .#{$class-name-mr} {
+      margin-right: #{$i}px;
+    }
+  }
+}
+@include generate-classes-pm(0, 100);
+
+// c_fs12-50
+@mixin generate-classes-fs($start, $end) {
+  @for $i from $start through $end {
+    $class-name: 'c_fs#{$i}';
+
+    .#{$class-name} {
+      font-size: #{$i}px;
+    }
+  }
+}
+
+@include generate-classes-fs(12, 50);
+
+// c_fw400-700
+@mixin generate-classes-fw($start, $end) {
+  @for $i from $start through $end {
+    $class-name: 'c_fw#{$i}';
+
+    .#{$class-name} {
+      font-weight: #{$i};
+    }
+  }
+}
+
+@include generate-classes-fw(400, 700);

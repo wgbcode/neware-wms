@@ -42,7 +42,7 @@ const checked4 = ref(false)
     </div>
 
     <!-- 自定义类名（样式） -->
-    <div class="c_w300 c_h300" style="border: 1px solid black"></div>
+    <div class="c_w300 c_h300 c_fw700 c_fs30" style="border: 1px solid black">Test</div>
   </div>
 </template>
 
