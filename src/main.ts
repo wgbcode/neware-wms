@@ -1,4 +1,4 @@
-import './assets/main.css'
+import './styles/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus'
@@ -8,6 +8,8 @@ import App from './App.vue'
 import router from './router'
 import 'virtual:svg-icons-register'
 import SvgIcon from '@/components/global/SvgIcon.vue'
+import 'element-plus/theme-chalk/dark/css-vars.css'
+import './styles/overlap-element.css'
 
 const app = createApp(App)
 
