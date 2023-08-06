@@ -1,0 +1,6 @@
+html.light {
+  .el-checkbox {
+    --el-checkbox-text-color: yeelow;
+    --el-checkbox-checked-text-color: red;
+  }
+}

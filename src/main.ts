@@ -8,8 +8,11 @@ import App from './App.vue'
 import router from './router'
 import 'virtual:svg-icons-register'
 import SvgIcon from '@/components/global/SvgIcon.vue'
+
+// 主题样式导入和覆盖
 import 'element-plus/theme-chalk/dark/css-vars.css'
-import './styles/overlap-element.css'
+import './styles/overlap-light.css'
+import './styles/overlap-dark.css'
 
 const app = createApp(App)
 
