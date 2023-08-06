@@ -40,6 +40,9 @@ const checked4 = ref(false)
         <el-checkbox v-model="checked4" label="Option 2" />
       </div>
     </div>
+
+    <!-- 自定义类名（样式） -->
+    <div class="c_w300 c_h300" style="border: 1px solid black"></div>
   </div>
 </template>
 

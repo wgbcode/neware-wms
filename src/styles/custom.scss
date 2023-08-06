@@ -1,0 +1,33 @@
+@use 'sass:map';
+
+// c_w0-c_w500 | c_h0-c_h500 | c_w0p-c_w100p  | c_h0p-c_h100p
+@mixin generate-classes-wh($start, $end) {
+  @for $i from $start through $end {
+    $class-name-width: 'c_w#{$i}';
+    $class-name-height: 'c_h#{$i}';
+
+    .#{$class-name-width} {
+      width: #{$i}px;
+    }
+    .#{$class-name-height} {
+      height: #{$i}px;
+    }
+  }
+}
+
+@mixin generate-classes-whp($start, $end) {
+  @for $i from $start through $end {
+    $class-name-width: 'c_w#{$i}p';
+    $class-name-height: 'c_h#{$i}p';
+
+    .#{$class-name-width} {
+      width: #{'#{$i}%'};
+    }
+    .#{$class-name-height} {
+      height: #{'#{$i}%'};
+    }
+  }
+}
+
+@include generate-classes-wh(0, 500);
+@include generate-classes-whp(0, 100);
