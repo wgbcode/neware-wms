@@ -26,10 +26,11 @@ export default defineConfig({
       }
     })
   ],
+  base: './',
   server: {
     host: 'localhost',
     port: 8888,
-    open: true
+    open: false
   },
   resolve: {
     alias: {

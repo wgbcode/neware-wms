@@ -11,8 +11,8 @@ import SvgIcon from '@/components/global/SvgIcon.vue'
 
 // 主题样式导入和覆盖
 import 'element-plus/theme-chalk/dark/css-vars.css'
-import './styles/overlap-light.css'
-import './styles/overlap-dark.css'
+import './styles/overlap-light.scss'
+import './styles/overlap-dark.scss'
 
 const app = createApp(App)
 

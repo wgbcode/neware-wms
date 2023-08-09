@@ -1,0 +1,66 @@
+html.dark {
+  // ui规范
+  --t-brand: #f8b500;
+  --t-common-40: rgba(77, 77, 77, 0.4);
+  --t-status-warn: #f8b500;
+  --t-status-finish: #42bf39;
+  --t-status-error: #ea3553;
+  --t-status-info: #42a4f4;
+  --t-status-unfinish: #999999;
+  --t-tinge-approval: #145200;
+  --t-tinge-delay: #57001b;
+  --t-tinge-robot: #003c52;
+  --t-btn-yellow-normal: #f8b500;
+  --t-btn-yellow-hover: #ffba33;
+  --t-btn-yellow-aspc: #e59500;
+  --t-btn-yellow-disable: #804600;
+  --t-btn-green-normal: #42bf39;
+  --t-btn-green-hover: #5ec957;
+  --t-btn-green-aspc: #1cad15;
+  --t-btn-green-disable: #106e00;
+  --t-btn-red-normal: #ea3553;
+  --t-btn-red-hove: #f07b71;
+  --t-btn-red-aspc: #c7392d;
+  --t-btn-red-disable: #800020;
+  --t-btn-blue-normal: #42a4f4;
+  --t-btn-blue-hover: #67bbff;
+  --t-btn-blue-aspc: #2a90dd;
+  --t-btn-blue-disable: #005580;
+  --t-btn-gray-normal: #cccccc;
+  --t-btn-gray-hover: #999999;
+  --t-btn-gray-aspc: #8f8f8f;
+  --t-btn-gray-disable: #3d3d3d;
+  --t-icon-gray-normal: #ffffff;
+  --t-icon-gray-hover: #d6d6d6;
+  --t-icon-gray-aspc: #b3b3b3;
+  --t-icon-gray-disable: #474747;
+  --t-table-select-normal: #000000;
+  --t-table-select-hover: #4d4d4d;
+  --t-table-select-aspc: #0063b1;
+  --t-table-select-disable: #262626;
+  --t-extrude-text: #e6e6e6;
+  --t-regular-text: #cccccc;
+  --t-header-text: #b3b3b3;
+  --t-label-text: #999999;
+  --t-watermark-text: #4d4d4d;
+  --t-progress-border: #6a6d70;
+  --t-form-scroll-border: #9ba1a9;
+  --t-content-dialogd: #292929;
+  --t-tbodyodd-form: #000000;
+  --t-tbodyeven: #1a1a1a;
+  --t-navbar-topbar: #333333;
+  --t-mostbottom: #1f1f1f;
+  --t-globalsearch: #1f1f1f;
+  --t-tabbar: #333333;
+  --t-border-dialog: #333333;
+  --t-cell-disable: #262626;
+  --t-table-border: #333333;
+  --t-table-header: #525252;
+  --t-nav-border: #525252;
+  --t-tooltip: #c7c7c7;
+  // 重写 ui 样式
+  .el-checkbox {
+    --el-checkbox-text-color: green;
+    --el-checkbox-checked-text-color: red;
+  }
+}

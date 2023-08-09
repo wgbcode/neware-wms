@@ -1,6 +1,0 @@
-html.dark {
-  .el-checkbox {
-    --el-checkbox-text-color: green;
-    --el-checkbox-checked-text-color: red;
-  }
-}
