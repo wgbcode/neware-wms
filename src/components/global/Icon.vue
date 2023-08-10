@@ -1,6 +1,6 @@
 <template>
   <svg aria-hidden="true" class="svg-icon" :width="size || width" :height="size || height">
-    <use :xlink:href="symbolId" :fill="color" />
+    <use :xlink:href="symbolId" :fill="curColor" />
   </svg>
 </template>
 
@@ -33,4 +33,5 @@ const props = defineProps({
 })
 
 const symbolId = computed(() => `#${props.prefix}-${props.name}`)
+const curColor = computed(() => props.color)
 </script>

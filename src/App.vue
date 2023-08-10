@@ -2,7 +2,6 @@
 
 <template>
   <div class="wrapper">
-    <!-- 路由 -->
     <router-view></router-view>
   </div>
 </template>

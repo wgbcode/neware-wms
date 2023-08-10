@@ -7,7 +7,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import App from './App.vue'
 import router from './router'
 import 'virtual:svg-icons-register'
-import SvgIcon from '@/components/global/SvgIcon.vue'
+import Icon from '@/components/global/Icon.vue'
 
 const app = createApp(App)
 
@@ -17,6 +17,6 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 
 // 自定义 Icon 组件
-app.component('SvgIcon', SvgIcon)
+app.component('Icon', Icon)
 
 app.use(createPinia()).use(router).use(ElementPlus, { size: 'small', zIndex: 3000 }).mount('#app')

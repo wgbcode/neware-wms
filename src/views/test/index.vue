@@ -16,17 +16,21 @@ const checked4 = ref(false)
     <div class="wrapper">
       <el-button type="primary" icon="Delete">test</el-button>
       <el-button type="primary">
-        <el-icon style="vertical-align: middle"><Search /></el-icon>
+        <el-icon style="vertical-align: middle">
+          <Search />
+        </el-icon>
         <span style="vertical-align: middle"> Search </span>
       </el-button>
-      <el-icon size="50" color="#f75239"><Edit /></el-icon>
+      <el-icon size="50" color="#f75239">
+        <Edit />
+      </el-icon>
       <Search style="width: 1em; height: 1em; margin-right: 8px" />
     </div>
 
     <!-- 自定义 Icon 图标 -->
     <div class="wrapper">
-      <SvgIcon name="delete" color="black" size="50px"></SvgIcon>
-      <SvgIcon name="save" color="red" size="50px"></SvgIcon>
+      <Icon name="delete" color="black" size="50px"></Icon>
+      <Icon name="save" color="red" size="50px"></Icon>
     </div>
 
     <!-- 主题样式测试 -->
@@ -53,5 +57,4 @@ const checked4 = ref(false)
   margin: 20px;
   border: 1px solid black;
   padding: 20px;
-}
-</style>
+}</style>

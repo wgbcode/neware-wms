@@ -1,5 +1,4 @@
 html.dark {
-  // ui 色值规范(tc：themeColor)
   --tc-brand: #f8b500;
   --tc-common-40: rgba(77, 77, 77, 0.4);
   --tc-status-warn: #f8b500;
@@ -48,7 +47,7 @@ html.dark {
   --tc-content-dialogd: #292929;
   --tc-tbodyodd-form: #000000;
   --tc-tbodyeven: #1a1a1a;
-  --tc-navbar-topbar: #333333;
+  --tc-navbar-topbar: #2c2c2c;
   --tc-mostbottom: #1f1f1f;
   --tc-globalsearch: #1f1f1f;
   --tc-tabbar: #333333;
@@ -58,9 +57,4 @@ html.dark {
   --tc-table-header: #525252;
   --tc-navbar-border: #525252;
   --tc-tooltip: #c7c7c7;
-  // 重写 element ui 样式
-  .el-checkbox {
-    --el-checkbox-text-color: var(--tc-status-warn);
-    --el-checkbox-checked-text-color: red;
-  }
 }

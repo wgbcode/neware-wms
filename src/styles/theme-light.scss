@@ -1,5 +1,4 @@
 html.light {
-  // ui 色值规范(tc：themeColor)
   --tc-brand: #f8b500;
   --tc-common-40: rgba(77, 77, 77, 0.4);
   --tc-status-warn: #f8b500;
@@ -48,7 +47,7 @@ html.light {
   --tc-content-dialogd: #ffffff;
   --tc-tbodyodd-form: #ffffff;
   --tc-tbodyeven: #f2f2f2;
-  --tc-navbar-topbar: #fafafa;
+  --tc-navbar-topbar: #304156;
   --tc-mostbottom: #e0e0e0;
   --tc-globalsearch: #f0f0f0;
   --tc-tabbar: #f0f0f0;
@@ -56,11 +55,6 @@ html.light {
   --tc-cell-disable: #e8e8e8;
   --tc-table-border: #d8d8d8;
   --tc-table-header: #c9c9c9;
-  --tc-navbar-border: #d6d6d6;
+  --tc-navbar-border: #333;
   --tc-tooltip: #4d4d4d;
-  // 重写 element ui 样式
-  .el-checkbox {
-    --el-checkbox-text-color: var(--tc-status-warn);
-    --el-checkbox-checked-text-color: red;
-  }
 }
