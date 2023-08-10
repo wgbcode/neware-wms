@@ -1,0 +1,66 @@
+html.dark {
+  // ui 色值规范(tc：themeColor)
+  --tc-brand: #f8b500;
+  --tc-common-40: rgba(77, 77, 77, 0.4);
+  --tc-status-warn: #f8b500;
+  --tc-status-finish: #42bf39;
+  --tc-status-error: #ea3553;
+  --tc-status-info: #42a4f4;
+  --tc-status-unfinish: #999999;
+  --tc-tinge-approval: #145200;
+  --tc-tinge-delay: #57001b;
+  --tc-tinge-robot: #003c52;
+  --tc-btn-yellow-normal: #f8b500;
+  --tc-btn-yellow-hover: #ffba33;
+  --tc-btn-yellow-aspc: #e59500;
+  --tc-btn-yellow-disable: #804600;
+  --tc-btn-green-normal: #42bf39;
+  --tc-btn-green-hover: #5ec957;
+  --tc-btn-green-aspc: #1cad15;
+  --tc-btn-green-disable: #106e00;
+  --tc-btn-red-normal: #ea3553;
+  --tc-btn-red-hove: #f07b71;
+  --tc-btn-red-aspc: #c7392d;
+  --tc-btn-red-disable: #800020;
+  --tc-btn-blue-normal: #42a4f4;
+  --tc-btn-blue-hover: #67bbff;
+  --tc-btn-blue-aspc: #2a90dd;
+  --tc-btn-blue-disable: #005580;
+  --tc-btn-gray-normal: #cccccc;
+  --tc-btn-gray-hover: #999999;
+  --tc-btn-gray-aspc: #8f8f8f;
+  --tc-btn-gray-disable: #3d3d3d;
+  --tc-icon-gray-normal: #ffffff;
+  --tc-icon-gray-hover: #d6d6d6;
+  --tc-icon-gray-aspc: #b3b3b3;
+  --tc-icon-gray-disable: #474747;
+  --tc-table-select-normal: #000000;
+  --tc-table-select-hover: #4d4d4d;
+  --tc-table-select-aspc: #0063b1;
+  --tc-table-select-disable: #262626;
+  --tc-extrude-text: #e6e6e6;
+  --tc-regular-text: #cccccc;
+  --tc-header-text: #b3b3b3;
+  --tc-label-text: #999999;
+  --tc-watermark-text: #4d4d4d;
+  --tc-progress-border: #6a6d70;
+  --tc-form-scroll-border: #9ba1a9;
+  --tc-content-dialogd: #292929;
+  --tc-tbodyodd-form: #000000;
+  --tc-tbodyeven: #1a1a1a;
+  --tc-navbar-topbar: #333333;
+  --tc-mostbottom: #1f1f1f;
+  --tc-globalsearch: #1f1f1f;
+  --tc-tabbar: #333333;
+  --tc-dialog-border: #333333;
+  --tc-cell-disable: #262626;
+  --tc-table-border: #333333;
+  --tc-table-header: #525252;
+  --tc-navbar-border: #525252;
+  --tc-tooltip: #c7c7c7;
+  // 重写 element ui 样式
+  .el-checkbox {
+    --el-checkbox-text-color: var(--tc-status-warn);
+    --el-checkbox-checked-text-color: red;
+  }
+}

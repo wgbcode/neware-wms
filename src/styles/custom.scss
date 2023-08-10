@@ -30,7 +30,55 @@
 @include generate-classes-wh(0, 500);
 @include generate-classes-whp(0, 100);
 
-// 0-100：c_pt | c_pb | c_pl | c_pr | c_mt | c_mb | c_ml | c_mr
+// 0-100：c_t | c_b | c_l | c_r  | c_tp | c_bp | c_lp | c_rp
+@mixin generate-classes-tblf($start, $end) {
+  @for $i from $start through $end {
+    $class-name-top: 'c_t#{$i}';
+    $class-name-bottom: 'c_b#{$i}';
+    $class-name-left: 'c_l#{$i}';
+    $class-name-right: 'c_r#{$i}';
+
+    .#{$class-name-top} {
+      top: #{$i}px;
+    }
+    .#{$class-name-bottom} {
+      bottom: #{$i}px;
+    }
+    .#{$class-name-left} {
+      left: #{$i}px;
+    }
+    .#{$class-name-right} {
+      right: #{$i}px;
+    }
+  }
+}
+
+@mixin generate-classes-whp($start, $end) {
+  @for $i from $start through $end {
+    $class-name-top: 'c_t#{$i}';
+    $class-name-bottom: 'c_b#{$i}';
+    $class-name-left: 'c_l#{$i}';
+    $class-name-right: 'c_r#{$i}';
+
+    .#{$class-name-top} {
+      top: #{$i} + '%';
+    }
+    .#{$class-name-bottom} {
+      bottom: #{$i} + '%';
+    }
+    .#{$class-name-left} {
+      left: #{$i} + '%';
+    }
+    .#{$class-name-right} {
+      right: #{$i} + '%';
+    }
+  }
+}
+
+@include generate-classes-tblf(0, 500);
+@include generate-classes-tblf(0, 100);
+
+// 0-100：c_pt | c_pb | c_pl | c_pr | c_mt | c_mb | c_ml | c_mr | c_px | c_py | c_mx | c_my
 @mixin generate-classes-pm($start, $end) {
   @for $i from $start through $end {
     $class-name-pt: 'c_pt#{$i}';
@@ -41,6 +89,10 @@
     $class-name-mb: 'c_mb#{$i}';
     $class-name-ml: 'c_ml#{$i}';
     $class-name-mr: 'c_mr#{$i}';
+    $class-name-px: 'c_px#{$i}';
+    $class-name-py: 'c_py#{$i}';
+    $class-name-mx: 'c_mx#{$i}';
+    $class-name-my: 'c_my#{$i}';
 
     .#{$class-name-pt} {
       padding-top: #{$i}px;
@@ -66,6 +118,22 @@
     .#{$class-name-mr} {
       margin-right: #{$i}px;
     }
+    .#{$class-name-px} {
+      padding-left: #{$i}px;
+      padding-right: #{$i}px;
+    }
+    .#{$class-name-py} {
+      padding-top: #{$i}px;
+      padding-bottom: #{$i}px;
+    }
+    .#{$class-name-mx} {
+      margin-left: #{$i}px;
+      margin-right: #{$i}px;
+    }
+    .#{$class-name-my} {
+      margin-top: #{$i}px;
+      margin-bottom: #{$i}px;
+    }
   }
 }
 @include generate-classes-pm(0, 100);
@@ -83,7 +151,7 @@
 
 @include generate-classes-fs(12, 50);
 
-// c_fw400-700
+// c_fw100-900
 @mixin generate-classes-fw($start, $end) {
   @for $i from $start through $end {
     $class-name: 'c_fw#{$i}';
@@ -95,3 +163,133 @@
 }
 
 @include generate-classes-fw(400, 700);
+
+// flex 布局
+.c_flex {
+  display: flex;
+}
+.c_flex-1 {
+  flex: 1;
+}
+.c_flex-shrink {
+  flex-shrink: 1;
+}
+.c_flex-shrink-0 {
+  flex-shrink: 0;
+}
+.c_flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.c_flex-nowrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.c_flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.c_flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c_flex-xcenter {
+  display: flex;
+  justify-content: center;
+}
+.c_flex-ycenter {
+  display: flex;
+  align-items: center;
+}
+.c_flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.c_flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.c_flex-evenly {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.c_flex-xstart {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.c_flex-xend {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.c_flex-ystart {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.c_flex-yend {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+// 定位
+.c_relative {
+  position: relative;
+}
+.c_absolute {
+  position: absolute;
+}
+.c_fixed {
+  position: fixed;
+}
+.c_absolute-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.c_absolute-xcenter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.c_absolute-ycenter {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// 滚动条
+.c_overflow-auto {
+  overflow: auto;
+}
+.c_overflow-hidden {
+  overflow: hidden;
+}
+.c_overflow-scroll {
+  overflow: scroll;
+}
+.c_overflow-x-auto {
+  overflow-x: auto;
+}
+.c_overflow-x-hidden {
+  overflow-x: hidden;
+}
+.c_overflow-x-scroll {
+  overflow-x: scroll;
+}
+.c_overflow-y-auto {
+  overflow-y: auto;
+}
+.c_overflow-y-hidden {
+  overflow-y: hidden;
+}
+.c_overflow-y-scroll {
+  overflow-y: scroll;
+}

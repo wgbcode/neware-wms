@@ -1,0 +1,66 @@
+html.light {
+  // ui 色值规范(tc：themeColor)
+  --tc-brand: #f8b500;
+  --tc-common-40: rgba(77, 77, 77, 0.4);
+  --tc-status-warn: #f8b500;
+  --tc-status-finish: #34a853;
+  --tc-status-error: #ea4335;
+  --tc-status-info: #4285f4;
+  --tc-status-unfinish: #6a6d70;
+  --tc-tinge-approval: #aad1b5;
+  --tc-tinge-delay: #ffcfcb;
+  --tc-tinge-robot: #cee0ff;
+  --tc-btn-yellow-normal: #f8b500;
+  --tc-btn-yellow-hover: #ffba33;
+  --tc-btn-yellow-aspc: #e59500;
+  --tc-btn-yellow-disable: #ffda92;
+  --tc-btn-green-normal: #34a853;
+  --tc-btn-green-hover: #4eb269;
+  --tc-btn-green-aspc: #18a03a;
+  --tc-btn-green-disable: #89c799;
+  --tc-btn-red-normal: #ea4335;
+  --tc-btn-red-hover: #f5675b;
+  --tc-btn-red-aspc: #d52c20;
+  --tc-btn-red-disable: #ffaea7;
+  --tc-btn-blue-normal: #4285f4;
+  --tc-btn-blue-hover: #67a0ff;
+  --tc-btn-blue-aspc: #2a72dd;
+  --tc-btn-blue-disable: #abcbff;
+  --tc-btn-gray-normal: #ffffff;
+  --tc-btn-gray-hover: #e6e6e6;
+  --tc-btn-gray-aspc: #dbdbdb;
+  --tc-btn-gray-disable: #c7c7c7;
+  --tc-icon-gray-normal: #1c3045;
+  --tc-icon-gray-hover: #293b4f;
+  --tc-icon-gray-aspc: #132538;
+  --tc-icon-gray-disable: #5b646e;
+  --tc-table-select-normal: #ffffff;
+  --tc-table-select-hover: #ffffc9;
+  --tc-table-select-aspc: #fdfdaf;
+  --tc-table-select-disable: #e8e8e8;
+  --tc-text-extrude: #1a1a1a;
+  --tc-regulart-text: #333333;
+  --tc-headert-text: #4d4d4d;
+  --tc-labelt-text: #6a6d70;
+  --tc-watermarkt-text: #b3b3b3;
+  --tc-progresst-border: #89919a;
+  --tc-form-scroll-border: #89919a;
+  --tc-content-dialogd: #ffffff;
+  --tc-tbodyodd-form: #ffffff;
+  --tc-tbodyeven: #f2f2f2;
+  --tc-navbar-topbar: #fafafa;
+  --tc-mostbottom: #e0e0e0;
+  --tc-globalsearch: #f0f0f0;
+  --tc-tabbar: #f0f0f0;
+  --tc-dialog-border: #e6e6e6;
+  --tc-cell-disable: #e8e8e8;
+  --tc-table-border: #d8d8d8;
+  --tc-table-header: #c9c9c9;
+  --tc-navbar-border: #d6d6d6;
+  --tc-tooltip: #4d4d4d;
+  // 重写 element ui 样式
+  .el-checkbox {
+    --el-checkbox-text-color: var(--tc-status-warn);
+    --el-checkbox-checked-text-color: red;
+  }
+}

@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>
+  <div class="wrapper">
     <!-- 路由 -->
     <router-view></router-view>
   </div>
@@ -9,9 +9,6 @@
 
 <style scoped lang="scss">
 .wrapper {
-  display: flex;
-  margin: 20px;
-  border: 1px solid black;
-  padding: 20px;
+  height: 100%;
 }
 </style>
