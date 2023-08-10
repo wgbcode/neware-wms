@@ -57,4 +57,7 @@ html.dark {
   --tc-table-header: #525252;
   --tc-navbar-border: #525252;
   --tc-tooltip: #c7c7c7;
+  .el-menu {
+    border-right: none;
+  }
 }

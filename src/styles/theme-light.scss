@@ -57,4 +57,11 @@ html.light {
   --tc-table-header: #c9c9c9;
   --tc-navbar-border: #333;
   --tc-tooltip: #4d4d4d;
+  .el-menu {
+    border-right: none;
+    .el-menu-item:hover {
+      background-color: var(--tc-navbar-topbar);
+      color: var(--tc-brand);
+    }
+  }
 }
