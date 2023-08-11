@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper c-flex-between c-pl10">
+    <div class="c-flex-between c-pl10">
         <section class="c-flex-ycenter">
             <Icon name="toggleAside" :color="color.color1" size="22px" class="c-mb1" @mouseover="changeColor('color1')"
                 @mouseout="restoreColor('color1')" />
