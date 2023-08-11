@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper c-flex-between c-pl10">
+    <div class="c-flex-between c-pl10">
         <section class="c-flex-ycenter">
             <Icon name="toggleAside" :color="color.color1" size="22px" class="c-mb1" @mouseover="changeColor('color1')"
                 @mouseout="restoreColor('color1')" />
@@ -10,7 +10,7 @@
         </section>
         <section class="c-flex-ycenter">
             <div class="c-flex-ycenter c-mx10" @mouseover="changeColor('color2')" @mouseout="restoreColor('color2')"
-                @click="toggleTheme()">
+                @click="toggleTheme">
                 <Icon name="theme-dark" :color="color.color2" size="20px" v-show="isShowIcon" />
                 <Icon name="theme-light" :color="color.color2" size="20px" v-show="!isShowIcon" />
             </div>
