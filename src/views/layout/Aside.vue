@@ -1,6 +1,12 @@
 <template>
-  <div class="">
+  <div>
     <el-row>
+      <el-menu default-active="" asideRoutes @select="handleMenuSelect">
+        <AsideItem v-for="route in asideRoutes" :key="route.name" :item="route" />
+      </el-menu>
+
+    </el-row>
+    <!-- <el-row>
       <el-col>
         <el-menu default-active="1" text-color="#fff" @select="handleMenuSelect">
           <el-sub-menu index="1">
@@ -22,16 +28,21 @@
           </el-sub-menu>
         </el-menu>
       </el-col>
-    </el-row>
+    </el-row> -->
     <div class="c-flex-center c-mb10"><img class="c-h14" src="@images/logo-word.png" alt="" /></div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
+import AsideItem from './AsideItem.vue'
 
 const router = useRouter()
+const route = useRoute()
+const asideRoutes = router.options.routes.filter(i => i.name === 'layout')[0].children
+console.log('asideRoutes', asideRoutes)
 const handleMenuSelect = (path: string) => {
+  console.log('path', path)
   router.push({ path })
 }
 </script>
