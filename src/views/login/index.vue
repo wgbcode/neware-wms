@@ -10,13 +10,7 @@
       </ul>
       <div>
         <el-input v-model="userName" placeholder="账号" class="c-mb12" />
-        <el-input
-          v-model="password"
-          type="password"
-          placeholder="密码"
-          show-password
-          class="c-mb12"
-        />
+        <el-input v-model="password" type="password" placeholder="密码" show-password class="c-mb12" />
         <div class="c-mb12">
           <el-input v-model="imageCode" placeholder="验证码" />
         </div>
@@ -44,7 +38,7 @@ const imageCode = ref('')
 const router = useRouter()
 const userLogin = () => {
   router.push({
-    name: 'layout'
+    path: '/layout',
   })
 }
 </script>

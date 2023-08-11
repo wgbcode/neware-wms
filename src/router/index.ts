@@ -13,8 +13,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: Login,
-      name: 'login'
+      component: Login
     },
     {
       path: '/login',
@@ -26,37 +25,30 @@ const router = createRouter({
     },
     {
       path: '/test',
-      component: Test,
-      name: 'test'
+      component: Test
     },
     {
       path: '/layout',
       component: Layout,
-      name: 'layout',
       children: [
         {
           path: '/accountCenter/accountInfo',
-          name: 'accountInfo',
           component: AccountInfo
         },
         {
           path: '/accountCenter/modifyPassword',
-          name: 'modifyPassword',
           component: ModifyPassword
         },
         {
           path: '/orderManage/logisticsOrder',
-          name: 'logisticsOrder',
           component: LogisticsOrder
         },
         {
           path: '/orderManage/purchaseOrder',
-          name: 'purchaseOrder',
           component: PurchaseOrder
         },
         {
           path: '/orderManage/quoteOrder',
-          name: 'quoteOrder',
           component: QuoteOrder
         }
       ]
