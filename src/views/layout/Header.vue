@@ -2,7 +2,7 @@
     <div class="c-flex-between c-pl10">
         <section class="c-flex-ycenter">
             <Icon name="toggleAside" :color="color.color1" size="22px" class="c-mb1" @mouseover="changeColor('color1')"
-                @mouseout="restoreColor('color1')" />
+                @mouseout="restoreColor('color1')" @click="toggleAideBar" />
             <ul class="version-info c-ml16 c-fs18 c-flex-ycenter">
                 <li class="c-mr5 c-fw700">WMS 5.0.0</li>
                 <li class="c-fw700">(2023.08.10)</li>
@@ -79,6 +79,9 @@ const restoreColor = (key: string) => {
             break
     }
 }
+
+// 侧边栏隐藏和显示
+const toggleAideBar = () => { }
 </script>
 
 <style scoped>

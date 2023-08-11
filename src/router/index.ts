@@ -1,14 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Login from '@/views/login/index.vue'
-import Layout from '@/views/layout/index.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'login',
-      component: Login
+      redirect: 'login'
     },
     {
       path: '/login',
@@ -28,7 +25,7 @@ const router = createRouter({
     {
       path: '/layout',
       name: 'layout',
-      component: Layout,
+      component: () => import('@/views/layout/index.vue'),
       children: [
         {
           path: '/accountCenter',
@@ -78,7 +75,6 @@ const router = createRouter({
     },
     {
       path: '/:catchAll(.*)',
-      name: 'other',
       component: () => import('@/views/error/index.vue')
     }
   ]
