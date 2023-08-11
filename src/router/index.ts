@@ -4,9 +4,9 @@ import Test from '@/views/test/index.vue'
 import Login from '@/views/login/index.vue'
 import AccountInfo from '@/views/accountCenter/accountInfo/index.vue'
 import ModifyPassword from '@/views/accountCenter/modifyPassword/index.vue'
-import LogisticsOrder from '@/orderManage/logisticsOrder/index.vue'
-import PurchaseOrder from '@/orderManage/purchaseOrder/index.vue'
-import QuoteOrder from '@/orderManage/quoteOrder/index.vue'
+import LogisticsOrder from '@/views/orderManage/logisticsOrder/index.vue'
+import PurchaseOrder from '@/views/orderManage/purchaseOrder/index.vue'
+import QuoteOrder from '@/views/orderManage/quoteOrder/index.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -61,7 +61,6 @@ const router = createRouter({
         }
       ]
     },
-
     {
       path: '/:catchAll(.*)',
       component: () => import('@/views/error/index.vue')
