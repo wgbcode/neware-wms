@@ -1,16 +1,16 @@
 <template>
-    <div class="c-flex-between c-pl10">
+    <div class="wrapper c-flex-between c-pl10">
         <section class="c-flex-ycenter">
             <Icon name="toggleAside" :color="color.color1" size="22px" class="c-mb1" @mouseover="changeColor('color1')"
                 @mouseout="restoreColor('color1')" />
-            <ul class="version-info c-ml16 c-fs18 ">
+            <ul class="version-info c-ml16 c-fs18 c-flex-ycenter">
                 <li class="c-mr5 c-fw700">WMS 5.0.0</li>
                 <li class="c-fw700">(2023.08.10)</li>
             </ul>
         </section>
         <section class="c-flex-ycenter">
             <div class="c-flex-ycenter c-mx10" @mouseover="changeColor('color2')" @mouseout="restoreColor('color2')"
-                @click="toggleTheme">
+                @click="toggleTheme()">
                 <Icon name="theme-dark" :color="color.color2" size="20px" v-show="isShowIcon" />
                 <Icon name="theme-light" :color="color.color2" size="20px" v-show="!isShowIcon" />
             </div>
@@ -34,7 +34,9 @@ import { useDark, useToggle } from '@vueuse/core'
 const isShowIcon = ref(true)
 const isDark = useDark({ valueDark: 'dark', valueLight: 'light' })
 const toggleTheme = () => {
-    localStorage.getItem('vueuse-color-scheme') === 'light' ? isShowIcon.value = false : isShowIcon.value = true
+    localStorage.getItem('vueuse-color-scheme') === 'light'
+        ? (isShowIcon.value = false)
+        : (isShowIcon.value = true)
     useToggle(isDark)()
 }
 
@@ -43,7 +45,7 @@ const color = reactive({
     color1: '#fff',
     color2: '#fff',
     color3: '#fff',
-    color4: '#fff',
+    color4: '#fff'
 })
 const changeColor = (key: string) => {
     switch (key) {
@@ -81,6 +83,6 @@ const restoreColor = (key: string) => {
 
 <style scoped>
 .version-info {
-    color: var(--tc-brand)
+    color: var(--tc-brand);
 }
 </style>
