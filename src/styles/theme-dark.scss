@@ -59,5 +59,16 @@ html.dark {
   --tc-tooltip: #c7c7c7;
   .el-menu {
     border-right: none;
+    background-color: var(--tc-navbar-topbar);
+    .el-sub-menu__title:hover {
+      background-color: var(--tc-navbar-topbar);
+    }
+    .el-menu-item.is-active {
+      color: var(--tc-brand);
+    }
+    .el-menu-item:hover {
+      color: var(--tc-brand);
+      background-color: var(--tc-navbar-topbar);
+    }
   }
 }

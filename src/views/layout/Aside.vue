@@ -2,15 +2,7 @@
   <div class="">
     <el-row>
       <el-col>
-        <el-menu
-          active-text-color="#ffd04b"
-          background-color=" var(--tc-navbar-topbar)"
-          class="el-menu-vertical-demo"
-          default-active="1"
-          text-color="#fff"
-          @open="handleOpen"
-          @close="handleClose"
-        >
+        <el-menu default-active="1" text-color="#fff" @select="handleMenuSelect">
           <el-sub-menu index="1">
             <template #title>
               <Icon name="account-center" color="#fff" size="18px" />
@@ -36,10 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+const handleMenuSelect = (index: string) => {
+  console.log(index)
 }
 </script>

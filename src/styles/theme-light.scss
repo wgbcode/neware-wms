@@ -59,6 +59,13 @@ html.light {
   --tc-tooltip: #4d4d4d;
   .el-menu {
     border-right: none;
+    background-color: var(--tc-navbar-topbar);
+    .el-sub-menu__title:hover {
+      background-color: var(--tc-navbar-topbar);
+    }
+    .el-menu-item.is-active {
+      color: var(--tc-brand);
+    }
     .el-menu-item:hover {
       background-color: var(--tc-navbar-topbar);
       color: var(--tc-brand);
