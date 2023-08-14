@@ -1,4 +1,6 @@
 html.light {
+  --tc-pure: #000;
+  --tc-pure-reverse: #fff;
   --tc-brand: #f8b500;
   --tc-common-40: rgba(77, 77, 77, 0.4);
   --tc-status-warn: #f8b500;
@@ -50,7 +52,7 @@ html.light {
   --tc-navbar-topbar: #304156;
   --tc-mostbottom: #e0e0e0;
   --tc-globalsearch: #f0f0f0;
-  --tc-tabbar: #f0f0f0;
+  --tc-tabbar: #dedede;
   --tc-dialog-border: #e6e6e6;
   --tc-cell-disable: #e8e8e8;
   --tc-table-border: #d8d8d8;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="c-flex-column c-flex-1">
     <TagsView />
     <router-view> </router-view>
   </div>

@@ -33,6 +33,12 @@ const router = createRouter({
           meta: { title: '账号中心', icon: 'account-center', hidden: false },
           children: [
             {
+              path: '/accountCenter/home',
+              name: 'home',
+              meta: { title: '主页', icon: '', hidden: false },
+              component: () => import('@/views/accountCenter/home/index.vue')
+            },
+            {
               path: '/accountCenter/accountInfo',
               name: 'accountInfo',
               meta: { title: '账号资料', icon: '', hidden: false },
@@ -43,7 +49,7 @@ const router = createRouter({
               name: 'modifyPassword',
               meta: { title: '修改资料', icon: '', hidden: false },
               component: () => import('@/views/accountCenter/modifyPassword/index.vue')
-            },
+            }
           ]
         },
         {
@@ -51,7 +57,6 @@ const router = createRouter({
           name: 'orderManage',
           meta: { title: '订单管理', icon: 'order-manage', hidden: false },
           children: [
-
             {
               path: '/orderManage/purchaseOrder',
               name: 'purchaseOrder',
@@ -71,7 +76,7 @@ const router = createRouter({
               component: () => import('@/views/orderManage/logisticsOrder/index.vue')
             }
           ]
-        },
+        }
       ]
     },
     {

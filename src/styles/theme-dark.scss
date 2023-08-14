@@ -1,4 +1,6 @@
 html.dark {
+  --tc-pure: #fff;
+  --tc-pure-reverse: #000;
   --tc-brand: #f8b500;
   --tc-common-40: rgba(77, 77, 77, 0.4);
   --tc-status-warn: #f8b500;
@@ -50,7 +52,7 @@ html.dark {
   --tc-navbar-topbar: #2c2c2c;
   --tc-mostbottom: #1f1f1f;
   --tc-globalsearch: #1f1f1f;
-  --tc-tabbar: #333333;
+  --tc-tabbar: #dedede;
   --tc-dialog-border: #333333;
   --tc-cell-disable: #262626;
   --tc-table-border: #333333;
