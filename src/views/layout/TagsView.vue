@@ -1,11 +1,9 @@
 <template>
   <div class="c-cwhite">
-    <div
-      class="tags-wrapper c-w100p c-white-nowrap c-relative c-overflow-hidden c-h28"
-      ref="scrollContainer"
-    >
+    <div class="tags-wrapper c-w100p c-white-nowrap c-relative c-overflow-hidden c-h28" ref="scrollContainer">
       <div class="c-absolute" ref="scrollWrapper">
         <router-link v-for="(tag, index) in visitedViews" :to="tag" :key="`${index}_${tag.path}`">
+          {{ tag.meta?.title ?? '账号资料' }}
         </router-link>
       </div>
     </div>
@@ -13,21 +11,29 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { onMounted, watch, toRaw } from 'vue'
+import { useRoute, type RouteLocation } from 'vue-router'
 import { useLayoutStore } from '@/stores/layout'
-import { storeToRefs } from 'pinia'
+import router from '@/router';
+import { deepClone } from '@/utils/common.ts'
 
 const layoutStore = useLayoutStore()
-const { visitedViews } = storeToRefs(layoutStore)
+const visitedViews = layoutStore.visitedViews
 
-onMounted(() => {})
+onMounted(() => {
+  router.push({ path: '/accountCenter/accountInfo' })
+  layoutStore.addVisitedViews({ path: '/accountCenter/accountInfo', name: "accountInfo" } as RouteLocation)
+})
 const route = useRoute()
 watch(route, (to, from) => {
-  // 路由发生变化时执行的逻辑
-  console.log('从', from.fullPath, '导航到', to.fullPath)
+  console.log(111, visitedViews.map(i => i.name))
+  console.log(222, to.name)
+  let existRouter = visitedViews.map(i => i.name).includes(to.name)
+  console.log('existRouter', existRouter)
+  if (!existRouter) {
+    layoutStore.addVisitedViews(deepClone(to))
+  }
 
-  // 执行其他操作...
 })
 </script>
 

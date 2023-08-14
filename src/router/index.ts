@@ -51,23 +51,24 @@ const router = createRouter({
           name: 'orderManage',
           meta: { title: '订单管理', icon: 'order-manage', hidden: false },
           children: [
-            {
-              path: '/orderManage/logisticsOrder',
-              name: 'logisticsOrder',
-              meta: { title: '采购订单', icon: '', hidden: false },
-              component: () => import('@/views/orderManage/logisticsOrder/index.vue')
-            },
+
             {
               path: '/orderManage/purchaseOrder',
               name: 'purchaseOrder',
-              meta: { title: '报价单', icon: '', hidden: false },
+              meta: { title: '采购订单', icon: '', hidden: false },
               component: () => import('@/views/orderManage/purchaseOrder/index.vue')
             },
             {
               path: '/orderManage/quoteOrder',
               name: 'quoteOrder',
-              meta: { title: '物流订单', icon: '', hidden: false },
+              meta: { title: '报价单', icon: '', hidden: false },
               component: () => import('@/views/orderManage/quoteOrder/index.vue')
+            },
+            {
+              path: '/orderManage/logisticsOrder',
+              name: 'logisticsOrder',
+              meta: { title: '物流订单', icon: '', hidden: false },
+              component: () => import('@/views/orderManage/logisticsOrder/index.vue')
             }
           ]
         },

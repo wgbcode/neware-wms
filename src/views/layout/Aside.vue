@@ -1,12 +1,7 @@
 <template>
   <div>
     <el-row>
-      <el-menu
-        default-active="/accountCenter/accountInfo"
-        asideRoutes
-        text-color="#fff"
-        @select="handleMenuSelect"
-      >
+      <el-menu default-active="/accountCenter/accountInfo" asideRoutes text-color="#fff" @select="handleMenuSelect">
         <AsideItem v-for="route in asideRoutes" :key="route.name" :item="route" />
       </el-menu>
     </el-row>
@@ -17,16 +12,11 @@
 <script lang="ts" setup>
 import { useRoute, useRouter } from 'vue-router'
 import AsideItem from './AsideItem.vue'
-import { onMounted } from 'vue'
-
-onMounted(() => {
-  router.push({ path: '/accountCenter/accountInfo' })
-})
 
 const router = useRouter()
 const route = useRoute()
-console.log('route', route)
-console.log('router', router)
+// console.log('route', route)
+// console.log('router', router)
 const asideRoutes = router.options.routes.filter((i) => i.name === 'layout')[0].children
 const handleMenuSelect = (path: string) => {
   router.push({ path })

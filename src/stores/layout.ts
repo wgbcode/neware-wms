@@ -1,24 +1,17 @@
-import { reactive } from 'vue'
+import { reactive, toRaw } from 'vue'
 import { defineStore } from 'pinia'
-// import type { RouteMeta, RouteRecordNormalized, RouteLocationRaw } from 'vue-router'
-
-// interface View {
-//   fullPath: string
-//   hash: string | null
-//   matched: Array<RouteRecordNormalized>
-//   meta: RouteMeta
-//   name: string
-//   params: Record<string, any>
-//   path: string
-//   query: Record<string, any>
-//   redirectedFrom?: string
-// }
+import type { RouteLocation } from 'vue-router'
 
 export const useLayoutStore = defineStore('Layout', () => {
-  const visitedViews = reactive<View[]>([])
+  const visitedViews = reactive<RouteLocation[]>([])
 
-  function addVisitedViews(view: View) {
+  function addVisitedViews(view: RouteLocation) {
+    console.log('view', view)
+
     visitedViews.push(view)
+    console.log('visitedViews', toRaw(visitedViews))
+
+
   }
 
   return { visitedViews, addVisitedViews }
