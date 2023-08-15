@@ -1,26 +1,13 @@
 <template>
-  <div class="tags-container">
-    <div
-      class="tags-wrapper c-w100p c-white-nowrap c-relative c-overflow-hidden c-h28"
-      ref="scrollContainer"
-    >
-      <div class="c-absolute c-flex" ref="scrollWrapper">
-        <router-link
-          ref="tag"
-          class="tags-item c-flex-ycenter c-px8 c-py0 c-mr1 c-fs12"
-          :class="isActive(tag) ? 'active' : ''"
-          v-for="(tag, index) in visitedViews"
-          :to="tag"
-          :key="`${index}_${tag.path}`"
-        >
+  <div class="tags-container" ref="scrollContainer">
+    <div class="tags-wrapper c-w100p c-white-nowrap c-relative c-overflow-hidden c-h28" ref="scrollWrapper">
+      <div class="c-absolute c-flex" ref="scrollWrapper" :style="{ left: -scrollLeft + 'px' }">
+        <router-link ref="tags" class="tags-item c-inline-block c-flex-ycenter c-px8 c-py0 c-mr1 c-fs12"
+          :class="isActive(tag) ? 'active' : ''" v-for="(tag, index) in visitedViews" :to="tag"
+          :key="`${index}_${tag.path}`">
           <span class="c-mr2 c-cblack">{{ tag.meta?.title ?? '主页' }}</span>
-          <Icon
-            class="ch12 c-w12 c-mt2"
-            name="close"
-            :color="isActive(tag) ? '#fff' : '#000'"
-            @click.prevent.stop="closeSelectedTag(tag)"
-            v-show="tag.name === 'home' ? false : true"
-          />
+          <Icon class="c-mt2" name="close" size="12px" :color="isActive(tag) ? '#fff' : '#000'"
+            @click.prevent.stop="closeSelectedTag(tag)" v-show="tag.name === 'home' ? false : true" />
         </router-link>
       </div>
     </div>
@@ -28,14 +15,18 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch, ref, toRaw, toRefs, nextTick } from 'vue'
+import { onMounted, watch, ref, nextTick } from 'vue'
 import { useRoute, type RouteLocation } from 'vue-router'
 import { useLayoutStore } from '@/stores/layout'
 import router from '@/router'
 import { deepClone } from '@/utils/common'
 
+const scrollLeft = ref<number>(0)
+const scrollContainer = ref<HTMLElement | null>(null)
+const tags = ref<Array<any>>([])
 const layoutStore = useLayoutStore()
 const visitedViews = layoutStore.visitedViews
+const route = useRoute()
 
 // 挂载时跳转到主页
 onMounted(() => {
@@ -47,20 +38,26 @@ onMounted(() => {
 })
 
 // 路由变换时重新渲染 tagsView 组件
-const route = useRoute()
-const scrollContainer = ref(null)
-const tag = ref([])
 const calculateLeft = async (isWheel: boolean) => {
-  console.log(111, isWheel, scrollContainer, toRefs(tag))
-  console.log(222, isWheel, scrollContainer.value, toRaw(tag.value))
+  if (!isWheel) {
+    await nextTick()
+    const tagsEles = tags.value
+    const containerWidth = scrollContainer.value?.offsetWidth!
+    let tagsTotalWidth = 0
+    let selectedTagLeft = 0
+    let calculateLeft = 0
 
-  await nextTick()
-
-  tag.value.forEach((item) => {})
-
-  // if (isWheel) {
-  // } else {
-  // }
+    tagsEles.forEach((curTag) => {
+      if (curTag) {
+        tagsTotalWidth += curTag.$el.offsetWidth
+        curTag.path === route.path ? selectedTagLeft = curTag.$el.offsetLeft : ''
+      }
+    })
+    if (containerWidth < tagsTotalWidth) {
+      calculateLeft = tagsTotalWidth - containerWidth
+      scrollLeft.value = calculateLeft > selectedTagLeft ? calculateLeft : selectedTagLeft
+    }
+  }
 }
 watch(route, (to) => {
   let existRouter = visitedViews.map((i) => i.name).includes(to.name)
