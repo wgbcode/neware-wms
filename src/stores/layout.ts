@@ -10,8 +10,10 @@ export const useLayoutStore = defineStore('Layout', () => {
   }
 
   function delVisitedViews(view: RouteLocation) {
-    return new Promise(resolve => {
-      visitedViews.forEach((item, index) => item.path === view.path ? visitedViews.splice(index, 1) : '')
+    return new Promise((resolve) => {
+      visitedViews.forEach((item, index) =>
+        item.path === view.path ? visitedViews.splice(index, 1) : ''
+      )
       resolve([...visitedViews])
     })
   }

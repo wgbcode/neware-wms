@@ -26,9 +26,9 @@ import Main from './Main.vue'
   flex-direction: column;
   justify-content: space-between;
 
-  @media (max-width: 767px) {
+  /* @media (max-width: 767px) {
     display: none;
-  }
+  } */
 }
 
 .main {
