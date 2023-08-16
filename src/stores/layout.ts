@@ -3,9 +3,16 @@ import { defineStore } from 'pinia'
 import type { RouteLocation } from 'vue-router'
 
 export const useLayoutStore = defineStore('Layout', () => {
+  const isShowAside = ref<boolean>(false)
   const reloadRouter = ref<boolean>(true)
   const visitedViews = reactive<RouteLocation[]>([])
 
+  // Aside action
+  function toogleAside() {
+    isShowAside.value = !isShowAside.value
+  }
+
+  // tagsView action
   function addVisitedViews(view: RouteLocation) {
     visitedViews.push(view)
   }
@@ -19,18 +26,28 @@ export const useLayoutStore = defineStore('Layout', () => {
     })
   }
 
-  function delOtherViews(view:RouteLocation){
+  function delOtherViews(view: RouteLocation) {
     addVisitedViews(view)
-    visitedViews.splice(1,visitedViews.length-2)
+    visitedViews.splice(1, visitedViews.length - 2)
   }
 
-  function delAllViews(){
-    visitedViews.splice(1,visitedViews.length-1)
+  function delAllViews() {
+    visitedViews.splice(1, visitedViews.length - 1)
   }
 
-  function refreshViews(){
+  function refreshViews() {
     reloadRouter.value = !reloadRouter.value
   }
 
-  return { visitedViews, reloadRouter, addVisitedViews, delVisitedViews, delOtherViews, delAllViews, refreshViews  }
+  return {
+    isShowAside,
+    reloadRouter,
+    visitedViews,
+    toogleAside,
+    addVisitedViews,
+    delVisitedViews,
+    delOtherViews,
+    delAllViews,
+    refreshViews
+  }
 })

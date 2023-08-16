@@ -2,8 +2,8 @@
     <div class="c-flex-between c-pl10">
         <section class="c-flex-ycenter">
             <Icon name="toggleAside" :color="color.color1" size="22px" class="c-mb1" @mouseover="changeColor('color1')"
-                @mouseout="restoreColor('color1')" @click="toggleAideBar" />
-            <ul class="version-info c-ml16 c-fs18 c-flex-ycenter">
+                @mouseout="restoreColor('color1')" @click.prevent="toggleAideBar" />
+            <ul class="version-info c-ml16 c-fs18 c-flex-ycenter c-forbidSelect">
                 <li class="c-mr5 c-fw700">WMS 5.0.0</li>
                 <li class="c-fw700">(2023.08.10)</li>
             </ul>
@@ -29,6 +29,12 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import { useDark, useToggle } from '@vueuse/core'
+import { useLayoutStore } from '@/stores/layout'
+
+const layoutStore = useLayoutStore()
+
+// 侧边栏隐藏和显示
+const toggleAideBar = () => layoutStore.toogleAside()
 
 // 主题切换
 const isShowIcon = ref(true)
@@ -79,9 +85,6 @@ const restoreColor = (key: string) => {
             break
     }
 }
-
-// 侧边栏隐藏和显示
-const toggleAideBar = () => { }
 </script>
 
 <style scoped lang="scss">

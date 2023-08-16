@@ -1,5 +1,6 @@
 <template>
-  <div class="tags-container c-relative" ref="scrollContainer" @wheel.prevent="calculateLeft(true, $event)">
+  <div class="tags-container c-relative c-forbidSelect" ref="scrollContainer"
+    @wheel.prevent="calculateLeft(true, $event)">
     <div class="tags-wrapper c-w100p c-white-nowrap c-relative c-overflow-hidden c-h28" ref="scrollWrapper">
       <div class="c-absolute c-flex" ref="scrollWrapper" :style="{ left: -scrollLeft + 'px' }">
         <router-link ref="tags" class="tags-item c-inline-block c-flex-ycenter c-px8 c-py0 c-mr1 c-fs12"

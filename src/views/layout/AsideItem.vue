@@ -23,5 +23,3 @@ const props = defineProps({
 })
 const item = props.item!
 </script>
-
-<style scoped lang="scss"></style>
