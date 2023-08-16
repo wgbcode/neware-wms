@@ -1,12 +1,13 @@
 <template>
   <div class="c-flex-column c-flex-1">
     <TagsView />
-    <router-view> </router-view>
+    <router-view v-if="layoutStore.reloadRouter"> </router-view>
   </div>
 </template>
 
 <script setup lang="ts">
 import TagsView from './TagsView.vue'
-</script>
+import { useLayoutStore } from '@/stores/layout'
 
-<style scoped></style>
+const layoutStore = useLayoutStore()
+</script>

@@ -14,7 +14,7 @@ import Aside from './Aside.vue'
 import Main from './Main.vue'
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .header {
   background-color: var(--tc-navbar-topbar);
 }
@@ -31,6 +31,5 @@ import Main from './Main.vue'
   } */
 }
 
-.main {
-}
+.main {}
 </style>
