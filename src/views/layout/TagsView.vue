@@ -1,13 +1,27 @@
 <template>
   <div class="tags-container" ref="scrollContainer">
-    <div class="tags-wrapper c-w100p c-white-nowrap c-relative c-overflow-hidden c-h28" ref="scrollWrapper">
+    <div
+      class="tags-wrapper c-w100p c-white-nowrap c-relative c-overflow-hidden c-h28"
+      ref="scrollWrapper"
+    >
       <div class="c-absolute c-flex" ref="scrollWrapper" :style="{ left: -scrollLeft + 'px' }">
-        <router-link ref="tags" class="tags-item c-inline-block c-flex-ycenter c-px8 c-py0 c-mr1 c-fs12"
-          :class="isActive(tag) ? 'active' : ''" v-for="(tag, index) in visitedViews" :to="tag"
-          :key="`${index}_${tag.path}`">
+        <router-link
+          ref="tags"
+          class="tags-item c-inline-block c-flex-ycenter c-px8 c-py0 c-mr1 c-fs12"
+          :class="isActive(tag) ? 'active' : ''"
+          v-for="(tag, index) in visitedViews"
+          :to="tag"
+          :key="`${index}_${tag.path}`"
+        >
           <span class="c-mr2 c-cblack">{{ tag.meta?.title ?? '主页' }}</span>
-          <Icon class="c-mt2" name="close" size="12px" :color="isActive(tag) ? '#fff' : '#000'"
-            @click.prevent.stop="closeSelectedTag(tag)" v-show="tag.name === 'home' ? false : true" />
+          <Icon
+            class="c-mt2"
+            name="close"
+            size="12px"
+            :color="isActive(tag) ? '#fff' : '#000'"
+            @click.prevent.stop="closeSelectedTag(tag)"
+            v-show="tag.name === 'home' ? false : true"
+          />
         </router-link>
       </div>
     </div>
@@ -32,6 +46,7 @@ const route = useRoute()
 onMounted(() => {
   let existRouter = visitedViews.map((i) => i.name).includes('home')
   if (!existRouter) {
+    scrollLeft.value = 0
     router.push({ path: '/accountCenter/home' })
     layoutStore.addVisitedViews({ path: '/accountCenter/home', name: 'home' } as RouteLocation)
   }
@@ -41,27 +56,38 @@ onMounted(() => {
 const calculateLeft = async (isWheel: boolean) => {
   if (!isWheel) {
     await nextTick()
-    const tagsEles = tags.value
+    const $tags = tags.value
     const containerWidth = scrollContainer.value?.offsetWidth!
-    let tagsTotalWidth = 0
-    let selectedTagLeft = 0
-    let calculateLeft = 0
 
-    tagsEles.forEach((curTag) => {
-      if (curTag) {
-        tagsTotalWidth += curTag.$el.offsetWidth
-        curTag.path === route.path ? selectedTagLeft = curTag.$el.offsetLeft : ''
+    let totalWidth = 0
+    let selectedLeft = 0
+    let selectedWidth = 0
+
+    $tags.forEach(($tag) => {
+      const $el = $tag.$el
+      if ($el) {
+        totalWidth += $el.offsetWidth
+        if ($tag.to.path === route.path) {
+          selectedLeft = $el.offsetLeft
+          selectedWidth = $el.offsetWidth
+        }
       }
     })
-    if (containerWidth < tagsTotalWidth) {
-      calculateLeft = tagsTotalWidth - containerWidth
-      scrollLeft.value = calculateLeft > selectedTagLeft ? calculateLeft : selectedTagLeft
-    }
+
+    scrollLeft.value =
+      containerWidth > totalWidth
+        ? 0
+        : selectedLeft < scrollLeft.value
+        ? selectedLeft
+        : selectedLeft + selectedWidth > containerWidth
+        ? totalWidth - containerWidth
+        : 0
   }
 }
 watch(route, (to) => {
   let existRouter = visitedViews.map((i) => i.name).includes(to.name)
-  existRouter ? '' : layoutStore.addVisitedViews(deepClone(to)), calculateLeft(false)
+  existRouter ? '' : layoutStore.addVisitedViews(deepClone(to))
+  calculateLeft(false)
 })
 
 const isActive = (tag: RouteLocation) => (tag.path === route.path ? true : false)
@@ -70,7 +96,7 @@ const closeSelectedTag = async (tag: RouteLocation) => {
   if (isActive(tag)) {
     const lastTag = tags.slice(-1)[0]
     lastTag ? router.push({ path: lastTag.path }) : router.push({ path: '/' })
-  }
+  } else calculateLeft(false)
 }
 </script>
 
