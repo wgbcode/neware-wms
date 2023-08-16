@@ -36,19 +36,19 @@ const router = createRouter({
               path: '/accountCenter/home',
               name: 'home',
               meta: { title: '主页', icon: '', hidden: false },
-              component: () => import('@/views/accountCenter/home/index.vue')
+              component: () => import('@/views/accountCenter/Home.vue')
             },
             {
               path: '/accountCenter/accountInfo',
               name: 'accountInfo',
               meta: { title: '账号资料', icon: '', hidden: false },
-              component: () => import('@/views/accountCenter/accountInfo/index.vue')
+              component: () => import('@/views/accountCenter/AccountInfo.vue')
             },
             {
               path: '/accountCenter/modifyPassword',
               name: 'modifyPassword',
               meta: { title: '修改资料', icon: '', hidden: false },
-              component: () => import('@/views/accountCenter/modifyPassword/index.vue')
+              component: () => import('@/views/accountCenter/ModifyPassword.vue')
             }
           ]
         },
@@ -61,19 +61,19 @@ const router = createRouter({
               path: '/orderManage/purchaseOrder',
               name: 'purchaseOrder',
               meta: { title: '采购订单', icon: '', hidden: false },
-              component: () => import('@/views/orderManage/purchaseOrder/index.vue')
+              component: () => import('@/views/orderManage/PurchaseOrder.vue')
             },
             {
               path: '/orderManage/quoteOrder',
               name: 'quoteOrder',
               meta: { title: '报价单', icon: '', hidden: false },
-              component: () => import('@/views/orderManage/quoteOrder/index.vue')
+              component: () => import('@/views/orderManage/QuoteOrder.vue')
             },
             {
               path: '/orderManage/logisticsOrder',
               name: 'logisticsOrder',
               meta: { title: '物流订单', icon: '', hidden: false },
-              component: () => import('@/views/orderManage/logisticsOrder/index.vue')
+              component: () => import('@/views/orderManage/LogisticsOrder.vue')
             }
           ]
         }

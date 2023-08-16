@@ -15,7 +15,5 @@ import AsideItem from './AsideItem.vue'
 
 const router = useRouter()
 const asideRoutes = router.options.routes.filter((i) => i.name === 'layout')[0].children
-const handleMenuSelect = (path: string) => {
-  router.push({ path })
-}
+const handleMenuSelect = (path: string) => router.push({ path })
 </script>
