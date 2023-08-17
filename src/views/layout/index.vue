@@ -28,8 +28,8 @@ const layoutStore = useLayoutStore()
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  @media (max-width: 767px) {
-    display: none;
-  }
+  // @media (max-width: 767px) {
+  //   display: none;
+  // }
 }
 </style>

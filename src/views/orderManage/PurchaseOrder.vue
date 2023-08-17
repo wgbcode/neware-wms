@@ -1,31 +1,12 @@
 <template>
   <div>
-    <section class="c-flex-between c-h42">
+    <section class="c-flex-between c-h42 c-flex-only-wrap">
       <div class="c-flex-ycenter">
-        <el-input v-model="purOrder" placeholder="采购单号" class="c-mr10 purOrder" />
-        <el-date-picker
-          v-model="purDate"
-          type="daterange"
-          unlink-panels
-          range-separator="-"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          :shortcuts="shortcuts"
-          :size="size"
-          class="c-mr10"
-        />
-        <el-select-v2
-          v-model="purDelay"
-          :options="delayOptions"
-          placeholder="延期"
-          class="c-mr10"
-        />
-        <el-select-v2
-          v-model="purStatus"
-          :options="statusOptions"
-          placeholder="状态"
-          class="c-mr10"
-        />
+        <el-input v-model="purOrder" placeholder="采购单号" class="c-mr10" />
+        <el-date-picker v-model="purDate" type="daterange" unlink-panels range-separator="-" start-placeholder="开始日期"
+          end-placeholder="结束日期" :shortcuts="shortcuts" :size="size" class="c-mr10" />
+        <el-select-v2 v-model="purDelay" :options="delayOptions" placeholder="延期" class="c-mr10" />
+        <el-select-v2 v-model="purStatus" :options="statusOptions" placeholder="状态" class="c-mr10" />
         <el-button type="primary" class="c-mr10">查询</el-button>
       </div>
       <div class="c-flex-ycenter">

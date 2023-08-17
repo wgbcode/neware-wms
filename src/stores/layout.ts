@@ -5,6 +5,7 @@ import type { RouteLocation } from 'vue-router'
 export const useLayoutStore = defineStore('Layout', () => {
   const isShowAside = ref<boolean>(true)
   const reloadRouter = ref<boolean>(true)
+  const mainTopHeight = ref<number>(0)
   const visitedViews = reactive<RouteLocation[]>([])
 
   // Aside action
@@ -39,15 +40,22 @@ export const useLayoutStore = defineStore('Layout', () => {
     reloadRouter.value = !reloadRouter.value
   }
 
+  // MainTop
+  function setMainTopHeight(curHeight: number) {
+    mainTopHeight.value = curHeight
+  }
+
   return {
     isShowAside,
     reloadRouter,
     visitedViews,
+    mainTopHeight,
     toogleAside,
     addVisitedViews,
     delVisitedViews,
     delOtherViews,
     delAllViews,
-    refreshViews
+    refreshViews,
+    setMainTopHeight
   }
 })
