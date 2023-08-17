@@ -3,7 +3,7 @@
     <Header class="header c-h45" />
     <section class="c-flex-1 c-flex">
       <Aside class="aside c-w180" v-show="layoutStore.isShowAside" />
-      <Main class="c-flex-1" />
+      <Main class="c-flex-1 c-relative" />
     </section>
   </div>
 </template>
@@ -28,7 +28,6 @@ const layoutStore = useLayoutStore()
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   @media (max-width: 767px) {
     display: none;
   }

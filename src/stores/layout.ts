@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import type { RouteLocation } from 'vue-router'
 
 export const useLayoutStore = defineStore('Layout', () => {
-  const isShowAside = ref<boolean>(false)
+  const isShowAside = ref<boolean>(true)
   const reloadRouter = ref<boolean>(true)
   const visitedViews = reactive<RouteLocation[]>([])
 
