@@ -1,4 +1,7 @@
 import axios from 'axios'
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
 
 // 创建实例
 const request = axios.create({
@@ -7,20 +10,32 @@ const request = axios.create({
 })
 
 // 请求拦截器
-request.interceptors.request.use((config) => {
-  console.log(config)
+request.interceptors.request.use(
+  (config) => {
+    console.log('config', config)
 
-  return config
-})
+    // 请求中断功能
+
+    // 添加 token
+    userStore.token ? (config.headers['X-Token'] = userStore.token) : ''
+
+    return config
+  },
+  (error) => {
+    console.log(error)
+    return Promise.reject(error)
+  }
+)
 
 // 响应拦截器
 request.interceptors.response.use(
   (response) => {
-    console.log(response)
+    console.log('response', response)
     return response.data
   },
   (error) => {
     console.log(error)
+    return Promise.reject(error)
   }
 )
 

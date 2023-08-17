@@ -29,7 +29,7 @@
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import { login } from '@/api/layout'
+import { login } from '@/api/user'
 
 const username = ref<string>('')
 const password = ref<string>('')
@@ -62,3 +62,4 @@ const userLogin = (isQRCode: boolean) => {
   background-color: white;
 }
 </style>
+@/api/user
