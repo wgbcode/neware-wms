@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
+// 创建 router 实例
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [

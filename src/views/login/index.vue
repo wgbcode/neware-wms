@@ -29,7 +29,11 @@
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import { login } from '@/api/user'
+import { login } from '@/api/auth'
+// import { setToken } from '@/utils/auth'
+// import { useAuthStore } from '@/stores/auth'
+
+// const authStore = useAuthStore()
 
 const username = ref<string>('')
 const password = ref<string>('')
@@ -43,6 +47,8 @@ const userLogin = (isQRCode: boolean) => {
     login(params)
       .then(res => {
         console.log('res', res)
+        // setToken('test')
+        // authStore.setToken('test')
         if (res.data.code === 0) {
           ElMessage({
             message: '登录成功',
@@ -62,4 +68,4 @@ const userLogin = (isQRCode: boolean) => {
   background-color: white;
 }
 </style>
-@/api/user
+@/api/user@/api/auth

@@ -9,8 +9,10 @@ import App from './App.vue'
 import router from './router'
 import 'virtual:svg-icons-register'
 import Icon from '@/components/global/Icon.vue'
+import '@/permission'
 
 const app = createApp(App)
+const pinia = createPinia()
 
 // 全局注册 element Icon 图标
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -21,7 +23,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 app.component('Icon', Icon)
 
 app
-  .use(createPinia())
+  .use(pinia)
   .use(router)
   .use(ElementPlus, { size: 'small', zIndex: 3000, locale: zhCn })
   .mount('#app')
