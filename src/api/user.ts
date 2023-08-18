@@ -4,6 +4,7 @@ export function login(params: Record<string, string>) {
   return request({
     url: '/login',
     method: 'get',
-    params
+    params,
+    isCancelRepeatRequest: true // 不允许重复请求
   })
 }
