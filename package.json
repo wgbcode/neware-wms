@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "run-p type-check build-only",
-    "preview": "vite preview",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "dev": "vite --mode dev",
+    "devl": "vite --mode dev.local",
+    "build": "run-p type-check build-only --mode prod",
+    "preview": "vite preview --mode prod",
+    "build-only": "vite build --mode prod",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false --mode dev",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore --mode dev",
+    "format": "prettier --write src/ --mode dev"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",

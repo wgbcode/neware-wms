@@ -45,4 +45,9 @@ export default defineConfig({
       }
     }
   }
+  // define: {
+  //   'process.env': {
+  //     BASE_API: 'https://www.fastmock.site/mock/e68d869253f9e376375eb399ba932142/newarewms'
+  //   }
+  // }
 })
