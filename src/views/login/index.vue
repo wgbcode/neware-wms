@@ -76,15 +76,18 @@ const getQRCode = () => {
           const timer = setInterval(async () => {
             await validateLogin({ test: 'xxx' })
               .then((res) => {
-                console.log('res', res);
-
                 if (res.data.code === 1) {
                   clearInterval(timer)
                   router.push({ path: '/layout' })
+                  pollCount.value = 0
                 }
               })
             pollCount.value++
-            pollCount.value >= 10 ? (clearInterval(timer), toggleShade()) : ''
+            if (pollCount.value >= 10) {
+              clearInterval(timer)
+              toggleShade()
+              pollCount.value = 0
+            }
           }, 1000)
         }
       })
