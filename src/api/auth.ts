@@ -96,3 +96,12 @@ export function getLoginQRCode() {
     method: 'get'
   })
 }
+
+// 校验用户扫码登录情况
+export function validateLogin(params: Record<string, string>) {
+  return request({
+    url: '/validateLogin',
+    method: 'get',
+    params
+  })
+}

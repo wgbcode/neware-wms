@@ -27,7 +27,8 @@
         </ul>
         <div class="c-flex-center c-mb12 c-relative c-h165">
           <img :src="qrCodeURL" class="c-w165" alt="">
-          <p class="expireInfo c-absolute c-w175 c-h175 c-flex-center c-cwhite" v-show="isExpireQRCode">二维码失效，点击刷新</p>
+          <p class="expireInfo c-absolute c-w175 c-h175 c-flex-center c-cwhite" v-show="isExpireQRCode"
+            @click="toggleShade">二维码失效，点击刷新</p>
         </div>
         <ul class="c-flex-center c-fs14">
           <li>请使用</li>
@@ -50,7 +51,7 @@
 import router from '@/router'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
-import { login, getLoginQRCode } from '@/api/auth'
+import { login, getLoginQRCode, validateLogin } from '@/api/auth'
 import { setToken } from '@/utils/auth'
 import { getImgURL } from '@/utils/common'
 import { authStore } from '@/stores/auth'
@@ -59,14 +60,32 @@ const loginCount = ref<number>(1)
 const isQRCode = ref<boolean>(true)
 const isExpireQRCode = ref<boolean>(false)
 const qrCodeURL = ref<string>('')
+const pollCount = ref<number>(0)
 
-// 获取登录二维码
+// 开启或关闭二维码遮罩
+const toggleShade = () => isExpireQRCode.value = !isExpireQRCode.value
+
+// 获取登录二维码(实现时需使用 blobURL 或者 dataURL)
 const getQRCode = () => {
   if (isQRCode.value) {
     getLoginQRCode()
       .then(res => {
         if (res.code === 1) {
           qrCodeURL.value = getImgURL(res.qrcode)
+          // 轮询校验用户扫码情况
+          const timer = setInterval(async () => {
+            await validateLogin({ test: 'xxx' })
+              .then((res) => {
+                console.log('res', res);
+
+                if (res.data.code === 1) {
+                  clearInterval(timer)
+                  router.push({ path: '/layout' })
+                }
+              })
+            pollCount.value++
+            pollCount.value >= 10 ? (clearInterval(timer), toggleShade()) : ''
+          }, 1000)
         }
       })
   }
