@@ -31,10 +31,8 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import { useDark, useToggle } from '@vueuse/core'
-import { useLayoutStore } from '@/stores/layout'
-import router from '@/router';
-
-const layoutStore = useLayoutStore()
+import { layoutStore } from '@/stores/layout'
+import router from '@/router'
 
 // 侧边栏隐藏和显示
 const toggleAideBar = () => layoutStore.toogleAside()
@@ -56,44 +54,14 @@ const toggleTheme = () => {
 }
 
 // 展示悬浮色
-const color = reactive({
+const color = reactive<Record<string, string>>({
     color1: '#fff',
     color2: '#fff',
     color3: '#fff',
     color4: '#fff'
 })
-const changeColor = (key: string) => {
-    switch (key) {
-        case 'color1':
-            color[key] = 'var(--tc-brand)'
-            break
-        case 'color2':
-            color[key] = 'var(--tc-brand)'
-            break
-        case 'color3':
-            color[key] = 'var(--tc-brand)'
-            break
-        case 'color4':
-            color[key] = 'var(--tc-brand)'
-            break
-    }
-}
-const restoreColor = (key: string) => {
-    switch (key) {
-        case 'color1':
-            color[key] = '#fff'
-            break
-        case 'color2':
-            color[key] = '#fff'
-            break
-        case 'color3':
-            color[key] = '#fff'
-            break
-        case 'color4':
-            color[key] = '#fff'
-            break
-    }
-}
+const changeColor = (key: string) => color[key] = 'var(--tc-brand)'
+const restoreColor = (key: string) => color[key] = '#fff'
 </script>
 
 <style scoped lang="scss">

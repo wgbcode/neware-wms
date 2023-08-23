@@ -1,15 +1,26 @@
-import axios, { CanceledError, type AxiosRequestConfig } from 'axios'
-import { useAuthStore } from '@/stores/auth'
 import qs from 'qs'
+import axios, { CanceledError, type AxiosRequestConfig } from 'axios'
+import { authStore } from '@/stores/auth'
 
-const authStore = useAuthStore()
-
-// 扩展自定义配置参数
 declare module 'axios' {
+  // 定义实例参数类型和返回值类型
+  interface AxiosInstance {
+    // eslint-disable-next-line no-unused-vars
+    (config: AxiosRequestConfig): Promise<any>
+  }
+
+  // 自定义实例参数
   export interface AxiosRequestConfig {
     isCancelRepeatRequest?: boolean
   }
 }
+
+// 创建实例
+const request = axios.create({
+  baseURL: import.meta.env.VITE_BASE_URL,
+  timeout: 30000,
+  isCancelRepeatRequest: false
+})
 
 // 设置 abortController 和 Map
 const abortMap = new Map()
@@ -22,13 +33,6 @@ const setAbortMap = (config: AxiosRequestConfig) => {
   const key = getAbortKey(config)
   abortMap.has(key) ? controller.abort() : abortMap.set(key, controller)
 }
-
-// 创建实例
-const request = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
-  timeout: 30000,
-  isCancelRepeatRequest: false
-})
 
 // 请求拦截器
 request.interceptors.request.use(
@@ -66,7 +70,7 @@ request.interceptors.response.use(
 
     // toDo：错误提示（res.code !== 200)
 
-    return response.data
+    return Promise.resolve(response.data)
   },
   (error) => {
     // console.log(error)

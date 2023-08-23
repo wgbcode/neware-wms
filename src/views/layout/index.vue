@@ -12,9 +12,7 @@
 import Header from './Header.vue'
 import Aside from './Aside.vue'
 import Main from './Main.vue'
-import { useLayoutStore } from '@/stores/layout'
-
-const layoutStore = useLayoutStore()
+import { layoutStore } from '@/stores/layout'
 </script>
 
 <style scoped lang="scss">

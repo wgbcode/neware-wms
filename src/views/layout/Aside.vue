@@ -10,10 +10,14 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
+import router from '@/router'
+import { type RouteRecordRaw } from 'vue-router'
 import AsideItem from './AsideItem.vue'
+import { onMounted, ref } from 'vue'
 
-const router = useRouter()
-const asideRoutes = router.options.routes.filter((i) => i.name === 'layout')[0].children
+const asideRoutes = ref<RouteRecordRaw[]>([])
+
+onMounted(() => asideRoutes.value = router.getRoutes().filter((i) => i.name === 'layout')[0].children!)
+
 const handleMenuSelect = (path: string) => router.push({ path })
 </script>

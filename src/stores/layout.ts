@@ -2,7 +2,7 @@ import { reactive, ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { RouteLocation } from 'vue-router'
 
-export const useLayoutStore = defineStore('Layout', () => {
+export const layoutStore = defineStore('Layout', () => {
   const isShowAside = ref<boolean>(true)
   const reloadRouter = ref<boolean>(true)
   const mainTopHeight = ref<number>(0)
@@ -58,4 +58,4 @@ export const useLayoutStore = defineStore('Layout', () => {
     refreshViews,
     setMainTopHeight
   }
-})
+})()

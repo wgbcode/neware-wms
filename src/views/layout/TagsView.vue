@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { onMounted, watch, ref, nextTick, reactive } from 'vue'
 import { useRoute, type RouteLocation } from 'vue-router'
-import { useLayoutStore } from '@/stores/layout'
+import { layoutStore } from '@/stores/layout'
 import router from '@/router'
 import { deepClone } from '@/utils/common'
 
@@ -36,7 +36,6 @@ type MenuData = {
   selectedTag: RouteLocation
 }
 
-const layoutStore = useLayoutStore()
 const visitedViews = layoutStore.visitedViews
 const route = useRoute()
 const scrollLeft = ref<number>(0)
@@ -49,17 +48,6 @@ const menuData = reactive<MenuData>({
   selectedTag: {} as RouteLocation
 })
 
-// 挂载时跳转到主页
-onMounted(() => {
-  let existRouter = visitedViews.map((i) => i.name).includes('home')
-  if (!existRouter) {
-    scrollLeft.value = 0
-    router.push({ path: '/accountCenter/home' })
-    layoutStore.addVisitedViews({ path: '/accountCenter/home', name: 'home' } as RouteLocation)
-  }
-})
-
-// 路由变换时重新渲染 tagsView 组件
 const calculateLeft = async (isWheel: boolean, e?: WheelEvent) => {
   await nextTick()
   const containerWidth = scrollContainer.value?.offsetWidth!
@@ -88,14 +76,6 @@ const calculateLeft = async (isWheel: boolean, e?: WheelEvent) => {
     scrollLeft.value = containerWidth > totalWidth ? 0 : newScrollLeft
   }
 }
-watch(route, (to) => {
-  let existRouter = visitedViews.map((i) => i.name).includes(to.name)
-  existRouter ? '' : layoutStore.addVisitedViews(deepClone(to))
-  calculateLeft(false)
-  menuData.visible = false
-})
-
-// 组件操作函数
 const isActive = (tag: RouteLocation) => (tag.path === route.path ? true : false)
 const closeSelectedTag = async (tag: RouteLocation) => {
   const tags = (await layoutStore.delVisitedViews(tag)) as RouteLocation[]
@@ -132,6 +112,19 @@ const openMenu = (tag: RouteLocation) => {
     }
   })
 }
+
+// 挂载时，清空并跳转到主页
+onMounted(() => {
+  closeAllTag()
+})
+
+// 路由变换时重新渲染 tagsView 组件
+watch(route, (to) => {
+  let existRouter = visitedViews.map((i) => i.name).includes(to.name)
+  existRouter ? '' : layoutStore.addVisitedViews(deepClone(to))
+  calculateLeft(false)
+  menuData.visible = false
+})
 </script>
 
 <style scoped lang="scss">

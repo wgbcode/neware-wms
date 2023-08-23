@@ -9,8 +9,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import TagsView from './TagsView.vue'
-import { useLayoutStore } from '@/stores/layout'
+import { layoutStore } from '@/stores/layout'
 
-const layoutStore = useLayoutStore()
 const tagsView = ref<HTMLElement | null>(null)
 </script>

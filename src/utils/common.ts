@@ -12,3 +12,8 @@ export function deepClone(value: any) {
   Object.entries(value).forEach(([key, val]) => (cloneObj[key] = deepClone(val)))
   return cloneObj
 }
+
+// 获取图片绝对路径（动态绑定）
+export function getImgURL(name: string, suffic = 'png') {
+  return new URL(`/src/assets/images/${name}.${suffic}`, import.meta.url).href
+}
