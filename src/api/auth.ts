@@ -16,7 +16,7 @@ export function login(params: Record<string, string>) {
   })
 }
 
-// 获取用户信息
+// 获取用户信息(如路由)
 export function getUserInfo(params: string): Promise<UserInfo> {
   console.log('token', params)
 
@@ -101,6 +101,15 @@ export function getLoginQRCode() {
 export function validateLogin(params: Record<string, string>) {
   return request({
     url: '/validateLogin',
+    method: 'get',
+    params
+  })
+}
+
+// 刷新已过期 token
+export function refreshToken(params: string) {
+  return request({
+    url: '/refreshToken',
     method: 'get',
     params
   })

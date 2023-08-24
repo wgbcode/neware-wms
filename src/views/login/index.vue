@@ -52,7 +52,7 @@ import router from '@/router'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { login, getLoginQRCode, validateLogin } from '@/api/auth'
-import { setToken } from '@/utils/auth'
+import { setToken, setRefreshToken } from '@/utils/auth'
 import { getImgURL } from '@/utils/common'
 import { authStore } from '@/stores/auth'
 
@@ -61,6 +61,7 @@ const isQRCode = ref<boolean>(true)
 const isExpireQRCode = ref<boolean>(false)
 const qrCodeURL = ref<string>('')
 const pollCount = ref<number>(0)
+let pollTimer = ref<number>()
 
 // 开启或关闭二维码遮罩
 const toggleShade = () => isExpireQRCode.value = !isExpireQRCode.value
@@ -72,19 +73,22 @@ const getQRCode = () => {
       .then(res => {
         if (res.code === 1) {
           qrCodeURL.value = getImgURL(res.qrcode)
+          isExpireQRCode.value = false
+
           // 轮询校验用户扫码情况
-          const timer = setInterval(async () => {
+          pollCount.value = 0
+          pollTimer.value = setInterval(async () => {
             await validateLogin({ test: 'xxx' })
               .then((res) => {
                 if (res.data.code === 1) {
-                  clearInterval(timer)
+                  clearInterval(pollTimer.value)
                   router.push({ path: '/layout' })
                   pollCount.value = 0
                 }
               })
             pollCount.value++
-            if (pollCount.value >= 10) {
-              clearInterval(timer)
+            if (pollCount.value >= 180) {
+              clearInterval(pollTimer.value)
               toggleShade()
               pollCount.value = 0
             }
@@ -96,6 +100,7 @@ const getQRCode = () => {
 
 // 切换登录方式
 const toggleLoginStyle = () => {
+  clearInterval(pollTimer.value)
   isQRCode.value = !isQRCode.value
   getQRCode()
 }
@@ -137,10 +142,12 @@ const userLogin = () => {
     const params = { username: username.value ?? '', password: password.value ?? '' }
     login(params)
       .then(res => {
-        const { code, msg, token } = res.data
+        const { code, msg, token, refreshToken } = res.data
         if (code === 0) {
           setToken(token)
+          setRefreshToken(refreshToken)
           authStore.setToken(token)
+          authStore.setRefreshToken(refreshToken)
           ElMessage({
             message: msg,
             type: 'success',

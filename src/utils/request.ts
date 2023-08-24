@@ -1,6 +1,10 @@
 import qs from 'qs'
 import axios, { CanceledError, type AxiosRequestConfig } from 'axios'
 import { authStore } from '@/stores/auth'
+import { setToken } from './auth'
+import { refreshToken } from '@/api/auth'
+import router from '@/router'
+import { ElMessage } from 'element-plus'
 
 declare module 'axios' {
   // 定义实例参数类型和返回值类型
@@ -60,15 +64,52 @@ request.interceptors.request.use(
 )
 
 // 响应拦截器
+let isRefreshToken = false
+let pendingRequests: Function[] = []
 request.interceptors.response.use(
   (response) => {
     // console.log('response', response)
 
+    const { config, status } = response
+
     // 删除 abortKey
-    const config = response.config
     config.isCancelRepeatRequest ? abortMap.delete(getAbortKey(config)) : ''
 
-    // toDo：错误提示（res.code !== 200)
+    // toDo：错误提示（status !== 200)
+
+    // 刷新过期 token，并重新发起请求(token：2h；refreshToken：7天)
+    if (status === 401) {
+      const cacheRequest = (config: AxiosRequestConfig) =>
+        new Promise((resolve) =>
+          pendingRequests.push((token: string) => {
+            config.headers!['X-Token'] = token
+            resolve(request(config))
+          })
+        )
+      if (!isRefreshToken) {
+        isRefreshToken = true
+        refreshToken(authStore.refreshToken)
+          .then(async (res) => {
+            const { code, token } = res
+            if (code === 1) {
+              setToken(token)
+              authStore.setToken(token)
+              await cacheRequest(config)
+              pendingRequests.forEach((req) => req(token))
+            } else {
+              router.push({ path: '/login' })
+              ElMessage.error('认证失败，请重新登录')
+            }
+          })
+          .finally(() => {
+            isRefreshToken = false
+            pendingRequests = []
+          })
+      } else {
+        // 刷新 token 期间，让所有请求处于 pending 状态
+        return cacheRequest(config)
+      }
+    }
 
     return Promise.resolve(response.data)
   },
