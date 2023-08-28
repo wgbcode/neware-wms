@@ -1,4 +1,5 @@
 import '@/styles/main.css'
+import '@/utils/global'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus'
