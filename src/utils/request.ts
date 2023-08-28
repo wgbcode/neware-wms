@@ -28,9 +28,7 @@ const request = axios.create({
 
 // 设置 abortController 和 Map
 const abortMap = new Map()
-const getAbortKey = (config: AxiosRequestConfig) => {
-  return (config.method || '') + config.url + '?' + qs.stringify(config.data || config.params)
-}
+const getAbortKey = (config: AxiosRequestConfig) => config.method + ':/' + config.url
 const setAbortMap = (config: AxiosRequestConfig) => {
   const controller = new AbortController()
   config.signal = controller.signal
@@ -58,7 +56,6 @@ request.interceptors.request.use(
   },
   (error) => {
     // console.log(error)
-
     return Promise.reject(error)
   }
 )
@@ -114,12 +111,12 @@ request.interceptors.response.use(
     return Promise.resolve(response.data)
   },
   (error) => {
-    // console.log(error)
+    // console.log('error', error)
 
     // 删除 abortKey
-    const { config, message } = error.config
+    const { message } = error.config
     const isCanceledError = error instanceof CanceledError && message !== 'canceled' ? true : false
-    isCanceledError ? '' : abortMap.delete(getAbortKey(config))
+    isCanceledError ? '' : abortMap.delete(getAbortKey(error.config))
 
     return Promise.reject(error)
   }

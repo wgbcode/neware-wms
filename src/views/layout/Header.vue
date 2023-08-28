@@ -33,12 +33,20 @@ import { ref, reactive } from 'vue'
 import { useDark, useToggle } from '@vueuse/core'
 import { layoutStore } from '@/stores/layout'
 import router from '@/router'
+import { removeToken, removeRefreshToken } from '@/utils/auth'
+import { authStore } from '@/stores/auth'
 
 // 侧边栏隐藏和显示
 const toggleAideBar = () => layoutStore.toogleAside()
 
 // 退出登录
-const userLogout = () => router.push({ name: 'login' })
+const userLogout = () => {
+    removeToken()
+    removeRefreshToken()
+    authStore.removeToken()
+    authStore.removeRefreshToken()
+    router.push({ name: 'login' })
+}
 
 // 刷新页面
 const refreshPage = () => router.go(0)
@@ -60,8 +68,8 @@ const color = reactive<Record<string, string>>({
     color3: '#fff',
     color4: '#fff'
 })
-const changeColor = (key: string) => color[key] = 'var(--tc-brand)'
-const restoreColor = (key: string) => color[key] = '#fff'
+const changeColor = (key: string) => (color[key] = 'var(--tc-brand)')
+const restoreColor = (key: string) => (color[key] = '#fff')
 </script>
 
 <style scoped lang="scss">

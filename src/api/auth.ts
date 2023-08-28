@@ -7,11 +7,11 @@ interface UserInfo {
 }
 
 // 登录
-export function login(params: Record<string, string>) {
+export function login(data: Record<string, string>) {
   return request({
-    url: '/login',
-    method: 'get',
-    params,
+    url: '/common/login',
+    method: 'post',
+    data,
     isCancelRepeatRequest: true // 不允许重复请求
   })
 }

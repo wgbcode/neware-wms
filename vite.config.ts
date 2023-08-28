@@ -13,9 +13,7 @@ export default defineConfig({
     createSvgIconsPlugin({
       // 指定需要缓存的图标文件夹
       iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-      // 指定symbolId格式
       symbolId: 'icon-[dir]-[name]',
-      // svgo额外配置，删除svg部分属性
       svgoOptions: {
         plugins: [
           {
@@ -30,7 +28,15 @@ export default defineConfig({
   server: {
     host: 'localhost',
     port: 8888,
-    open: false
+    open: true, // network
+    hmr: true, // 热更新
+    proxy: {
+      // '/api': {
+      //   target: 'https://www.fastmock.site',
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/api/, '')
+      // }
+    }
   },
   resolve: {
     alias: {
@@ -42,6 +48,15 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: '@use "@/styles/mixin.scss" as *;@use "@/styles/custom.scss" as *;'
+      }
+    }
+  },
+  build: {
+    chunkSizeWarningLimit: 1500,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true
       }
     }
   }

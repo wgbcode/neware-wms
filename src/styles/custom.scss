@@ -20,11 +20,11 @@
     $class-name-height: 'c-h#{$i}p';
 
     .#{$class-name-width} {
-      width: #{$i}+'%';
+      width: #{$i}+ '%';
     }
 
     .#{$class-name-height} {
-      height: #{$i}+'%';
+      height: #{$i}+ '%';
     }
   }
 }
@@ -66,19 +66,19 @@
     $class-name-right: 'c-r#{$i}p';
 
     .#{$class-name-top} {
-      top: #{$i}+'%';
+      top: #{$i}+ '%';
     }
 
     .#{$class-name-bottom} {
-      bottom: #{$i}+'%';
+      bottom: #{$i}+ '%';
     }
 
     .#{$class-name-left} {
-      left: #{$i}+'%';
+      left: #{$i}+ '%';
     }
 
     .#{$class-name-right} {
-      right: #{$i}+'%';
+      right: #{$i}+ '%';
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="c-h100p c-relative">
-    <section class="c-absolute c-t60 c-l50 ">
+    <section class="c-absolute c-t60 c-l50">
       <div class="c-relative">
         <i class="c-absolute c-h50 c-w50 c-l0 c-t0" @click="toggleLoginStyle"></i>
         <img src="@images/logo.png" alt="" />
@@ -26,9 +26,11 @@
           <li class="c-fs14 c-opacity4 c-mt6">(2023.08.10)</li>
         </ul>
         <div class="c-flex-center c-mb12 c-relative c-h165">
-          <img :src="qrCodeURL" class="c-w165" alt="">
+          <img :src="qrCodeURL" class="c-w165" alt="" />
           <p class="expireInfo c-absolute c-w175 c-h175 c-flex-center c-cwhite" v-show="isExpireQRCode"
-            @click="toggleShade">二维码失效，点击刷新</p>
+            @click="toggleShade">
+            二维码失效，点击刷新
+          </p>
         </div>
         <ul class="c-flex-center c-fs14">
           <li>请使用</li>
@@ -64,37 +66,35 @@ const pollCount = ref<number>(0)
 let pollTimer = ref<number>()
 
 // 开启或关闭二维码遮罩
-const toggleShade = () => isExpireQRCode.value = !isExpireQRCode.value
+const toggleShade = () => (isExpireQRCode.value = !isExpireQRCode.value)
 
 // 获取登录二维码(实现时需使用 blobURL 或者 dataURL)
 const getQRCode = () => {
   if (isQRCode.value) {
-    getLoginQRCode()
-      .then(res => {
-        if (res.code === 1) {
-          qrCodeURL.value = getImgURL(res.qrcode)
-          isExpireQRCode.value = false
+    getLoginQRCode().then((res) => {
+      if (res.code === 1) {
+        qrCodeURL.value = getImgURL(res.qrcode)
+        isExpireQRCode.value = false
 
-          // 轮询校验用户扫码情况
-          pollCount.value = 0
-          pollTimer.value = setInterval(async () => {
-            await validateLogin({ test: 'xxx' })
-              .then((res) => {
-                if (res.data.code === 1) {
-                  clearInterval(pollTimer.value)
-                  router.push({ path: '/layout' })
-                  pollCount.value = 0
-                }
-              })
-            pollCount.value++
-            if (pollCount.value >= 180) {
+        // 轮询校验用户扫码情况
+        pollCount.value = 0
+        pollTimer.value = setInterval(async () => {
+          await validateLogin({ test: 'xxx' }).then((res) => {
+            if (res.data.code === 1) {
               clearInterval(pollTimer.value)
-              toggleShade()
+              router.push({ path: '/layout' })
               pollCount.value = 0
             }
-          }, 1000)
-        }
-      })
+          })
+          pollCount.value++
+          if (pollCount.value >= 180) {
+            clearInterval(pollTimer.value)
+            toggleShade()
+            pollCount.value = 0
+          }
+        }, 1000)
+      }
+    })
   }
 }
 
@@ -110,8 +110,44 @@ const imageCode = ref<string>('')
 const userImageCode = ref<string>('')
 const createImgCode = () => {
   const codeLength = 4
-  const randomArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
-    'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+  const randomArr = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z'
+  ]
   imageCode.value = ''
   for (let i = 0; i < codeLength; i++) {
     const index = Math.floor(Math.random() * 36)
@@ -123,10 +159,10 @@ const validateImageCode = () => {
   const curImageCode = userImageCode.value.toUpperCase()
   switch (true) {
     case curImageCode.length <= 0:
-      msg = "请输入验证码"
+      msg = '请输入验证码'
       break
     case curImageCode != imageCode.value.toUpperCase():
-      msg = "验证码输入错误"
+      msg = '验证码输入错误'
       createImgCode()
       break
   }
@@ -139,30 +175,28 @@ const password = ref<string>('')
 const userLogin = () => {
   const valImageCode = loginCount.value !== 1 ? validateImageCode() : true
   if (!isQRCode.value && valImageCode) {
-    const params = { username: username.value ?? '', password: password.value ?? '' }
-    login(params)
-      .then(res => {
-        const { code, msg, token, refreshToken } = res.data
-        if (code === 0) {
-          setToken(token)
-          setRefreshToken(refreshToken)
-          authStore.setToken(token)
-          authStore.setRefreshToken(refreshToken)
-          ElMessage({
-            message: msg,
-            type: 'success',
-          })
-          router.push({ path: '/layout' })
-        } else {
-          ElMessage.error(msg)
-          loginCount.value++
-          createImgCode()
-        }
-      })
+    const params = { account: username.value ?? '', password: password.value ?? '' }
+    login(params).then((res) => {
+      const { code, message, data, refreshToken } = res
+      if (code === 0) {
+        setToken(data)
+        setRefreshToken(refreshToken)
+        authStore.setToken(data)
+        authStore.setRefreshToken(refreshToken)
+        ElMessage({
+          message: message,
+          type: 'success'
+        })
+        router.push({ path: '/layout' })
+      } else {
+        ElMessage.error(message)
+        loginCount.value++
+        createImgCode()
+      }
+    })
   }
   if (isQRCode.value) {
-    console.log('扫码登录');
-
+    console.log('扫码登录')
   }
 }
 
@@ -177,11 +211,11 @@ onMounted(() => {
   background-color: white;
 
   .qrcodeTip {
-    color: var(--tc-brand)
+    color: var(--tc-brand);
   }
 
   .expireInfo {
-    background-color: rgba(0, 0, 0, .6)
+    background-color: rgba(0, 0, 0, 0.6);
   }
 }
 
@@ -200,7 +234,7 @@ onMounted(() => {
   height: 25px;
 
   &:hover {
-    cursor: pointer
+    cursor: pointer;
   }
 }
 </style>
