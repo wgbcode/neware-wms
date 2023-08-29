@@ -1,9 +1,7 @@
 <template>
-    <el-select-v2 v-bind="$attrs" :style="{ ...style }" />
+    <!-- Vitualized Select -->
+    <el-select-v2 />
 </template>
 
 <script setup lang="ts">
-defineProps(['style'])
 </script>
-
-<style scoped lang="scss"></style>

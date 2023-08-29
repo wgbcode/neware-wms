@@ -1,11 +1,7 @@
 <template>
-    <div>
-        button
-    </div>
+    <el-button @click="on?.click"> {{ text }}</el-button>
 </template>
 
 <script setup lang="ts">
-
+defineProps(['text', 'on'])
 </script>
-
-<style scoped lang="scss"></style>

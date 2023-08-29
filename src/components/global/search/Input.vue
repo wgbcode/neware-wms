@@ -1,8 +1,7 @@
 <template>
-    <el-input />
+    <el-input @keyup.enter="on?.keyup" />
 </template>
 
 <script setup lang="ts">
+defineProps(['text', 'on'])
 </script>
-
-<style scoped lang="scss"></style>
