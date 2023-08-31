@@ -1,39 +1,7 @@
 <template>
   <div>
     <section class="c-flex-between c-flex-only-wrap">
-      <div class="c-flex-ycenter c-flex-only-wrap">
-        <el-input v-model="purOrder" placeholder="采购单号" class="c-mr10 c-mb5" />
-        <el-select-v2
-          v-model="purDelay"
-          :options="delayOptions"
-          placeholder="延期"
-          class="c-mr10 c-mb5"
-        />
-        <el-select-v2
-          v-model="purStatus"
-          :options="statusOptions"
-          placeholder="状态"
-          class="c-mr10 c-mb5"
-        />
-        <el-date-picker
-          v-model="purDate"
-          type="daterange"
-          unlink-panels
-          range-separator="-"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          :shortcuts="shortcuts"
-          :size="size"
-          class="c-mr10 c-mb5"
-          popper-class="testxxx"
-          :teleported="false"
-        />
-        <el-button type="primary" class="c-mr10 c-mb5">查询</el-button>
-      </div>
-      <div class="c-flex-ycenter c-mb5">
-        <el-button type="warning">箱号查询</el-button>
-        <el-button type="warning">导出</el-button>
-      </div>
+      <Search :config="searchConfig" :queryList="queryList" />
     </section>
     <section class="c-flex-1 c-pt5 test2">
       <el-table :data="tableData" style="width: 100%" height="100%" v-loading="isLoading">
@@ -49,60 +17,107 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
+import Search from '@/components/global/search/index.vue'
 
-// 输入框
-const purOrder = ref<string>('')
-const isLoading = ref<boolean>(true)
-
-// 日期选择器
-const size = ref<'default' | 'large' | 'small'>('small')
-const purDate = ref('')
-const shortcuts = [
+// 搜索栏
+const onSearch = () => console.log('查询')
+const searchConfig = reactive([
   {
-    text: '最近一周',
-    value: () => {
-      const end = new Date()
-      const start = new Date()
-      start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
-      return [start, end]
+    name: 'input',
+    prop: 'purOrder',
+    attr: {
+      placeholder: '采购单号'
     }
   },
   {
-    text: '最近一个月',
-    value: () => {
-      const end = new Date()
-      const start = new Date()
-      start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
-      return [start, end]
+    name: 'select',
+    prop: 'isDelay',
+    attr: {
+      options: [
+        {
+          value: 0,
+          label: '是'
+        },
+        {
+          value: 1,
+          label: '否'
+        }
+      ],
+      placeholder: '延期'
     }
   },
   {
-    text: '最近三个月',
-    value: () => {
-      const end = new Date()
-      const start = new Date()
-      start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
-      return [start, end]
+    name: 'select',
+    prop: 'status',
+    attr: {
+      options: [
+        {
+          value: 0,
+          label: '待交货'
+        },
+        {
+          value: 1,
+          label: '部分交货'
+        },
+        {
+          value: 2,
+          label: '全部交货'
+        },
+        {
+          value: 3,
+          label: '已对账'
+        },
+        {
+          value: 4,
+          label: '已结算'
+        }
+      ],
+      placeholder: '状态'
+    }
+  },
+  {
+    name: 'date',
+    prop: 'searchDate',
+    attr: {
+      type: 'daterange'
+    }
+  },
+  {
+    name: 'button',
+    text: '查询',
+    attr: {
+      type: 'primary'
+    },
+    on: {
+      click: onSearch
     }
   }
-]
+  ,
+  {
+    name: 'button',
+    text: '箱号查询',
+    attr: {
+      type: 'warning'
+    }
+  },
+  {
+    name: 'button',
+    text: '导出',
+    attr: {
+      type: 'warning'
+    }
+  }
+])
+const queryList = reactive({})
 
-// 下拉框选择器
-const purDelay = ref()
-const delayInit = ['是', '否']
-const delayOptions = Array.from({ length: 2 }).map((_, idx) => ({
-  value: `delay ${idx + 1}`,
-  label: `${delayInit[idx % 10]}`
-}))
-const purStatus = ref()
-const statusInit = ['待交货', '部分交货', '全部交货', '已对账', '已结算']
-const statusOptions = Array.from({ length: 5 }).map((_, idx) => ({
-  value: `delay ${idx + 1}`,
-  label: `${statusInit[idx % 10]}`
-}))
+watch(queryList, (val) => {
+  console.log('val', val)
+})
+
 
 // 表格
+const isLoading = ref<boolean>(true)
 const tableData = [
   {
     date: '2016-05-03',
@@ -170,20 +185,3 @@ onMounted(() => {
 })
 </script>
 
-<style scoped lang="scss">
-:deep(.el-input) {
-  width: 120px;
-}
-
-:deep(.el-date-editor.el-input__wrapper) {
-  width: 200px;
-}
-
-.el-select-v2 {
-  width: 100px;
-}
-
-:deep(.testxxx) {
-  left: 10px !important;
-}
-</style>

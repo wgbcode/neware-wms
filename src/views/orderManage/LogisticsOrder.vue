@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Search :configData="configData" :queryParams="queryParams" />
+    <Search :config="config" :queryList="queryList" />
   </div>
 </template>
 
@@ -13,12 +13,10 @@ const options = Array.from({ length: 1000 }).map((_, idx) => ({
   value: `Option${idx + 1}`,
   label: `${initials[idx % 10]}${idx}`,
 }))
-
 const onSearch = () => {
-  console.log('我被调用了');
+  console.log('查询')
 }
-
-const configData = reactive([
+const config = reactive([
   {
     name: 'input',
     prop: 'testInput',
@@ -38,6 +36,14 @@ const configData = reactive([
   },
   {
     name: 'date',
+    prop: 'testDate3',
+    attr: {
+      type: 'datetimerange',
+      shortcuts: true
+    }
+  },
+  {
+    name: 'date',
     prop: 'testDate',
     attr: {
       shortcuts: true
@@ -51,12 +57,11 @@ const configData = reactive([
       shortcuts: true
     }
   },
-
   {
     name: 'date',
-    prop: 'testDate3',
+    prop: 'testDate5',
     attr: {
-      type: 'datetimerange',
+      type: 'monthrange',
       shortcuts: true
     }
   },
@@ -69,6 +74,9 @@ const configData = reactive([
     }
   },
   {
+    name: 'treeSelect'
+  },
+  {
     name: 'button',
     text: '查询',
     attr: {
@@ -79,18 +87,8 @@ const configData = reactive([
     }
   },
 ])
-const queryParams = reactive({
-  testInput: '',
-  testSelect: null,
-  testDate: '',
-  testDate2: '',
-  testDate3: '',
-  testDate4: '',
-})
-
-watch(queryParams, (value, preValue) => {
-  console.log(value, preValue);
-})
+const queryList = reactive({})
+watch(queryList, (value) => console.log('val', value))
 
 </script>
 

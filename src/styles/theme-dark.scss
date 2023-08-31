@@ -85,4 +85,13 @@ html.dark {
       }
     }
   }
+  .el-date-editor{
+    .el-range__icon {
+      margin-right:8px
+    }
+    .el-range-input {
+      font-size:12px;
+      margin-top:2px
+    }
+  }
 }
