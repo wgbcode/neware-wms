@@ -11,10 +11,10 @@
 import Button from './Button.vue'
 import Input from './Input.vue'
 import Select from './Select.vue'
-import DatePicker from './DatePicker.vue'
 import TreeSelect from './TreeSelect.vue'
+import DatePicker from './DatePicker.vue'
 import { type PropType, type Component } from 'vue'
-import formatConfig from './formatConfig'
+import addDefaultConfig from './addDefaultConfig'
 
 export type Config = {
     name: string,
@@ -39,5 +39,5 @@ const matchMap: Record<string, Component> = {
     treeSelect: TreeSelect,
     date: DatePicker
 }
-const newConfig = formatConfig(props.config)
+const newConfig = addDefaultConfig(props.config)
 </script>

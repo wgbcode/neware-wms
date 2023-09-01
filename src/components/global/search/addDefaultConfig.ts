@@ -111,11 +111,12 @@ const dateTypeCheck = (style: Record<string, any>, attr: Record<string, any>, ty
   }
 }
 
-export default function formatConfig(config: Config) {
+export default function addDefaultConfig(config: Config) {
   return config.map((item) => {
     item.isShow ??= true
     const attr = (item.attr ??= {})
-    const style = (item.style ??= { height: '24px', marginRight: '5px', marginBottom: '10px' })
+    const height = item.name !== 'treeSelect' ? '24px' : 'auto'
+    const style = (item.style ??= { height, marginRight: '5px', marginBottom: '10px' })
     switch (item.name) {
       case 'button':
         attr.type ??= 'default'
