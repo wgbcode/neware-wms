@@ -18,7 +18,6 @@
 
 <script setup lang="ts">
 import { onMounted, reactive, ref, watch } from 'vue'
-import Search from '@/components/global/search/index.vue'
 
 // 搜索栏
 const onSearch = () => console.log('查询')

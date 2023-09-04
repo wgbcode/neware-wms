@@ -6,7 +6,7 @@ export const layoutStore = defineStore('Layout', () => {
   const isShowAside = ref<boolean>(true)
   const reloadRouter = ref<boolean>(true)
   const mainTopHeight = ref<number>(0)
-  const visitedViews = reactive<RouteLocation[]>([])
+  const visitedViews = reactive<RouteLocation[]>([]) // toDo：数据持久化
 
   // Aside action
   function toogleAside() {

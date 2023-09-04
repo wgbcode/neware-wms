@@ -1,5 +1,5 @@
 <template>
-  <div class="c-h100p c-flex-column">
+  <div class="c-h100p c-flex-column c-overflow-hidden">
     <Header class="header c-h45" />
     <section class="c-flex-1 c-flex">
       <Aside class="aside c-w180" v-show="layoutStore.isShowAside" />

@@ -1,40 +1,19 @@
 <template>
-  <div
-    class="tags-container c-relative c-forbidSelect"
-    ref="scrollContainer"
-    @wheel.prevent="calculateLeft(true, $event)"
-  >
-    <div
-      class="tags-wrapper c-w100p c-white-nowrap c-relative c-overflow-hidden c-h28"
-      ref="scrollWrapper"
-    >
+  <div class="tags-container c-relative c-forbidSelect" ref="scrollContainer"
+    @wheel.prevent="calculateLeft(true, $event)">
+    <div class="tags-wrapper c-w100p c-white-nowrap c-relative c-overflow-hidden c-h28" ref="scrollWrapper">
       <div class="c-absolute c-flex" ref="scrollWrapper" :style="{ left: -scrollLeft + 'px' }">
-        <router-link
-          ref="tags"
-          class="tags-item c-inline-block c-flex-ycenter c-px8 c-py0 c-mr1 c-fs12"
-          :class="isActive(tag) ? 'active' : ''"
-          v-for="(tag, index) in visitedViews"
-          :to="tag"
-          :key="`${index}_${tag.path}`"
-          @contextmenu.prevent="openMenu(tag)"
-        >
+        <router-link ref="tags" class="tags-item c-inline-block c-flex-ycenter c-px8 c-py0 c-mr1 c-fs12"
+          :class="isActive(tag) ? 'active' : ''" v-for="(tag, index) in visitedViews" :to="tag"
+          :key="`${index}_${tag.path}`" @contextmenu.prevent="openMenu(tag)">
           <span class="c-mr2 c-cblack">{{ tag.meta?.title ?? '主页' }}</span>
-          <Icon
-            class="c-mt2"
-            name="close"
-            size="12px"
-            :color="isActive(tag) ? '#fff' : '#000'"
-            @click.prevent.stop="closeSelectedTag(tag)"
-            v-show="tag.name === 'home' ? false : true"
-          />
+          <Icon class="c-mt2" name="close" size="12px" :color="isActive(tag) ? '#fff' : '#000'"
+            @click.prevent.stop="closeSelectedTag(tag)" v-show="tag.name === 'home' ? false : true" />
         </router-link>
       </div>
     </div>
-    <ul
-      class="contextmenu c-absolute"
-      v-show="menuData.visible"
-      :style="{ left: menuData.left + 'px', top: menuData.top + 'px' }"
-    >
+    <ul class="contextmenu c-absolute" v-show="menuData.visible"
+      :style="{ left: menuData.left + 'px', top: menuData.top + 'px' }">
       <li @click="closeSelectedTag(menuData.selectedTag)">关闭本页面</li>
       <li @click="closeOtherTag(menuData.selectedTag)">关闭其他</li>
       <li @click="closeAllTag">全部关闭</li>
@@ -88,10 +67,10 @@ const calculateLeft = async (isWheel: boolean, e?: WheelEvent) => {
       containerWidth > totalWidth
         ? 0
         : selectedLeft < scrollLeft.value
-        ? selectedLeft
-        : selectedLeft + selectedWidth > containerWidth
-        ? selectedLeft + selectedWidth - containerWidth
-        : 0
+          ? selectedLeft
+          : selectedLeft + selectedWidth > containerWidth
+            ? selectedLeft + selectedWidth - containerWidth
+            : 0
   } else {
     const newScrollLeft = Math.max(
       0,
@@ -115,8 +94,8 @@ const closeOtherTag = (tag: RouteLocation) => {
   menuData.visible = false
 }
 const closeAllTag = () => {
-  layoutStore.delAllViews()
   router.push({ path: '/accountCenter/home' })
+  layoutStore.delAllViews()
 }
 const refreshTag = async () => {
   layoutStore.refreshViews()
@@ -144,7 +123,7 @@ onMounted(() => {
 
 // 路由变换时重新渲染 tagsView 组件
 watch(route, (to) => {
-  let existRouter = visitedViews.map((i) => i.name).includes(to.name)
+  const existRouter = visitedViews.map((i) => i.name).includes(to.name)
   existRouter ? '' : layoutStore.addVisitedViews(deepClone(to))
   calculateLeft(false)
   menuData.visible = false
