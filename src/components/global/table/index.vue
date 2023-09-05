@@ -1,15 +1,27 @@
 <template>
     <div>
         <component :is="Table" :data="data" v-bind="newTableConfig" v-on="newTableConfig.on"
-            :columnsConfig="newColumnsConfig" />
+            :columnsConfig="newColumnsConfig">
+            <!-- 插槽向下传递 -->
+            <template v-for="(_, name) in $slots" #[name]="row">
+                <slot :name="name" v-bind="row" />
+            </template>
+        </component>
     </div>
 </template>
 
 <script setup lang="ts">
-import type { PropType } from 'vue';
+import type { PropType } from 'vue'
 import Table from './Table.vue'
 import { addColumnsDefaultConfig, addTableDefaultConfig } from './addDefaultConfig'
+import { getCurInstanceName } from '@/utils/common'
 // import VirTable from './VirTualizedTable.vue'
+
+type TableConfig = {
+    height?: string,
+    width?: string,
+    on?: Record<string, Function>  // 批量绑定事件
+}
 
 export type ColumnsConfig = {
     type?: string,
@@ -18,13 +30,8 @@ export type ColumnsConfig = {
     width?: string,
     child?: ColumnsConfig,  // 多级表头
     'show-overflow-tooltip'?: boolean, // 禁止多行，悬浮时 tooltip 提示
+    slotName: string, // 插槽命名
 }[]
-
-type TableConfig = {
-    height?: string,
-    width?: string,
-    on?: Record<string, Function>  // 批量绑定事件
-}
 
 const props = defineProps({
     data: {
@@ -40,7 +47,7 @@ const props = defineProps({
 const newTableConfig = addTableDefaultConfig(props.tableConfig)
 const newColumnsConfig = addColumnsDefaultConfig(props.columnsConfig)
 
-
+console.log(111, getCurInstanceName())
 // const matchMap = {
 //     table: Table,
 //     virTable: VirTable

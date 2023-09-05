@@ -3,8 +3,18 @@
     <Search :config="config" :queryList="queryList" />
     <CommonTable :data="tableData" :columnsConfig="columnsConfig" :tableConfig="tableConfig"
       class="c-flex-1 c-overflow-auto">
-
-
+      <template #date="row">
+        {{ console.log('slotProps111', row) }}
+        <div>{{ row.name }}</div>
+      </template>
+      <template #name="row">
+        {{ console.log('slotProps111', row) }}
+        <div>{{ row.date }}</div>
+      </template>
+      <template #address="row">
+        {{ console.log('slotProps111', row) }}
+        <div>{{ row.date }}</div>
+      </template>
     </CommonTable>
   </div>
 </template>
@@ -17,6 +27,8 @@ interface User {
   name: string
   address: string
 }
+
+
 const tableData = reactive([
   {
     date: '2016-05-03',
@@ -910,13 +922,13 @@ const tableConfig = reactive({
 })
 const columnsConfig = reactive([
   { type: 'selection', width: '35' },
-  { prop: 'date', label: 'Date', width: '300', fixed: true, sortable: true },
+  { prop: 'date', slotName: 'date', label: 'Date', width: '300', fixed: true, sortable: true },
   {
     label: 'test', child: [
-      { prop: 'name', label: 'Name', width: '500' },
+      { prop: 'name', slotName: 'name', label: 'Name', width: '500' },
       {
         label: 'address1', child: [
-          { label: 'address', prop: 'address', width: '500' },
+          { label: 'address', slotName: 'address', prop: 'address', width: '500' },
           { label: 'address2' }
         ]
       }
@@ -939,7 +951,6 @@ function handleCurrentChange(val: User | undefined) {
   currentRow.value = val
   console.log('val', val)
 }
-
 
 // Search
 const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
