@@ -30,7 +30,11 @@ export type ColumnsConfig = {
     width?: string,
     child?: ColumnsConfig,  // 多级表头
     'show-overflow-tooltip'?: boolean, // 禁止多行，悬浮时 tooltip 提示
-    slotName: string, // 插槽命名
+    slotName?: string, // 插槽命名
+    format?: string | Record<string, any>, // 格式化配置
+    align?: string,
+    attr?: Record<string, any>, // 批量绑定属性，如 input、select
+    on?: Record<string, Function>, // 批量绑定事件, 如 input、select、Icon
 }[]
 
 const props = defineProps({
