@@ -33,10 +33,10 @@
             <slot v-else :name="config.slotName" v-bind="scope.row"></slot>
         </template>
         <template v-if="config.child">
-            <TableColumn v-for="(item, index) in config.child" :key="index" :config="item">
+            <TableColumn v-for="(item, index) in  config.child " :key="index" :config="item">
                 <!-- 插槽向下传递 -->
-                <template v-for="(_, name) in  $slots" v-slot:[name]="row">
-                    <slot :name="name" v-bind="row" />
+                <template v-for="(_, name) in   $slots " v-slot:[name]="row: Record<string, any>">
+                    <slot :name=" name " v-bind=" row " />
                 </template>
             </TableColumn>
         </template>
