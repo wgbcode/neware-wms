@@ -1,7 +1,7 @@
 <template>
     <div class="c-flex-ycenter c-flex-only-wrap">
         <div v-for="(item, index) in newConfig " :key="index">
-            <component v-if="item.isShow" :is="matchMap[item.name]" v-model="queryList![item.prop!]" v-bind="item.attr"
+            <component v-if="item.isShow" :is="matchMap[item.name]" v-model="data![item.prop!]" v-bind="item.attr"
                 :style="{ ...item.style }" :text="item.text" :on="item.on" />
         </div>
     </div>
@@ -26,7 +26,7 @@ export type Config = {
     on?: Record<string, any>
 }[]
 const props = defineProps({
-    queryList: Object,
+    data: Object,
     config: {
         type: Object as PropType<Config>,
         required: true

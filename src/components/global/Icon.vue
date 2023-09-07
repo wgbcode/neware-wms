@@ -35,3 +35,9 @@ const props = defineProps({
 const symbolId = computed(() => `#${props.prefix}-${props.name}`)
 const curColor = computed(() => props.color)
 </script>
+
+<style scoped lang="scss">
+.svg-icon:focus {
+  outline: none;
+}
+</style>

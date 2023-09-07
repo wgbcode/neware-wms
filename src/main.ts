@@ -19,6 +19,7 @@ const app = createApp(App)
 const pinia = createPinia()
 
 // 全局注册组件
+// toDo：CommonSearch、CommonTable 两个组件切换主题时颜色滞后问题
 const registerComponent = (mapObj: Record<string, Component>) => {
   for (const [key, component] of Object.entries(mapObj)) {
     app.component(key, component)

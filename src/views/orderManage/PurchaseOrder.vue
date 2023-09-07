@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="c-flex-between c-flex-only-wrap">
-      <CommonSearch :config="searchConfig" :queryList="queryList" />
+      <CommonSearch :data="queryList" :config="searchConfig" />
     </section>
     <section class="c-flex-1 c-pt5 test2">
       <el-table :data="tableData" style="width: 100%" height="100%" v-loading="isLoading">
@@ -21,7 +21,7 @@ import { onMounted, reactive, ref, watch } from 'vue'
 
 // 搜索栏
 const onSearch = () => console.log('查询')
-const searchConfig = reactive([
+const searchConfig = [
   {
     name: 'input',
     prop: 'purOrder',
@@ -107,7 +107,7 @@ const searchConfig = reactive([
       type: 'warning'
     }
   }
-])
+]
 const queryList = reactive({})
 
 watch(queryList, (val) => {

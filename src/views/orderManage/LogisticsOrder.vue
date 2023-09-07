@@ -1,7 +1,7 @@
 <template>
   <div>
-    <CommonSearch :config="config" :queryList="queryList" />
-    <CommonTable :data="tableData" :columnsConfig="columnsConfig" :tableConfig="tableConfig"
+    <CommonSearch :data="queryList" :config="config" />
+    <CommonTable :data="tableData" :tableConfig="tableConfig" :columnsConfig="columnsConfig"
       class="c-flex-1 c-overflow-auto">
       <template #date="row">
         <div>{{ row.date }}</div>
@@ -10,8 +10,10 @@
         <div>{{ row.name }}</div>
       </template>
       <template #address="row">
-        <!-- {{ console.log('slotProps111', row) }} -->
         <div>{{ row.address }}</div>
+      </template>
+      <template #expand>
+        <div>请自定义插槽模板</div>
       </template>
     </CommonTable>
   </div>
@@ -25,236 +27,279 @@ interface User {
   name: string
   address: string
 }
-
+// interface User2 extends User {
+//   id: number,
+//   children?: User[]
+// }
 
 const tableData = reactive([
   {
     date: '2016-05-02',
     name: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
+    number: 1
   },
   {
     date: '2016-05-04',
     name: 'Tom',
     address: 'No. 189, Grove St, Los Angeles',
+    number: 2
   },
   {
     date: '2016-05-01',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-01',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-01',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-01',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-01',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-03',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-01',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-01',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-01',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-01',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-01',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-03',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-01',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles'
   }
-
 ])
-const tableConfig = reactive({
+// const newTableData = tableData.map((item, index) => {
+//   const obj: User2 = { id: index, ...item }
+//   if (index === 1) {
+//     obj.children = []
+//     obj.children.push(item)
+//   }
+//   return obj
+// })
+
+const tableConfig = {
   height: '100%',
   width: '100%',
-  "row-class-name": tableRowClassName,
-  "default-sort": { prop: 'date', order: 'descending' },
+  'row-key': 'id',
+  'show-summary': true,
+  isCustomFooter: true,
+  footerMethod: footMethod,
+  'row-class-name': tableRowClassName,
+  'default-sort': { prop: 'date', order: 'descending' },
   on: {
-    "current-change": handleCurrentChange
+    'current-change': handleCurrentChange
   }
-})
-const columnsConfig = reactive([
+}
+const columnsConfig = [
+  { type: 'expand' },
   { type: 'selection' },
-  { label: '#', slotName: 'index' },
-  { prop: 'date', slotName: 'hasArrow', label: 'Date', width: '200', sortable: true, on: { click: clickArrow } },
+  { slotName: 'index' },
   {
-    label: 'test', child: [
-      { prop: 'name', slotName: 'treeSelect', label: 'Name' },
+    prop: 'date',
+    label: 'Date',
+    width: '200',
+    sortable: true,
+    slotName: 'addArrow',
+    slotParams: { type: 'date' },
+    slotOn: { click: clickArrow }
+  },
+  {
+    label: 'test',
+    child: [
+      { prop: 'name', label: 'Name', slotName: 'treeSelect' },
       {
-        label: 'address1', child: [
-          { label: 'address', slotName: 'address', prop: 'address', width: '200' },
-          { label: 'address2' }
+        label: 'address1',
+        child: [
+          { label: 'address', prop: 'address', width: '200', slotName: 'address', headerSlotName: 'tooltip', headerSlotParams: { content: 'Top Center prompts info' }, },
+          { label: 'number', prop: 'number', slotName: 'number' }
         ]
       }
     ]
   },
   {
-    label: 'test5', slotName: 'datePicker', prop: 'test5'
+    label: 'test5',
+    prop: 'test5',
+    slotName: 'datePicker',
   },
   {
-    label: 'test6', slotName: 'datePicker', prop: 'test6', attr: { type: 'datetime' }
+    label: 'test6',
+    prop: 'test6',
+    slotName: 'datePicker',
+    slotAttr: { type: 'datetime' },
+    headerSlotName: 'tooltip',
+    headerSlotParams: { content: 'Top Center prompts info' },
   },
   {
-    label: 'test2', slotName: 'input', prop: 'test2', attr: { type: 'number', min: 0, max: 1000000 }, on: { change: handleChange }
+    label: 'test2',
+    prop: 'test2',
+    slotName: 'input',
+    slotParams: { type: 'number', min: 0, max: 1000000 },
+    slotOn: { change: handleChange }
   },
   {
-    label: 'test3', slotName: 'select', prop: 'test3'
+    label: 'test3',
+    prop: 'test3',
+    slotName: 'select'
   },
   {
-    label: 'test4', slotName: 'input', prop: 'test4'
+    label: 'test4',
+    prop: 'test4',
+    slotName: 'input'
   }
-])
+]
 function tableRowClassName({ rowIndex }: Record<string, number>) {
   if (rowIndex === 1) {
     return 'warning-row'
@@ -273,7 +318,18 @@ function handleChange(value: number) {
 }
 function clickArrow() {
   console.log('我被点击了')
-
+}
+function footMethod(prop: string, values: number[]) {
+  let res = ''
+  const textLabel = 'address'
+  const numLabels = ['number']
+  if (prop === textLabel) res = '合计'
+  else if (!values.every((value) => Number.isNaN(value))) {
+    numLabels.forEach((label) => {
+      res = prop === label ? `${values.reduce((prev, curr) => (Number.isNaN(Number(curr)) ? prev : prev + curr), 0)}` : ''
+    })
+  }
+  return res
 }
 // watch(tableData, (value) => console.log('val', value))
 
@@ -281,17 +337,18 @@ function clickArrow() {
 const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 const options = Array.from({ length: 1000 }).map((_, idx) => ({
   value: `Option${idx + 1}`,
-  label: `${initials[idx % 10]}${idx}`,
+  label: `${initials[idx % 10]}${idx}`
 }))
 const onSearch = () => {
   console.log('查询')
 }
-const config = reactive([
+const queryList = reactive({})
+const config = [
   {
     name: 'input',
     prop: 'testInput',
     attr: {
-      type: 'text',
+      type: 'text'
     },
     on: {
       keyup: onSearch
@@ -355,11 +412,9 @@ const config = reactive([
     on: {
       click: onSearch
     }
-  },
-])
-const queryList = reactive({})
+  }
+]
 watch(queryList, (value) => console.log('val', value))
-
 </script>
 
 <style scoped lang="scss">
