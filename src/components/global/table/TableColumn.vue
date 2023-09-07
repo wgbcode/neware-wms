@@ -16,7 +16,7 @@
             </span>
             <span v-else-if="config.slotName === 'addArrow'"
                 :class="config.slotParams.layout === 'between' ? 'c-flex-between' : 'c-flex-ycenter'">
-                <Icon name="arrow" color="#F8B500" size="12" class="c-mr2 c-mb1" v-on="config.slotOn" />
+                <Icon name="arrow" color="var(--tc-brand)" size="12" class="c-mr2 c-mb1" v-on="config.slotOn" />
                 {{ formatValue(config.slotParams.type, { value: scope.row[config.prop], ...config.slotParams.format }) }}
             </span>
             <div v-else-if="config.slotName === 'input'">
