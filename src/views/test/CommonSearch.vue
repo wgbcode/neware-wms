@@ -74,7 +74,8 @@ const config = [
         }
     },
     {
-        name: 'treeSelect'
+        name: 'treeSelect',
+        prop: 'treeSelect'
     },
     {
         name: 'button',

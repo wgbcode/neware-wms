@@ -36,10 +36,10 @@
             <slot v-else :name="config.slotName" v-bind="scope.row"></slot>
         </template>
         <template v-if="config.child">
-            <TableColumn v-for="(item, index) in   config.child  " :key="index" :config="item">
+            <!-- toDo：row 添加类型判断后，保存时 v-for 自动添加空格问题 -->
+            <TableColumn v-for="(item, index) in  config.child " :key="index" :config="item">
                 <!-- 插槽向下传递 -->
-                <!-- toDo：row 添加类型判断时，保存时 v-for 自动添加空格问题 -->
-                <template v-for="(_, name) in   $slots  " v-slot:[name]="row: Record<string, any>">
+                <template v-for="(_, name) in  $slots " v-slot:[name]="row: Record<string, any>">
                     <slot :name=" name " v-bind=" row " />
                 </template>
             </TableColumn>
