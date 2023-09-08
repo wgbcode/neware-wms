@@ -36,12 +36,20 @@
 
 .el-table {
   .el-table__header {
-    .el-table__cell {
+    th.el-table__cell {
       line-height: 23px;
     }
   }
   .el-table__body {
-    .el-table__cell {
+    tr.warning-row{
+      --el-table-tr-bg-color: var(--el-color-warning-light-9);
+      --el-fill-color-lighter: var(--el-color-warning-light-9);
+    }
+    tr.success-row{
+      --el-table-tr-bg-color: var(--el-color-success-light-9);
+      --el-fill-color-lighter: var(--el-color-success-light-9);
+    }
+    td.el-table__cell {
       .el-input,
       .el-input-number,
       .el-select-v2,
@@ -69,12 +77,54 @@
   }
   .el-table__header,
   .el-table__body {
-    .el-table__cell {
+    td.el-table__cell {
       padding: 0;
     }
-    .el-checkbox__inner {
+    td.el-checkbox__inner {
       width: 14px;
       height: 14px;
     }
   }
 }
+
+.el-pagination{
+  padding:8px 10px 6px 10px;
+  background-color: var(--tc-content-dialogd);
+  .el-pagination__total{
+    font-size:13px;
+  }
+  .el-pagination__sizes{
+    .el-input{
+      --el-select-input-focus-border-color:var(--tc-brand);
+    }
+    .el-input__inner{
+      font-weight: 700
+    }
+  }
+  .el-pager {
+    li{
+      width:24px;
+      min-width:24px;
+      margin:0 4px;
+      padding:0;
+      font-weight: 700;
+      font-size: 13px;
+      background-color: var(--tc-pagination);
+    }
+    li.is-active{
+      color:white;
+      background-color: var(--tc-brand);
+    }
+    li:hover:not(.is-active){
+      color:var(--tc-brand);
+    }
+  }
+  .el-pagination__jump .el-input__wrapper{
+    --el-input-focus-border-color:var(--tc-brand);
+  }
+  button,ul,ul>li,span,span .el-input,span .el-input__inner{
+    height:24px;
+    line-height: 24px;
+  }
+}
+

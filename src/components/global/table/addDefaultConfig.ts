@@ -13,7 +13,12 @@ export const addTableDefaultConfig = (tableConfig: Record<string, any> | undefin
   config.border ??= true
   config['style'] ??= { width: config.width ?? '100%' }
   config['highlight-current-row'] ??= true
-  config.isCustomFooter ? (config['summary-method'] = getSummaries(config.footerMethod)) : ''
+  config['table-layout'] ??= 'fixed'
+  config.addPagination ??= true
+  if (config.isCustomFooter) {
+    config['show-summary'] = true
+    config['summary-method'] = getSummaries(config.footerMethod)
+  }
   return tableConfig
 }
 

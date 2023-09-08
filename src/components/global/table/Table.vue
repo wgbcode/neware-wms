@@ -13,6 +13,7 @@
 
 <script setup lang="ts">
 import TableColumn from './TableColumn.vue'
+
 defineProps({
     tableConfig: {
         type: Object,

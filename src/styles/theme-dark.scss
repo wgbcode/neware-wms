@@ -1,4 +1,5 @@
 html.dark {
+  // ui-standard
   --tc-pure: #fff;
   --tc-pure-reverse: #000;
   --tc-brand: #f8b500;
@@ -59,5 +60,7 @@ html.dark {
   --tc-table-header: #525252;
   --tc-navbar-border: #525252;
   --tc-tooltip: #c7c7c7;
+  // custom
+  --tc-pagination:#464343;
   @import './theme-element.scss';
 }

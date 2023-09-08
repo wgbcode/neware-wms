@@ -1,4 +1,5 @@
 html.light {
+  // ui-standard
   --tc-pure: #000;
   --tc-pure-reverse: #fff;
   --tc-brand: #f8b500;
@@ -59,5 +60,7 @@ html.light {
   --tc-table-header: #c9c9c9;
   --tc-navbar-border: #333;
   --tc-tooltip: #4d4d4d;
+  // custom
+  --tc-pagination:#efeff3;
   @import './theme-element.scss';
 }

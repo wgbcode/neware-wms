@@ -1,3 +1,4 @@
+// toDo: include 已配置，但导入仍报错问题
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": [

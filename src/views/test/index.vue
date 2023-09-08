@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useDark, useToggle } from '@vueuse/core'
 const isDark = useDark({ valueDark: 'dark', valueLight: 'light' })
 const toggleDark = useToggle(isDark)
-
-const checked1 = ref(true)
-const checked2 = ref(false)
-const checked3 = ref(false)
-const checked4 = ref(false)
 </script>
 
 <template>
   <div>
-    <!-- element-ui Icon 测试 -->
-    <div class="wrapper">
-      <el-button type="primary" icon="Delete">test</el-button>
+    <h1 class="c-fw700 c-ml20 c-mt20">1、自定义类名</h1>
+    <div class="c-w100 c-h50  c-fs30 c-ml50 c-mt20">测试</div>
+
+    <h1 class="c-fw700 c-ml20 c-mt20">2、element plus 内置 Icon 组件(不推荐)</h1>
+    <div class="c-flex c-m20 c-p20 c-flex-ycenter">
+      <el-button type="primary" icon="Search">Search</el-button>
       <el-button type="primary">
         <el-icon style="vertical-align: middle">
           <Search />
@@ -22,40 +19,18 @@ const checked4 = ref(false)
         <span style="vertical-align: middle"> Search </span>
       </el-button>
       <el-icon size="50" color="#f75239">
-        <Edit />
+        <Search />
       </el-icon>
-      <Search style="width: 1em; height: 1em; margin-right: 8px" />
+      <Search style="width: 50px; height: 50px; margin-right: 8px" />
     </div>
 
-    <!-- 自定义 Icon 图标 -->
-    <div class="wrapper">
+    <h1 class="c-fw700 c-ml20 c-mt20">3、自定义 Icon 图标（推荐）</h1>
+    <div class="c-flex c-m20 c-p20">
+      <Icon name="save" color="red" size="50px" class="c-mr10"></Icon>
       <Icon name="delete" color="black" size="50px"></Icon>
-      <Icon name="save" color="red" size="50px"></Icon>
     </div>
 
-    <!-- 主题样式测试 -->
-    <div class="wrapper" style="flex-direction: column">
-      <el-button type="primary" @click="toggleDark()">主题切换</el-button>
-      <div>
-        <el-checkbox v-model="checked1" label="Option 1" size="large" />
-        <el-checkbox v-model="checked2" label="Option 2" size="large" />
-      </div>
-      <div>
-        <el-checkbox v-model="checked3" label="Option 1" />
-        <el-checkbox v-model="checked4" label="Option 2" />
-      </div>
-    </div>
-
-    <!-- 自定义类名（样式） -->
-    <div class="c_w300 c_h300 c_fw700 c_fs30 c_ml20" style="border: 1px solid black">Test</div>
+    <h1 class="c-fw700 c-ml20 c-mt20">4、主题样式测试</h1>
+    <el-button class="c-ml20 c-w500 c-mt20" type="primary" @click="toggleDark()">主题切换</el-button>
   </div>
 </template>
-
-<style scoped lang="scss">
-.wrapper {
-  display: flex;
-  margin: 20px;
-  border: 1px solid black;
-  padding: 20px;
-}
-</style>

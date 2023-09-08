@@ -23,7 +23,6 @@
  	|-- api 接口管理
  	|-- assets 图片等资源
  	|-- directive 指令
- 	|-- filter 过滤器
 	|-- router 路由
     |-- stores 全局状态管理
 	|-- styles 全局样式

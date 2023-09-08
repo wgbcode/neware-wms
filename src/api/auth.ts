@@ -70,6 +70,43 @@ export function getUserInfo(params: string): Promise<UserInfo> {
           component: () => import('@/views/orderManage/LogisticsOrder.vue')
         }
       ]
+    },
+    {
+      path: '/test',
+      name: 'test',
+      meta: { title: '测试', icon: 'test', hidden: false },
+      children: [
+        {
+          path: '/test/index',
+          name: 'index',
+          meta: { title: '测试', icon: '', hidden: false },
+          component: () => import('@/views/test/index.vue')
+        },
+        {
+          path: '/test/CommonSearch',
+          name: 'commonSearch',
+          meta: { title: '搜索栏', icon: '', hidden: false },
+          component: () => import('@/views/test/CommonSearch.vue')
+        },
+        {
+          path: '/test/CommonTable',
+          name: 'commonTable',
+          meta: { title: '表格', icon: '', hidden: false },
+          component: () => import('@/views/test/CommonTable.vue')
+        },
+        {
+          path: '/test/CommonPaginatin',
+          name: 'commonPaginatin',
+          meta: { title: '分页器', icon: '', hidden: false },
+          component: () => import('@/views/test/CommonPaginatin.vue')
+        },
+        {
+          path: '/test/CommonVirtualTable',
+          name: 'CommonVirtualTable',
+          meta: { title: '虚似化表格', icon: '', hidden: false },
+          component: () => import('@/views/test/CommonVirtualTable.vue')
+        }
+      ]
     }
   ]
   const willAddRoute = {

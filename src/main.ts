@@ -12,6 +12,7 @@ import VueVirtualScroller from 'vue-virtual-scroller'
 import Icon from '@/components/global/Icon.vue'
 import CommonSearch from '@/components/global/search/index.vue'
 import CommonTable from '@/components/global/table/index.vue'
+import CommonPaginatin from '@/components/global/pagination/index.vue'
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 import '@/permission'
 
@@ -29,7 +30,8 @@ registerComponent(ElementPlusIconsVue) // element Icon 图标
 const globalComponentMap = {
   Icon: Icon, // 自定义 Icon 组件
   CommonSearch: CommonSearch, // 搜索栏
-  CommonTable: CommonTable // 表格（分页和虚拟列表）
+  CommonTable: CommonTable, // 表格（分页和虚拟列表）
+  CommonPaginatin: CommonPaginatin // 分页器
 }
 registerComponent(globalComponentMap)
 

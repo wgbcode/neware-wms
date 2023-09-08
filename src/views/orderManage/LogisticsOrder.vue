@@ -1,8 +1,7 @@
 <template>
   <div>
     <CommonSearch :data="queryList" :config="config" />
-    <CommonTable :data="tableData" :tableConfig="tableConfig" :columnsConfig="columnsConfig"
-      class="c-flex-1 c-overflow-auto">
+    <CommonTable :data="tableData" :tableConfig="tableConfig" :columnsConfig="columnsConfig" class="c-flex-1">
       <template #date="row">
         <div>{{ row.date }}</div>
       </template>
@@ -20,228 +19,21 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, watch } from 'vue'
+import { reactive, watch } from 'vue'
 // Table
-interface User {
-  date: string
-  name: string
-  address: string
-}
-// interface User2 extends User {
-//   id: number,
-//   children?: User[]
-// }
-
-const tableData = reactive([
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-    number: 1
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-    number: 2
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  }
-])
-// const newTableData = tableData.map((item, index) => {
-//   const obj: User2 = { id: index, ...item }
-//   if (index === 1) {
-//     obj.children = []
-//     obj.children.push(item)
-//   }
-//   return obj
-// })
+const tableData = reactive(Array.from({ length: 50 }).map((_, idx) => ({
+  id: idx,
+  date: '2016-05-02',
+  name: 'Tom',
+  address: 'No. 189, Grove St, Los Angeles',
+  number: idx * 100
+})))
 
 const tableConfig = {
   height: '100%',
   width: '100%',
-  'row-key': 'id',
-  'show-summary': true,
   isCustomFooter: true,
-  footerMethod: footMethod,
-  'row-class-name': tableRowClassName,
-  'default-sort': { prop: 'date', order: 'descending' },
-  on: {
-    'current-change': handleCurrentChange
-  }
+  footerMethod: footMethod
 }
 const columnsConfig = [
   { type: 'expand' },
@@ -300,19 +92,6 @@ const columnsConfig = [
     slotName: 'input'
   }
 ]
-function tableRowClassName({ rowIndex }: Record<string, number>) {
-  if (rowIndex === 1) {
-    return 'warning-row'
-  } else if (rowIndex === 3) {
-    return 'success-row'
-  }
-  return ''
-}
-const currentRow = ref()
-function handleCurrentChange(val: User | undefined) {
-  currentRow.value = val
-  console.log('val', val)
-}
 function handleChange(value: number) {
   console.log('value', value)
 }
@@ -331,7 +110,7 @@ function footMethod(prop: string, values: number[]) {
   }
   return res
 }
-// watch(tableData, (value) => console.log('val', value))
+watch(tableData, (value) => console.log('val', value))
 
 // Search
 const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
@@ -416,15 +195,3 @@ const config = [
 ]
 watch(queryList, (value) => console.log('val', value))
 </script>
-
-<style scoped lang="scss">
-:deep(.el-table .warning-row) {
-  --el-table-tr-bg-color: var(--el-color-warning-light-9);
-  --el-fill-color-lighter: var(--el-color-warning-light-9);
-}
-
-:deep(.el-table .success-row) {
-  --el-table-tr-bg-color: var(--el-color-success-light-9);
-  --el-fill-color-lighter: var(--el-color-success-light-9);
-}
-</style>

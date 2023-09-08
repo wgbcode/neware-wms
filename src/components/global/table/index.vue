@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="c-overflow-auto">
         <component :is="Table" :data="data" :columnsConfig="newColumnsConfig" :tableConfig="newTableConfig">
             <!-- 插槽向下传递 -->
             <template v-for="(_, name) in $slots" #[name]="row">
@@ -20,9 +20,11 @@ type TableConfig = {
     width?: string,
     stripe?: boolean,
     border?: boolean,
+    'table-layout'?: string,
     on?: Record<string, Function>  // 批量绑定事件
     isCustomFooter?: boolean, // 是否显示表尾合计行
     footerMethod?: Function, // 自定义合计行累加方法，参数为当前 porp 和当前列数据
+    addPagination?: boolean, // 是否添加分页器
 }
 
 export type ColumnsConfig = {
