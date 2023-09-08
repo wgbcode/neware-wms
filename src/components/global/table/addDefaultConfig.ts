@@ -19,7 +19,7 @@ export const addTableDefaultConfig = (tableConfig: Record<string, any> | undefin
     config['show-summary'] = true
     config['summary-method'] = getSummaries(config.footerMethod)
   }
-  return tableConfig
+  return config
 }
 
 export const addColumnsDefaultConfig = (columnsConfig: ColumnsConfig) => {

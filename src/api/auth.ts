@@ -101,10 +101,10 @@ export function getUserInfo(params: string): Promise<UserInfo> {
           component: () => import('@/views/test/CommonPaginatin.vue')
         },
         {
-          path: '/test/CommonVirtualTable',
+          path: '/test/CommonVirTable',
           name: 'CommonVirtualTable',
           meta: { title: '虚似化表格', icon: '', hidden: false },
-          component: () => import('@/views/test/CommonVirtualTable.vue')
+          component: () => import('@/views/test/CommonVirTable.vue')
         }
       ]
     }
