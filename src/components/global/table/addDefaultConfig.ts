@@ -1,12 +1,7 @@
-import type { ColumnsConfig } from './index.vue'
+import type { TableConfig, ColumnsConfig } from './index.vue'
 import type { TableColumnCtx } from 'element-plus'
 
-interface SummaryMethodProps<T = ColumnsConfig> {
-  columns: TableColumnCtx<T>[]
-  data: T[]
-}
-
-export const addTableDefaultConfig = (tableConfig: Record<string, any> | undefined) => {
+export const addTableDefaultConfig = (tableConfig: TableConfig | undefined) => {
   const config = (tableConfig ??= {})
   config.on ??= {}
   config.stripe ??= true
@@ -15,9 +10,10 @@ export const addTableDefaultConfig = (tableConfig: Record<string, any> | undefin
   config['highlight-current-row'] ??= true
   config['table-layout'] ??= 'fixed'
   config.addPagination ??= true
+  // 自定义表尾合计行属性
   if (config.isCustomFooter) {
     config['show-summary'] = true
-    config['summary-method'] = getSummaries(config.footerMethod)
+    config['summary-method'] = getSummaries(config.footerMethod!)
   }
   return config
 }
@@ -121,6 +117,10 @@ function arrowTextType(params: Record<string, any>, type: string) {
 }
 
 // 表尾合计，可自定义累加算法，通过 callBack 传入
+interface SummaryMethodProps<T = ColumnsConfig> {
+  columns: TableColumnCtx<T>[]
+  data: T[]
+}
 function getSummaries(callBack: Function) {
   return ({ columns, data }: SummaryMethodProps) => {
     const sums: string[] = []

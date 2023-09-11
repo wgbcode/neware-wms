@@ -16,7 +16,7 @@ import { addColumnsDefaultConfig, addTableDefaultConfig } from './addDefaultConf
 import { addVirColumnsDefaultConfig, addVirTableDefaultConfig } from './addVirDefaultConfig'
 import VirTable from './VirTable.vue'
 
-type TableConfig = {
+export type TableConfig = {
     type?: string,  // 用于判断表格类型，table（默认）/virTable
     // table
     height?: string,
@@ -28,18 +28,23 @@ type TableConfig = {
     isCustomFooter?: boolean, // 是否显示表尾合计行
     footerMethod?: Function, // 自定义合计行累加方法，参数为当前 porp 和当前列数据
     addPagination?: boolean, // 是否添加分页器
+    style?: Record<string, any>,
+    'highlight-current-row'?: boolean,
+    'show-summary'?: boolean,
+    'summary-method'?: Function,
     // virTable
+    fixed?: boolean,
 }
 export type ColumnsConfig = {
     // table
-    type?: string,  // 用于判断文本类型，text/number/price/date/datetime
+    type?: string,  // 当前列将格式化的类型，selection/expand
     prop?: string,  // 用于和数据的字段名匹配
     label?: string, // 表格列标题
-    width?: string,
+    width?: number | string,
     align?: string,
     child?: ColumnsConfig,  // 设置多级表头时需配置
     'show-overflow-tooltip'?: boolean, // 禁止多行配置，默认超出悬浮 tooltip 提示
-    slotName?: string, // 插槽命名(列)
+    slotName?: string, // 插槽命名(列)，index/number/price/date/datetime/input/select/treeSelect/datePicker/addArrow
     slotParams?: Record<string, any>, // 插槽数据传递（列）
     slotAttr?: Record<string, any>, // 批量绑定属性(列)
     slotOn?: Record<string, Function>, // 批量绑定事件(列)
@@ -48,9 +53,11 @@ export type ColumnsConfig = {
     headerSlotAttr?: Record<string, any>, // 批量绑定属性（表头）
     headerSlotOn?: Record<string, Function>, // 批量绑定事件（表头）
     // virTable
-    dataKey?: number, // 用于和数据的字段名匹配
+    key?: string,  // 当前列将格式化的类型，selection/index/input
+    dataKey?: string, // 用于和数据的字段名匹配
     title?: string, // 表格列标题
     cellRenderer?: Component | Function, // 单元格内容格式化
+    headerCellRenderer?: Component | Function, // 表头内容格式化
 }[]
 const matchMap: Record<string, Component> = {
     table: Table,
@@ -58,7 +65,7 @@ const matchMap: Record<string, Component> = {
 }
 const props = defineProps({
     data: {
-        type: Array,
+        type: Array as PropType<Record<string, any>[]>,
         required: true
     },
     tableConfig: Object as PropType<TableConfig>,
@@ -76,7 +83,7 @@ switch (curType) {
         break
     case 'virTable':
         newTableConfig = addVirTableDefaultConfig(props.tableConfig)
-        newColumnsConfig = addVirColumnsDefaultConfig(props.columnsConfig)
+        newColumnsConfig = addVirColumnsDefaultConfig(props.columnsConfig, props.data)
         break
 }
 </script>

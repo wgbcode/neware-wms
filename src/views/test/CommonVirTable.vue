@@ -9,16 +9,33 @@
 <script setup lang="tsx">
 import { reactive, watch } from 'vue'
 import Icon from '@/components/global/Icon.vue'
+
 // virTable
+// toDo：使用 tsx 语法时，无法识别全局组件，需重复引入问题，如 Icon
 const tableConfig = {
     type: 'virTable',
 }
-const tableData = Array.from({ length: 1000 }).map((_, idx) => ({
+const tableData = reactive(Array.from({ length: 1000 }).map((_, idx) => ({
+    id: 'row-' + idx,
     parentId: null,
+    checked: false,
+    editing: false,
     number: idx * 10,
-    number2: idx * 20
-}))
+    number2: idx * 20,
+    inputTest: 111
+})))
 const columnsConfig = [
+    {
+        key: 'selection'
+    },
+    {
+        key: 'index'
+    },
+    {
+        key: 'input',
+        datakey: 'inputTest',
+        title: 'inputTest'
+    },
     {
         dataKey: 'number',
         title: 'number',
@@ -30,7 +47,7 @@ const columnsConfig = [
         width: 150,
         cellRenderer: ({ cellData: name }: Record<string, number>) => (
             <div class="c-flex-ycenter">
-                <Icon name="test" color="red" />
+                <Icon name="test" color="white" class="c-mr5" />
                 <span>{name}</span>
             </div>
         )

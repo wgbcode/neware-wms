@@ -119,7 +119,7 @@ function handleChange(value: number) {
     console.log('value', value)
 }
 function clickArrow() {
-    console.log('我被点击了')
+    console.log('被点击了...')
 }
 function footMethod(prop: string, values: number[]) {
     let res = ''
