@@ -95,11 +95,7 @@ function inputRender({rowData,column}:Record<string,any>){
   const onChange = (value: string) => rowData[column.datakey] = value
   const onEnterEditMode = () => rowData.editing = true
   const onExitEditMode = () => rowData.editing = false
-  const onExitEditMode2 = (e: KeyboardEvent) => {
-    if(e.code === 'Enter'){
-      rowData.editing = false
-    }
-  }
+  const onExitEditMode2 = (e: KeyboardEvent) => e.code === 'Enter' ? rowData.editing = false : ''
   const input = ref()
   const setRef = (el: InputInstance) => {
     input.value = el
@@ -115,6 +111,6 @@ function inputRender({rowData,column}:Record<string,any>){
     onBlur={onExitEditMode} 
     onKeydownEnter={onExitEditMode2}/>
   ) : (
-    <div class="c-w100p c-h100p" onClick={onEnterEditMode}>{rowData[column.datakey]}</div>
+    <div class="c-w100p c-h100p c-flex-ycenter" onClick={onEnterEditMode}>{rowData[column.datakey]}</div>
   )
 }
