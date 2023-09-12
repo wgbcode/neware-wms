@@ -17,76 +17,15 @@ const onSearch = () => {
 }
 const queryList = reactive({})
 const config = [
-    {
-        name: 'input',
-        prop: 'testInput',
-        attr: {
-            type: 'text'
-        },
-        on: {
-            keyup: onSearch
-        }
-    },
-    {
-        name: 'select',
-        prop: 'testSelect',
-        attr: {
-            options
-        }
-    },
-    {
-        name: 'date',
-        prop: 'testDate3',
-        attr: {
-            type: 'datetimerange',
-            shortcuts: true
-        }
-    },
-    {
-        name: 'date',
-        prop: 'testDate',
-        attr: {
-            shortcuts: true
-        }
-    },
-    {
-        name: 'date',
-        prop: 'testDate2',
-        attr: {
-            type: 'daterange',
-            shortcuts: true
-        }
-    },
-    {
-        name: 'date',
-        prop: 'testDate5',
-        attr: {
-            type: 'monthrange',
-            shortcuts: true
-        }
-    },
-    {
-        name: 'date',
-        prop: 'testDate4',
-        attr: {
-            type: 'datetime',
-            shortcuts: true
-        }
-    },
-    {
-        name: 'treeSelect',
-        prop: 'treeSelect'
-    },
-    {
-        name: 'button',
-        text: '查询',
-        attr: {
-            type: 'primary'
-        },
-        on: {
-            click: onSearch
-        }
-    }
+    { name: 'input', prop: 'testInput', attr: { type: 'text' }, on: { keyup: onSearch } },
+    { name: 'select', prop: 'testSelect', attr: { options } },
+    { name: 'date', prop: 'testDate3', attr: { type: 'datetimerange', shortcuts: true } },
+    { name: 'date', prop: 'testDate', attr: { shortcuts: true } },
+    { name: 'date', prop: 'testDate2', attr: { type: 'daterange', shortcuts: true } },
+    { name: 'date', prop: 'testDate5', attr: { type: 'monthrange', shortcuts: true } },
+    { name: 'date', prop: 'testDate4', attr: { type: 'datetime', shortcuts: true } },
+    { name: 'treeSelect', prop: 'treeSelect' },
+    { name: 'button', text: '查询', attr: { type: 'primary' }, on: { click: onSearch } }
 ]
 watch(queryList, (value) => console.log('val', value))
 </script>

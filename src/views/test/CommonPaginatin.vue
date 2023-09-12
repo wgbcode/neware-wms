@@ -30,39 +30,15 @@ const tableData = reactive(Array.from({ length: 50 }).map((_, idx) => ({
     address: 'No. 189, Grove St, Los Angeles',
     number: idx * 100
 })))
-const tableConfig = {
-    height: '100%',
-    width: '100%',
-    isCustomFooter: true,
-    footerMethod: footMethod,
-}
+const tableConfig = { height: '100%', width: '100%', isCustomFooter: true, footerMethod: footMethod }
 const columnsConfig = [
     { type: 'expand' },
     { type: 'selection' },
     { slotName: 'index' },
-    {
-        prop: 'date',
-        label: 'Date',
-        width: '200',
-        slotName: 'addArrow',
-        slotParams: { type: 'date' }
-    },
-    {
-        label: 'address',
-        prop: 'address',
-        width: '200',
-    },
-    {
-        label: 'number',
-        prop: 'number',
-        slotName: 'number',
-        width: '150'
-    },
-    {
-        label: 'name',
-        prop: 'name',
-        width: '150'
-    }
+    { label: 'Date', prop: 'date', width: '200', slotName: 'addArrow', slotParams: { type: 'date' } },
+    { label: 'address', prop: 'address', width: '200' },
+    { label: 'number', prop: 'number', slotName: 'number', width: '150' },
+    { label: 'name', prop: 'name', width: '150' }
 ]
 function footMethod(prop: string, values: number[]) {
     let res = ''
@@ -93,40 +69,10 @@ const onSearch = () => {
     console.log('查询参数', queryList)
 }
 const config = [
-    {
-        name: 'input',
-        prop: 'testInput',
-        attr: {
-            type: 'text'
-        },
-        on: {
-            keyup: onSearch
-        }
-    },
-    {
-        name: 'select',
-        prop: 'testSelect',
-        attr: {
-            options
-        }
-    },
-    {
-        name: 'date',
-        prop: 'testDate',
-        attr: {
-            shortcuts: true
-        }
-    },
-    {
-        name: 'button',
-        text: '查询',
-        attr: {
-            type: 'primary'
-        },
-        on: {
-            click: onSearch
-        }
-    }
+    { name: 'input', prop: 'testInput', attr: { type: 'text' }, on: { keyup: onSearch } },
+    { name: 'select', prop: 'testSelect', attr: { options } },
+    { name: 'date', prop: 'testDate', attr: { shortcuts: true } },
+    { name: 'button', text: '查询', attr: { type: 'primary' }, on: { click: onSearch } }
 ]
 watch(queryList, (value) => console.log('val', value))
 

@@ -49,14 +49,7 @@ const columnsConfig = [
     { type: 'expand' },
     { type: 'selection' },
     { slotName: 'index' },
-    {
-        prop: 'date',
-        label: 'Date',
-        width: '150',
-        slotName: 'addArrow',
-        slotParams: { type: 'date' },
-        slotOn: { click: clickArrow }
-    },
+    { prop: 'date', label: 'Date', width: '150', slotName: 'addArrow', slotParams: { type: 'date' }, slotOn: { click: clickArrow } },
     {
         label: 'test',
         child: [
@@ -64,43 +57,17 @@ const columnsConfig = [
             {
                 label: 'test2',
                 child: [
-                    { label: 'address', prop: 'address', width: '250', slotName: 'address', headerSlotName: 'tooltip', headerSlotParams: { content: 'Top Center prompts info' }, },
+                    { abel: 'address', prop: 'address', width: '250', slotName: 'address', headerSlotName: 'tooltip', headerSlotParams: { content: 'Top Center prompts info' } },
                     { label: 'number', prop: 'number', slotName: 'number', sortable: true, width: '150' }
                 ]
             }
         ]
     },
-
-    {
-        label: 'test3',
-        prop: 'test3',
-        slotName: 'datePicker',
-    },
-    {
-        label: 'test4',
-        prop: 'test4',
-        slotName: 'datePicker',
-        slotAttr: { type: 'datetime' },
-        headerSlotName: 'tooltip',
-        headerSlotParams: { content: 'Top Center prompts info' },
-    },
-    {
-        label: 'test5',
-        prop: 'test5',
-        slotName: 'input',
-        slotParams: { type: 'number', min: 0, max: 1000000 },
-        slotOn: { change: handleChange }
-    },
-    {
-        label: 'test6',
-        prop: 'test6',
-        slotName: 'select'
-    },
-    {
-        label: 'test7',
-        prop: 'test7',
-        slotName: 'input'
-    }
+    { label: 'test3', prop: 'test3', slotName: 'datePicker', },
+    { label: 'test4', prop: 'test4', slotName: 'datePicker', slotAttr: { type: 'datetime' }, headerSlotName: 'tooltip', headerSlotParams: { content: 'Top Center prompts info' } },
+    { label: 'test5', prop: 'test5', slotName: 'input', slotParams: { type: 'number', min: 0, max: 1000000 }, slotOn: { change: handleChange } },
+    { label: 'test6', prop: 'test6', slotName: 'select' },
+    { label: 'test7', prop: 'test7', slotName: 'input' }
 ]
 function tableRowClassName({ rowIndex }: Record<string, number>) {
     if (rowIndex === 1) {
@@ -146,76 +113,15 @@ const onSearch = () => {
 }
 const queryList = reactive({})
 const config = [
-    {
-        name: 'input',
-        prop: 'testInput',
-        attr: {
-            type: 'text'
-        },
-        on: {
-            keyup: onSearch
-        }
-    },
-    {
-        name: 'select',
-        prop: 'testSelect',
-        attr: {
-            options
-        }
-    },
-    {
-        name: 'date',
-        prop: 'testDate3',
-        attr: {
-            type: 'datetimerange',
-            shortcuts: true
-        }
-    },
-    {
-        name: 'date',
-        prop: 'testDate',
-        attr: {
-            shortcuts: true
-        }
-    },
-    {
-        name: 'date',
-        prop: 'testDate2',
-        attr: {
-            type: 'daterange',
-            shortcuts: true
-        }
-    },
-    {
-        name: 'date',
-        prop: 'testDate5',
-        attr: {
-            type: 'monthrange',
-            shortcuts: true
-        }
-    },
-    {
-        name: 'date',
-        prop: 'testDate4',
-        attr: {
-            type: 'datetime',
-            shortcuts: true
-        }
-    },
-    {
-        name: 'treeSelect',
-        prop: 'treeSelect'
-    },
-    {
-        name: 'button',
-        text: '查询',
-        attr: {
-            type: 'primary'
-        },
-        on: {
-            click: onSearch
-        }
-    }
+    { name: 'input', prop: 'testInput', attr: { type: 'text' }, on: { keyup: onSearch } },
+    { name: 'select', prop: 'testSelect', attr: { options } },
+    { name: 'date', prop: 'testDate3', attr: { type: 'datetimerange', shortcuts: true } },
+    { name: 'date', prop: 'testDate', attr: { shortcuts: true } },
+    { name: 'date', prop: 'testDate2', attr: { type: 'daterange', shortcuts: true } },
+    { name: 'date', prop: 'testDate5', attr: { type: 'monthrange', shortcuts: true } },
+    { name: 'date', prop: 'testDate4', attr: { type: 'datetime', shortcuts: true } },
+    { name: 'treeSelect', prop: 'treeSelect' },
+    { name: 'button', text: '查询', attr: { type: 'primary' }, on: { click: onSearch } }
 ]
 watch(queryList, (value) => console.log('val', value))
 </script>

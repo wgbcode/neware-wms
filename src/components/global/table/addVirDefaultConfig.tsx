@@ -99,9 +99,7 @@ function inputRender({rowData,column}:Record<string,any>){
   const input = ref()
   const setRef = (el: InputInstance) => {
     input.value = el
-    if (el) {
-      el.focus?.()
-    }
+    el ? el.focus?.() : ''
   }
   return rowData.editing ? (
     <InputCell 

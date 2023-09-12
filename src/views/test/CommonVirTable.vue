@@ -25,34 +25,19 @@ const tableData = reactive(Array.from({ length: 1000 }).map((_, idx) => ({
     inputTest: 111
 })))
 const columnsConfig = [
-    {
-        key: 'selection'
-    },
-    {
-        key: 'index'
-    },
-    {
-        key: 'input',
-        datakey: 'inputTest',
-        title: 'inputTest'
-    },
-    {
-        dataKey: 'number',
-        title: 'number',
-        width: 150
-    },
-    {
-        dataKey: 'number2',
-        title: 'number2',
-        width: 150,
-        cellRenderer: ({ cellData: name }: Record<string, number>) => (
-            <div class="c-flex-ycenter">
-                <Icon name="test" color="white" class="c-mr5" />
-                <span>{name}</span>
-            </div>
-        )
-    }
+    { key: 'selection' },
+    { key: 'index' },
+    { key: 'input', datakey: 'inputTest', title: 'inputTest' },
+    { dataKey: 'number', title: 'number', width: 150 },
+    { dataKey: 'number2', title: 'number2', width: 150, cellRenderer: addIcon }
 ]
+function addIcon({ cellData: name }: Record<string, number>) {
+    return (
+        <div class="c-flex-ycenter">
+            <Icon name="test" color="white" class="c-mr5" />
+            <span>{name}</span>
+        </div>)
+}
 watch(tableData, (value) => console.log('val', value))
 
 // Search
