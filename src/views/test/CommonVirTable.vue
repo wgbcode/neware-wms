@@ -54,40 +54,10 @@ const onSearch = () => {
     console.log('查询参数', queryList)
 }
 const config = [
-    {
-        name: 'input',
-        prop: 'testInput',
-        attr: {
-            type: 'text'
-        },
-        on: {
-            keyup: onSearch
-        }
-    },
-    {
-        name: 'select',
-        prop: 'testSelect',
-        attr: {
-            options
-        }
-    },
-    {
-        name: 'date',
-        prop: 'testDate',
-        attr: {
-            shortcuts: true
-        }
-    },
-    {
-        name: 'button',
-        text: '查询',
-        attr: {
-            type: 'primary'
-        },
-        on: {
-            click: onSearch
-        }
-    }
+    { name: 'input', prop: 'testInput', attr: { type: 'text' }, on: { keyup: onSearch } },
+    { name: 'select', prop: 'testSelect', attr: { options } },
+    { name: 'date', prop: 'testDate', attr: { shortcuts: true } },
+    { name: 'button', text: '查询', attr: { type: 'primary' }, on: { click: onSearch } }
 ]
 watch(queryList, (value) => console.log('val', value))
 </script>

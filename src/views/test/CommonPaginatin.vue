@@ -30,7 +30,12 @@ const tableData = reactive(Array.from({ length: 50 }).map((_, idx) => ({
     address: 'No. 189, Grove St, Los Angeles',
     number: idx * 100
 })))
-const tableConfig = { height: '100%', width: '100%', isCustomFooter: true, footerMethod: footMethod }
+const tableConfig = {
+    height: '100%',
+    width: '100%',
+    isCustomFooter: true,
+    footerMethod: footMethod
+}
 const columnsConfig = [
     { type: 'expand' },
     { type: 'selection' },
