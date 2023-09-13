@@ -9,8 +9,7 @@ import { ElMessage } from 'element-plus'
 declare module 'axios' {
   // 定义实例参数类型和返回值类型
   interface AxiosInstance {
-    // eslint-disable-next-line no-unused-vars
-    (config: AxiosRequestConfig): Promise<any>
+    (_config: AxiosRequestConfig): Promise<any>
   }
 
   // 自定义实例参数

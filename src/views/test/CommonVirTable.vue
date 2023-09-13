@@ -36,7 +36,8 @@ function addIcon({ cellData: name }: Record<string, number>) {
         <div class="c-flex-ycenter">
             <Icon name="test" color="white" class="c-mr5" />
             <span>{name}</span>
-        </div>)
+        </div>
+    )
 }
 watch(tableData, (value) => console.log('val', value))
 

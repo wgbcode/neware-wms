@@ -17,7 +17,7 @@ module.exports = {
   },
   rules: {
     'vue/multi-word-component-names': 'off',
-    'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: false ,"argsIgnorePattern": "^_"}], 
+    'no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: false ,argsIgnorePattern: "^_"}], 
     semi: ['error', 'never'], // 禁止使用分号
   },
 }
