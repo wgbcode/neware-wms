@@ -145,6 +145,8 @@ export function validateLogin(params: Record<string, string>) {
 
 // 刷新已过期 token
 export function refreshToken(params: string) {
+  console.log(111)
+
   return request({
     url: '/refreshToken',
     method: 'get',
