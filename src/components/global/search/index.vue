@@ -40,6 +40,5 @@ const matchMap: Record<string, Component> = {
     date: DatePicker
 }
 const newConfig = addDefaultConfig(props.config)
-// 在子组件中，不能直接修改 prop 值
 const newData = computed(() => props.data ? props.data : {})
 </script>

@@ -9,7 +9,11 @@ interface UserInfo {
 // 登录
 export function login(data: Record<string, string>) {
   return request({
-    url: '/common/login',
+    // url: '/Login/LoginWithAccount',
+    url: '/LoginWithAccount',
+    // url: '/Login/LoginWithScanCode',
+    // url: '/common/login',
+    // url: '/Login',
     method: 'post',
     data,
     isCancelRepeatRequest: true // 不允许重复请求
@@ -129,8 +133,8 @@ export function getUserInfo(params: string): Promise<UserInfo> {
 // 获取二维码
 export function getLoginQRCode() {
   return request({
-    url: '/getLoginQRCode',
-    method: 'get'
+    url: '/Login/LoginWithScanCode',
+    method: 'post'
   })
 }
 

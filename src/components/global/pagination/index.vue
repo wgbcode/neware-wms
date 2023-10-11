@@ -23,7 +23,6 @@ const props = defineProps({
     }
 })
 const pageSizeArr = props.config.pageSizeArr || [35, 100, props.config.total]
-// 不能直接在子组件中直接修改 prop 值
 const curPage = computed(() => props.config.curPage)
 const pageSize = computed(() => props.config.pageSize)
 </script>

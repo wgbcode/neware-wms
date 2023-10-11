@@ -27,7 +27,7 @@ export default defineConfig({
   base: './',
   server: {
     host: 'localhost',
-    port: 8888,
+    port: 9999,
     open: false,
     hmr: true, // 热更新
     proxy: {

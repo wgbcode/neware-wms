@@ -22,7 +22,8 @@ declare module 'axios' {
 const request = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 30000,
-  isCancelRepeatRequest: false
+  isCancelRepeatRequest: false,
+  headers: { 'Content-Type': 'application/json; charset=utf-8' }
 })
 
 // 设置 abortController 和 Map
