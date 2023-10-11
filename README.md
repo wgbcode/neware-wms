@@ -69,3 +69,11 @@ yarn lint
 2. git commit -m <message>
 3. git push origin <remote branch>
 ```
+
+### 注意事项
+
+```
+1. 建议安装插件：Volar、ESlint
+2. 建议禁用插件：Vetur
+3. node 版本：16 及以上
+```
