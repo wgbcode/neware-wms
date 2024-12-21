@@ -1,0 +1,123 @@
+html.dark {
+  // 按钮
+  --tc-btn-text: #000;
+  /* 常用按钮 */
+  --tc-btn-primary-default: #42a4f4;
+  --tc-btn-primary-hover: #67bbff;
+  --tc-btn-primary-active: #2a90dd;
+  --tc-btn-primary-disabled: #005580;
+  /* 成功按钮 */
+  --tc-btn-success-default: #42bf39;
+  --tc-btn-success-hover: #5ec957;
+  --tc-btn-success-active: #1cad15;
+  --tc-btn-success-disabled: #106e00;
+  /* 信息/default按钮 */
+  --tc-btn-info-default: #ffffff;
+  --tc-btn-info-hover: #e6e6e6;
+  --tc-btn-info-active: #dbdbdb;
+  --tc-btn-info-disabled: #c7c7c7;
+  /* 错误按钮 */
+  --tc-btn-error-default: #ea3553;
+  --tc-btn-error-hover: #f07b71;
+  --tc-btn-error-active: #c7392d;
+  --tc-btn-error-disabled: #800020;
+  /* 警告按钮 */
+  --tc-btn-warning-default: #f8b500;
+  --tc-btn-warning-hover: #ffba33;
+  --tc-btn-warning-active: #e59500;
+  --tc-btn-warning-disabled: #804600;
+  /* 紫色按钮 */
+  --tc-btn-purple-default: #9677d9;
+  --tc-btn-purple-hover: #b993e3;
+  --tc-btn-purple-active: #9677d9;
+  --tc-btn-purple-disabled: #9677d9;
+  // ui-standard
+  --tc-pure: #fff;
+  --tc-pure-reverse: #000;
+  --tc-brand: #f8b500;
+  --tc-common-40: rgba(77, 77, 77, 0.4);
+  --tc-status-warn: #f8b500;
+  --tc-status-finish: #42bf39;
+  --tc-status-error: #ea3553;
+  --tc-status-unfinish: #999999;
+  --tc-tinge-approval: #145200;
+  --tc-tinge-delay: #57001b;
+  --tc-tinge-robot: #003c52;
+  --tc-icon-gray-normal: #ffffff;
+  --tc-icon-gray-hover: #d6d6d6;
+  --tc-icon-gray-aspc: #b3b3b3;
+  --tc-icon-gray-disable: #474747;
+  --tc-table-select-normal: #000000;
+  --tc-table-select-hover: #4d4d4d;
+  --tc-table-select-aspc: #0063b1;
+  --tc-table-select-disable: #262626;
+  --tc-extrude-text: #e6e6e6;
+  --tc-regular-text: #cccccc;
+  --tc-header-text: #b3b3b3;
+  --tc-label-text: #999999;
+  --tc-watermark-text: #4d4d4d;
+  --tc-progress-border: #6a6d70;
+  --tc-form-scroll-border: #9ba1a9;
+  --tc-content-dialogd: #292929;
+  --tc-tbodyodd-form: #000000;
+  --tc-tbodyeven: #1a1a1a;
+  --tc-navbar-topbar: #061421;
+  --tc-mostbottom: #1f1f1f;
+  --tc-globalsearch: #1f1f1f;
+  --tc-tabbar: #333333;
+  --tc-dialog-border: #333333;
+  --tc-cell-disable: #262626;
+  --tc-table-border: #333333;
+  --tc-table-header: #525252;
+  --tc-navbar-border: #525252;
+  --tc-tooltip: #c7c7c7;
+  // table
+  --tc-table-empty: #262626; // 空白表格底色
+  --tc-cell-form: #262626; // 表格表单样式7CC6
+  --tc-th-background: #525252; // 表格表头底色
+  --tc-th-text: #c2c2c2; // 表格表头文字
+  --tc-tr-odd: #000000; // 表格奇行
+  --tc-tr-even: #1a1a1a; // 表格偶行
+  --tc-cell-border: #333333; // 单元格描边
+  --tc-cell-disable: #262626; // 单元格禁用
+  --tc-cell-hover: #4d4d4d; // 单元格悬停
+  --tc-cell-selected: #0063b1; // 单元格选中
+  --tc-cell-selected-text: #e6e6e6; // 单元格选中时的文字颜色
+  // 文字
+  --tc-primary-text: #c1c1c1; // 常规文字
+  --tc-highlight-text: #e6e6e6; // 高亮文字
+  --tc-extrude-text: #e6e6e6;
+  --tc-label-text: #828282; // 标签文字
+  // 通用颜色
+  --tc-global-yellow: #f8b500;
+  --tc-global-green: #42bf39;
+  --tc-global-red: #ea3553;
+  --tc-global-blue: #42a4f4;
+  --tc-global-gray: #808385;
+  --tc-global-orange: #e94e0c;
+  --tc-global-darkyellow: #cc8100;
+  --tc-global-darkblue: #167cc6;
+  // 输入框
+  --tc-input-background: #000000; // 斑马线表格底色1、输入框底色
+  --tc-input-disable-background: #212121; // 禁用
+  --tc-input-border: #9ba1a9; // 输入框描边、中性图标、滚动条
+  --tc-icon-disable: #383838; // 中性图标禁用
+  --tc-input-disable-border: #404143; // 输入框禁用
+  --tc-watermark-text: #707070; // 水印文字、输入框默认文字颜色
+  --tc-watermark-disable-text: #353535; // 水印禁用
+  // 弹窗
+  --tc-content-background: #292929; // 弹窗底色（含标题头）/ 空白内容底色
+  --tc-dialog-background: #1f1f1f;
+  --tc-dialog-border: #333333; // 弹窗边框
+  // 进度条
+  --tc-progress-green: #0f8000;
+  --tc-progress-yellow: #b26e00;
+  --tc-progress-red: #aa0025;
+  // 滚动条
+  --tc-scrollbar-track-background: #1f1f1f; // 滚动条轨道
+  --tc-scrollbar-thumb-background: #6a6d71; // 滚动条滑块
+  --tc-scrollbar-thumb-hover-background: #9ca1a9; // 滚动条滑块悬浮
+  // 其它
+  --tc-pagination: #464343;
+  --tc-card-header: #333;
+}

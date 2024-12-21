@@ -1,0 +1,80 @@
+// 新威专属按钮
+.el-button {
+
+    // 新威专属 紫色按钮 样式
+    &.el-button--small.el-button--purple,
+    &.el-button--purple {
+        // 默认状态
+        background-color: var(--tc-btn-purple-default);
+        border-color: var(--tc-btn-purple-default);
+        color: var(--tc-btn-text);
+
+        // 悬停状态
+        &:hover {
+            background-color: var(--tc-btn-purple-hover);
+            border-color: var(--tc-btn-purple-hover);
+            color: var(--tc-btn-text);
+        }
+
+        &:focus {
+            color: var(--tc-btn-text);
+        }
+
+        // 激活状态
+        &:active {
+            background-color: var(--tc-btn-purple-active);
+            border-color: var(--tc-btn-purple-active);
+            color: var(--tc-btn-text);
+        }
+
+        // 禁用状态
+        &.is-disabled {
+            background-color: var(--tc-btn-purple-disabled);
+            border-color: var(--tc-btn-purple-disabled);
+            color: var(--tc-btn-text);
+
+            &:hover {
+                background-color: var(--tc-btn-purple-disabled);
+                border-color: var(--tc-btn-purple-disabled);
+                color: var(--tc-btn-text);
+            }
+        }
+    }
+
+    // 新威专属 筛选按钮（蓝底黄边） 样式
+    &.el-button--small.el-button--filter,
+    &.el-button--filter {
+        // 默认状态
+        background: linear-gradient(to right, var(--tc-btn-warning-default) 5px, var(--tc-btn-primary-default) 0%);
+        padding: 0px 6px 0px 8px;
+        border: none;
+        color: var(--tc-btn-text);
+
+        // 悬停状态
+        &:hover {
+            background: linear-gradient(to right, var(--tc-btn-warning-hover) 5px, var(--tc-btn-primary-hover) 0%);
+            color: var(--tc-btn-text);
+        }
+
+        &:focus {
+            color: var(--tc-btn-text);
+        }
+
+        // 激活状态
+        &:active {
+            background: linear-gradient(to right, var(--tc-btn-warning-active) 5px, var(--tc-btn-primary-active) 0%);
+            color: var(--tc-btn-text);
+        }
+
+        // 禁用状态
+        &.is-disabled {
+            background: linear-gradient(to right, var(--tc-btn-warning-disabled) 5px, var(--tc-btn-primary-disabled) 0%);
+            color: var(--tc-btn-text);
+
+            &:hover {
+                background: linear-gradient(to right, var(--tc-btn-warning-disabled) 5px, var(--tc-btn-primary-disabled) 0%);
+                color: var(--tc-btn-text);
+            }
+        }
+    }
+}

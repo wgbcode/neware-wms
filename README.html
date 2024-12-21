@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&#x4ee3;&#x7801;&#x89c4;&#x8303;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h2 id="代码规范">代码规范</h2>
+<pre><code>1. 单个组件代码量不允许超过 500 行
+2. 重复代码不允许出现三次及以上
+3. 数据尽可能放在根目录或者父级目录，并确保 props 单向数据流
+</code></pre>
+<h2 id="项目结构">项目结构</h2>
+<pre><code>|-- neware-wms
+ |-- vite.config.ts
+ |-- tsconfig.json
+ |-- tsconfig.app.json
+ |-- tsconfig.node.json
+ |-- package.json
+ |-- .prettierrc.json
+ |-- .eslintrc.cjs
+ |-- .eslintignore
+ |-- .gitignore
+ |-- .env.dev
+ |-- .env.dev.local(本地创建)
+ |-- .env.pro
+ |-- env.d.ts
+ |-- globalTypes.ts
+ |-- index.html
+ |-- src
+ 	|-- App.vue
+ 	|-- main.ts
+	|-- permission.ts 路由权限控制
+ 	|-- api 接口管理
+ 	|-- assets 图片等资源
+ 	|-- directive 指令
+	|-- hooks 钩子
+	|-- router 路由
+	|-- stores 全局状态管理
+	|-- styles 全局样式
+	|-- utils 工具方法
+	|-- components 公共组件
+	|-- views 视图
+		|-- error 错误页
+		|-- login 登录页
+		|-- layout 布局容器
+		|-- accountCenter 账号中心
+		|-- orderMange 订单管理
+		|-- test 测试
+	
+</code></pre>
+<h1 id="项目安装">项目安装</h1>
+<h2 id="配置npm">配置npm</h2>
+<pre><code>npm install
+</code></pre>
+<h2 id="安装配置yarn">安装+配置yarn</h2>
+<pre><code>npm install -g yarn
+yarn install
+</code></pre>
+<h3 id="检查yarn版本">检查yarn版本</h3>
+<pre><code>yarn --version
+</code></pre>
+<h3 id="yarn设置淘宝镜像">Yarn设置淘宝镜像</h3>
+<h4 id="查询yarn镜像">查询yarn镜像</h4>
+<pre><code>yarn config get registry
+</code></pre>
+<h4 id="设置成淘宝镜像">设置成淘宝镜像</h4>
+<pre><code>yarn config set registry https://registry.npm.taobao.org/        (旧地址)
+yarn config set registry https://registry.npmmirror.com/         (最新地址)
+</code></pre>
+<h4 id="清除缓存">清除缓存</h4>
+<pre><code>yarn cache clean
+</code></pre>
+<h3 id="本地环境本地开发配置文件envdev--envdevlocal">本地环境(本地开发配置文件.env.dev | .env.dev.local)</h3>
+<pre><code>yarn dev
+</code></pre>
+<h3 id="生产环境打包到生产环境配置文件-evnprod">生产环境(打包到生产环境配置文件 .evn.prod)</h3>
+<pre><code>yarn build
+</code></pre>
+<h2 id="安装-第三方组件库以lodash为例">安装 第三方组件库（以lodash为例）</h2>
+<pre><code>npm install lodash --save   # npm
+yarn add lodash             # Yarn
+npm install lodash -g  	 # 全局 npm
+yarn global add lodash   # 全局 Yarn
+</code></pre>
+<h3 id="typescript-第三方库有types类型文件">TypeScript 第三方库有@types类型文件</h3>
+<pre><code>npm install --save-dev @types/lodash
+yarn add --dev @types/lodash
+</code></pre>
+<h3 id="typescript-没有类型文件">TypeScript 没有类型文件</h3>
+<h1 id="vue2与vue3通信">vue2与vue3通信</h1>
+<p>src\hooks\useMessage.ts</p>
+<h1 id="注意事项">注意事项</h1>
+<h3 id="git-提交规范">git 提交规范</h3>
+<pre><code>1. git add &lt;file&gt;
+2. git commit -m &lt;message&gt;
+3. git push origin &lt;remote branch&gt;
+4. git pull --rebase
+</code></pre>
+<h3 id="注意事项-1">注意事项</h3>
+<pre><code>1. 需安装插件：Vue-Official
+2. 需禁用插件：Vetur
+3. 建议安装插件：ESlint、Prettier
+4. node 版本：18 / 20+
+</code></pre>
+
+            
+            
+        </body>
+        </html>

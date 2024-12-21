@@ -1,0 +1,116 @@
+html.light {
+  // 按钮
+  --tc-btn-text: #fff;
+  /* 常用按钮 */
+  --tc-btn-primary-default: #4285f4;
+  --tc-btn-primary-hover: #67a0ff;
+  --tc-btn-primary-active: #2a72dd;
+  --tc-btn-primary-disabled: #abcbff;
+  /* 成功按钮 */
+  --tc-btn-success-default: #34a853;
+  --tc-btn-success-hover: #4eb269;
+  --tc-btn-success-active: #18a03a;
+  --tc-btn-success-disabled: #89c799;
+  /* 信息按钮 */
+  --tc-btn-info-default: #17a2b8;
+  --tc-btn-info-hover: #138496;
+  --tc-btn-info-active: #0f6b7e;
+  --tc-btn-info-disabled: #b3d9d9;
+  /* 错误按钮 */
+  --tc-btn-error-default: #ea4335;
+  --tc-btn-error-hover: #f5675b;
+  --tc-btn-error-active: #d52c20;
+  --tc-btn-error-disabled: #ffaea7;
+  /* 警告按钮 */
+  --tc-btn-warning-default: #f8b500;
+  --tc-btn-warning-hover: #ffba33;
+  --tc-btn-warning-active: #e59500;
+  --tc-btn-warning-disabled: #ffda92;
+  // ui-standard
+  --tc-pure: #000;
+  --tc-pure-reverse: #fff;
+  --tc-brand: #f8b500;
+  --tc-common-40: rgba(77, 77, 77, 0.4);
+  --tc-status-warn: #f8b500;
+  --tc-status-finish: #34a853;
+  --tc-status-error: #ea4335;
+  --tc-status-info: #4285f4;
+  --tc-status-unfinish: #6a6d70;
+  --tc-tinge-approval: #aad1b5;
+  --tc-tinge-delay: #ffcfcb;
+  --tc-tinge-robot: #cee0ff;
+  --tc-icon-gray-normal: #1c3045;
+  --tc-icon-gray-hover: #293b4f;
+  --tc-icon-gray-aspc: #132538;
+  --tc-icon-gray-disable: #5b646e;
+  --tc-table-select-normal: #ffffff;
+  --tc-table-select-hover: #ffffc9;
+  --tc-table-select-aspc: #fdfdaf;
+  --tc-table-select-disable: #e8e8e8;
+  --tc-text-extrude: #1a1a1a;
+  --tc-regular-text: #333333;
+  --tc-header-text: #4d4d4d;
+  --tc-label-text: #6a6d70;
+  --tc-watermark-text: #b3b3b3;
+  --tc-progresst-border: #89919a;
+  --tc-form-scroll-border: #89919a;
+  --tc-content-dialogd: #ffffff;
+  --tc-tbodyodd-form: #ffffff;
+  --tc-tbodyeven: #f2f2f2;
+  --tc-navbar-topbar: #304156;
+  --tc-mostbottom: #e0e0e0;
+  --tc-globalsearch: #f0f0f0;
+  --tc-tabbar: #dedede;
+  --tc-dialog-border: #e6e6e6;
+  --tc-cell-disable: #e8e8e8;
+  --tc-table-border: #d8d8d8;
+  --tc-table-header: #c9c9c9;
+  --tc-navbar-border: #333;
+  --tc-tooltip: #4d4d4d;
+  // table
+  --tc-table-empty: #ffffff; // 空白表格底色
+  --tc-cell-form: #ffffff; // 表格表单样式
+  --tc-th-background: #c9c9c9; // 表格表头底色
+  --tc-th-text: #4d4d4d; // 表格表头文字
+  --tc-tr-odd: #ffffff; // 表格奇行
+  --tc-tr-even: #f2f2f2; // 表格偶行
+  --tc-cell-border: #e3e3e3; // 单元格描边
+  --tc-cell-disable: #e8e8e8; // 单元格禁用
+  --tc-cell-hover: #ffffc9; // 单元格悬停
+  --tc-cell-selected: #fdfdaf; // 单元格选中
+  --tc-cell-selected-text: #1a1a1a; // 单元格选中时的文字颜色
+  // 文字
+  --tc-primary-text: #666666; // 常规文字
+  --tc-highlight-text: #1a1a1a; // 高亮文字
+  --tc-extrude-text: #1a1a1a; // 突出文字
+  --tc-label-text: #b3b3b3; // 标签文字
+  // 通用颜色
+  --tc-global-yellow: #f8b500;
+  --tc-global-green: #34a853;
+  --tc-global-red: #ea4335;
+  --tc-global-blue: #4285f4;
+  --tc-global-gray: #6a6d70;
+  // 输入框
+  --tc-input-background: #ffffff; // 斑马线表格底色1、输入框底色
+  --tc-input-disable-background: #ffffff; // 禁用
+  --tc-input-border: #89919a; // 输入框描边、中性图标、滚动条
+  --tc-icon-disable: #5b6461; // 中性图标禁用
+  --tc-input-disable-border: #cccccc; // 禁用
+  --tc-watermark-text: #cccccc; // 水印文字、输入框默认文字颜色
+  --tc-watermark-disable-text: #e6e6e6; // 禁用
+  // 弹窗
+  --tc-content-background: #ffffff; // 弹窗底色（含标题头）/ 空白内容底色
+  --tc-dialog-background: #1f1f1f;
+  --tc-dialog-border: #e6e6e6; // 弹窗边框
+  // 进度条
+  --tc-progress-green: #0f8000;
+  --tc-progress-yellow: #b26e00;
+  --tc-progress-red: #aa0025;
+  // 滚动条
+  --tc-scrollbar-track-background: #1f1f1f; // 滚动条轨道
+  --tc-scrollbar-thumb-background: #6a6d71; // 滚动条滑块
+  --tc-scrollbar-thumb-hover-background: #9ca1a9; // 滚动条滑块悬浮
+  // 其它
+  --tc-pagination: #efeff3;
+  --tc-card-header: #f2f2f2;
+}

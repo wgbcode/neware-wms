@@ -1,0 +1,50 @@
+@mixin pageDetail {
+  .wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    z-index: 999;
+    flex-direction: column;
+    background-color: var(--tc-dialog-background);
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      background-color: var(--tc-content-background);
+      color: var(--tc-primary-text);
+      .title {
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .center {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 0 20px;
+      }
+      .close {
+        cursor: pointer;
+      }
+    }
+    .content {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 0 3px 0;
+      background-color: var(--tc-content-background);
+      button {
+        height: 20px;
+      }
+    }
+  }
+}

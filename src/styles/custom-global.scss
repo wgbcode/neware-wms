@@ -1,0 +1,36 @@
+// 该文件用于放置全局自定义公共类名（不以 c- 开头）
+
+.module-messaage-box {
+  .el-message-box__message {
+    width: 100%;
+  }
+}
+
+// el-tooltip 自定义类名 table-progress
+div.el-popper.is-dark.table-progress {
+  background-color: #4d4d4d;
+  border-color: var(--tc-dialog-border);
+  padding: 6px;
+  span.el-popper__arrow::before {
+    background-color: #4d4d4d;
+    border-color: var(--tc-dialog-border);
+  }
+}
+
+// el-tooltip 自定义类名 custom-tooltip-popper
+.el-popper.is-dark.custom-tooltip-popper {
+  background-color: #1f1f1f;
+  border: 1px solid var(--tc-dialog-border);
+  .el-popper__arrow:before {
+    background-color: #1f1f1f;
+    border-color: var(--tc-dialog-border);
+  }
+}
+
+.unique-dropdown {
+  width: 500px !important;
+  .el-select-dropdown,
+  .el-select-dropdown .el-vl__wrapper .el-select-dropdown__list{
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,507 @@
+// 自定义类名，使用类名替代大部分样式书写（不拆分，全部放到一个文件夹，全部以 c- 开头）
+
+// p = percent。c-w | c-h | c-wp | c-hp
+@mixin generate-classes-wh($start, $end) {
+  @for $i from $start through $end {
+    $class-name-width: 'c-w#{$i}';
+    $class-name-height: 'c-h#{$i}';
+
+    .#{$class-name-width} {
+      width: #{$i}px;
+    }
+
+    .#{$class-name-height} {
+      height: #{$i}px;
+    }
+  }
+}
+
+@mixin generate-classes-whp($start, $end) {
+  @for $i from $start through $end {
+    $class-name-width: 'c-w#{$i}p';
+    $class-name-height: 'c-h#{$i}p';
+
+    .#{$class-name-width} {
+      width: #{$i}+ '%';
+    }
+
+    .#{$class-name-height} {
+      height: #{$i}+ '%';
+    }
+  }
+}
+
+@include generate-classes-wh(0, 500);
+@include generate-classes-whp(0, 100);
+
+// top|bottom|left|right: p = percent。c-t | c-b | c-l | c-r | c-tp | c-bp | c-lp | c-rp
+@mixin generate-classes-tblf($start, $end) {
+  @for $i from $start through $end {
+    $class-name-top: 'c-t#{$i}';
+    $class-name-bottom: 'c-b#{$i}';
+    $class-name-left: 'c-l#{$i}';
+    $class-name-right: 'c-r#{$i}';
+
+    .#{$class-name-top} {
+      top: #{$i}px;
+    }
+
+    .#{$class-name-bottom} {
+      bottom: #{$i}px;
+    }
+
+    .#{$class-name-left} {
+      left: #{$i}px;
+    }
+
+    .#{$class-name-right} {
+      right: #{$i}px;
+    }
+  }
+}
+
+@mixin generate-classes-tblfp($start, $end) {
+  @for $i from $start through $end {
+    $class-name-top: 'c-t#{$i}p';
+    $class-name-bottom: 'c-b#{$i}p';
+    $class-name-left: 'c-l#{$i}p';
+    $class-name-right: 'c-r#{$i}p';
+
+    .#{$class-name-top} {
+      top: #{$i}+ '%';
+    }
+
+    .#{$class-name-bottom} {
+      bottom: #{$i}+ '%';
+    }
+
+    .#{$class-name-left} {
+      left: #{$i}+ '%';
+    }
+
+    .#{$class-name-right} {
+      right: #{$i}+ '%';
+    }
+  }
+}
+
+@include generate-classes-tblf(0, 500);
+@include generate-classes-tblfp(0, 100);
+
+// padding|margin: c-p | c-m | c-px | c-py | c-mx | c-my | c-pt | c-pb | c-pl | c-pr | c-mt | c-mb | c-ml | c-mr
+@mixin generate-classes-pm($start, $end) {
+  @for $i from $start through $end {
+    $class-name-p: 'c-p#{$i}';
+    $class-name-m: 'c-m#{$i}';
+    $class-name-mx: 'c-mx#{$i}';
+    $class-name-my: 'c-my#{$i}';
+    $class-name-pt: 'c-pt#{$i}';
+    $class-name-pb: 'c-pb#{$i}';
+    $class-name-pl: 'c-pl#{$i}';
+    $class-name-pr: 'c-pr#{$i}';
+    $class-name-mt: 'c-mt#{$i}';
+    $class-name-mb: 'c-mb#{$i}';
+    $class-name-ml: 'c-ml#{$i}';
+    $class-name-mr: 'c-mr#{$i}';
+    $class-name-px: 'c-px#{$i}';
+    $class-name-py: 'c-py#{$i}';
+
+    .#{$class-name-px} {
+      padding-left: #{$i}px;
+      padding-right: #{$i}px;
+    }
+
+    .#{$class-name-py} {
+      padding-top: #{$i}px;
+      padding-bottom: #{$i}px;
+    }
+
+    .#{$class-name-mx} {
+      margin-left: #{$i}px;
+      margin-right: #{$i}px;
+    }
+
+    .#{$class-name-my} {
+      margin-top: #{$i}px;
+      margin-bottom: #{$i}px;
+    }
+
+    .#{$class-name-p} {
+      padding: #{$i}px;
+    }
+
+    .#{$class-name-m} {
+      margin: #{$i}px;
+    }
+
+    .#{$class-name-pt} {
+      padding-top: #{$i}px;
+    }
+
+    .#{$class-name-pb} {
+      padding-bottom: #{$i}px;
+    }
+
+    .#{$class-name-pl} {
+      padding-left: #{$i}px;
+    }
+
+    .#{$class-name-pr} {
+      padding-right: #{$i}px;
+    }
+
+    .#{$class-name-mt} {
+      margin-top: #{$i}px;
+    }
+
+    .#{$class-name-mb} {
+      margin-bottom: #{$i}px;
+    }
+
+    .#{$class-name-ml} {
+      margin-left: #{$i}px;
+    }
+
+    .#{$class-name-mr} {
+      margin-right: #{$i}px;
+    }
+  }
+}
+
+@include generate-classes-pm(0, 100);
+
+// margin: n = negative。c-mtn | c-mbn | c-mln | c-mrn
+@mixin generate-classes-mn($start, $end) {
+  @for $i from $start through $end {
+    $class-name-mt: 'c-mt#{$i}n';
+    $class-name-mb: 'c-mb#{$i}n';
+    $class-name-ml: 'c-ml#{$i}n';
+    $class-name-mr: 'c-mr#{$i}n';
+
+    .#{$class-name-mt} {
+      margin-top: #{-$i}px;
+    }
+
+    .#{$class-name-mb} {
+      margin-bottom: #{-$i}px;
+    }
+
+    .#{$class-name-ml} {
+      margin-left: #{-$i}px;
+    }
+
+    .#{$class-name-mr} {
+      margin-right: #{-$i}px;
+    }
+  }
+}
+
+@include generate-classes-mn(0, 50);
+
+// font-size: c-fs
+@mixin generate-classes-fs($start, $end) {
+  @for $i from $start through $end {
+    $class-name: 'c-fs#{$i}';
+
+    .#{$class-name} {
+      font-size: #{$i}px;
+    }
+  }
+}
+
+@include generate-classes-fs(12, 50);
+
+// font-weight: c-fw
+@mixin generate-classes-fw($start, $end) {
+  @for $i from $start through $end {
+    $class-name: 'c-fw#{$i}';
+
+    .#{$class-name} {
+      font-weight: #{$i};
+    }
+  }
+}
+
+@include generate-classes-fw(300, 700);
+
+// opacity: c-opacity
+@mixin generate-classes-opacity($start, $end) {
+  @for $i from $start through $end {
+    $class-name: 'c-opacity#{$i}';
+
+    .#{$class-name} {
+      opacity: calc($i / 10);
+    }
+  }
+}
+
+@include generate-classes-opacity(0, 10);
+
+// border-radius: c-br
+@mixin generate-classes-br($start, $end) {
+  @for $i from $start through $end {
+    $class-name: 'c-br#{$i}';
+
+    .#{$class-name} {
+      border-radius: #{$i}px;
+    }
+  }
+}
+@include generate-classes-br(0, 10);
+
+// border-radius: 50%
+.c-br50p {
+  border-radius: 50%;
+}
+
+// flex
+.c-flex {
+  display: flex;
+}
+
+.c-flex-1 {
+  flex: 1;
+}
+
+.c-flex-shrink {
+  flex-shrink: 1;
+}
+
+.c-flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.c-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c-flex-only-wrap {
+  flex-wrap: wrap;
+}
+
+.c-flex-nowrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.c-flex-column-1 {
+  flex-direction: column;
+}
+
+.c-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-flex-column-start {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.c-flex-column-end {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.c-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-flex-xcenter {
+  display: flex;
+  justify-content: center;
+}
+
+.c-flex-ycenter {
+  display: flex;
+  align-items: center;
+}
+
+.c-flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c-flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.c-flex-evenly {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.c-flex-xstart {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.c-flex-xend {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.c-flex-ystart {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.c-flex-yend {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+// position
+.c-relative {
+  position: relative;
+}
+
+.c-absolute {
+  position: absolute;
+}
+
+.c-fixed {
+  position: fixed;
+}
+
+.c-absolute-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.c-absolute-xcenter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.c-absolute-ycenter {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// overflow
+.c-overflow-auto {
+  overflow: auto;
+}
+
+.c-overflow-hidden {
+  overflow: hidden;
+}
+
+.c-overflow-scroll {
+  overflow: scroll;
+}
+
+.c-overflow-x-auto {
+  overflow-x: auto;
+}
+
+.c-overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.c-overflow-x-scroll {
+  overflow-x: scroll;
+}
+
+.c-overflow-y-auto {
+  overflow-y: auto;
+}
+
+.c-overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.c-overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+// color|background-color: c-cwhite | c-bwhite | c-cblack | c-black
+.c-cwhite {
+  color: white;
+}
+
+.c-bwhite {
+  background-color: white;
+}
+
+.c-cblack {
+  color: black;
+}
+
+.c-bblack {
+  background-color: black;
+}
+
+// select: c-forbidSelect
+.c-forbidSelect {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// white-space: c-white-nowrap
+.c-white-nowrap {
+  white-space: nowrap;
+}
+
+// display: c-block | c-inline | c-inline-block
+.c-block {
+  display: block;
+}
+
+.c-inline {
+  display: inline;
+}
+
+.c-inline-block {
+  display: inline-block;
+}
+
+// tooltip
+.c-tooltip {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// cursor
+.c-cursor-p {
+  cursor: pointer;
+}
+
+// 禁止选中文字
+.c-no-select {
+  user-select: none; /* 支持现代浏览器 */
+  -webkit-user-select: none; /* 支持 Chrome 和 Safari */
+  -moz-user-select: none; /* 支持 Firefox */
+  -ms-user-select: none; /* 支持 Internet Explorer 和 Edge */
+}
+
+// c-label-color
+.c-label-color {
+  color: var(--tc-label-text);
+}
+
+// c-highlight-color
+.c-highlight-color {
+  color: var(--tc-highlight-text);
+}

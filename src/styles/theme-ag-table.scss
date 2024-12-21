@@ -1,0 +1,159 @@
+.ag-theme-alpine-dark {
+  --ag-font-size: 12px;
+  --ag-icon-size: 13px;
+  --ag-line-height: 19px !important;
+  --ag-row-border-color: var(--tc-cell-border);
+  // --ag-header-background-color: var(--tc-th-background);
+  --ag-header-background-color: #1a1a1a;
+  --ag-odd-row-background-color: var(--tc-tr-odd);
+  --ag-selected-row-background-color: var(--tc-cell-selected);
+  --ag-background-color: var(--tc-tr-even);
+  --ag-header-foreground-color: var(--tc-th-text);
+  --ag-foreground-color: var(--tc-primary-text);
+  .ag-row {
+    font-size: var(--ag-font-size);
+  }
+  .forbid-striped {
+    background-color: var(--tc-tr-odd);
+  }
+  .ag-header-group-cell-label,
+  .ag-cell-label-container {
+    padding: 0 4px;
+  }
+  .ag-header {
+    border: none;
+  }
+  .ag-header-row,
+  .ag-pinned-left-header {
+    background-color: var(--tc-th-background);
+  }
+  .ag-pinned-left-header {
+    height: 20px;
+  }
+  .ag-cell,
+  .ag-header-cell,
+  .ag-header-group-cell,
+  .ag-full-width-row .ag-cell-wrapper.ag-row-group {
+    padding-left: 4px;
+    padding-right: 4px;
+    border-right: 1px solid var(--ag-row-border-color);
+    .ag-cell-label-container {
+      padding: 0;
+    }
+  }
+  .ag-header-cell-resize::after {
+    display: none;
+  }
+  .ag-selection-checkbox + .ag-cell-value {
+    display: none;
+  }
+  .ag-cell,
+  .ag-header-cell.c-customer-checked {
+    .ag-header-cell-label,
+    .ag-cell-wrapper:has(.ag-selection-checkbox) {
+      .ag-selection-checkbox {
+        margin-right: 0;
+      }
+    }
+    .ag-checkbox {
+      margin-right: 0;
+    }
+    .ag-header-cell-comp-wrapper {
+      display: none;
+    }
+  }
+  .ag-cell {
+    .ag-cell-wrapper {
+      height: 100%;
+      .ag-cell-value {
+        height: 100%;
+      }
+    }
+  }
+  // 自定义 class
+  .c-cell-left {
+    text-align: left;
+    justify-content: flex-start;
+    .ag-header-cell-label,
+    .ag-cell-wrapper:has(.ag-selection-checkbox) {
+      justify-content: flex-start;
+    }
+  }
+  .c-cell-center {
+    text-align: center;
+    justify-content: center;
+    .ag-header-cell-label,
+    .ag-cell-wrapper:has(.ag-selection-checkbox) {
+      justify-content: center;
+    }
+  }
+  .c-cell-right {
+    text-align: right;
+    justify-content: flex-end;
+    .ag-header-cell-label,
+    .ag-cell-wrapper:has(.ag-selection-checkbox) {
+      justify-content: flex-end;
+    }
+  }
+  // 重置滚动条样式
+  .ag-horizontal-left-spacer,
+  .ag-horizontal-right-spacer {
+    overflow-x: hidden;
+  }
+  .ag-body-vertical-scroll-viewport,
+  .ag-body-horizontal-scroll-viewport {
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--tc-scrollbar-thumb-background);
+      border-radius: 4px;
+    }
+    &:hover::-webkit-scrollbar-thumb {
+      background: var(--tc-scrollbar-thumb-hover-background);
+    }
+    &::-webkit-scrollbar-track {
+      background: var(--tc-scrollbar-track-background);
+    }
+  }
+  // 聚集单元格时，自定义 border 样式
+  .ag-ltr .ag-cell-focus:not(.ag-cell-range-selected):focus-within {
+    --ag-range-selection-border-color: var(--ag-row-border-color);
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
+  }
+  // 自定义 input 单元格样式
+  .ag-cell:has(.ag-text-field-input),
+  .ag-cell:has(.ag-number-field-input) {
+    border-left: 1px solid transparent !important;
+    border-top: 1px solid transparent !important;
+    border-right: 1px solid var(--ag-row-border-color) !important;
+    border-bottom: 1px solid var(--tc-global-yellow) !important;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: var(--tc-pure-reverse);
+    --ag-input-focus-border-color: var(--tc-global-yellow);
+    .ag-text-field-input,
+    .ag-number-field-input {
+      height: 16px;
+      min-height: 16px;
+      box-shadow: none;
+      border: none;
+      --ag-grid-size: 0;
+      background-color: var(--tc-pure-reverse);
+    }
+  }
+  // 自定义列单元格合并样式
+  .ag-cell.cell-span {
+    background-color: var(--tc-tr-odd);
+    border-bottom: 1px solid var(--ag-row-border-color) !important;
+    .ag-cell-value {
+      height: auto !important;
+    }
+    &.cell-span-start {
+      z-index: 10 !important;
+    }
+  }
+}
